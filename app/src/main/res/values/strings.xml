@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">LosAlacranes_MiPasadoEnPresente</string>
+    <string name="agrega_audio">Agregar Audio</string>
+    <string name="agrega_imagen">Agregar Imagen</string>
+    <string name="cambiar_audio">Cambiar Audio</string>
+    <string name="cambiar_imagen">Cambiar Imagen</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="eliminar">Eliminar</string>
 </resources>
