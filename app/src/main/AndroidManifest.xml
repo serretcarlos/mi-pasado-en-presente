@@ -15,6 +15,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AgregarPersona" />
+        <activity android:name=".AgregarEvento" />
+        <activity android:name=".ModificaPersona" />
+        <activity android:name=".ModificaEvento" />
+        <activity android:name=".AgregarUsuario" />
+        <activity android:name=".ModificarUsuario"></activity>
     </application>
 
 </manifest>
