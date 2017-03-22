@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,10 +9,40 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="itesm.mx.losalacranes_mipasadoenpresente.MainActivity">
+    tools:context="itesm.mx.losalacranes_mipasadoenpresente.MainActivity"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:scrollY="-50dp">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <ImageButton
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+        android:src="@drawable/Persona1"
+        android:id="@+id/imageButton_persona1"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:backgroundTint="@android:color/transparent" />
+
+    <ImageButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/Persona2"
+        android:id="@+id/imageButton_persona2"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:backgroundTint="@android:color/transparent" />
+
+    <ImageButton
+        android:layout_width="341dp"
+        android:layout_height="103dp"
+        android:src="@drawable/BotonAgregar"
+        android:id="@+id/imageButton_agregar"
+        android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
+        android:cropToPadding="true"
+        android:backgroundTint="@android:color/transparent"
+        android:scrollX="-7dp"/>
+</LinearLayout>

@@ -20,7 +20,8 @@
         <activity android:name=".ModificaPersona" />
         <activity android:name=".ModificaEvento" />
         <activity android:name=".AgregarUsuario" />
-        <activity android:name=".ModificarUsuario"></activity>
+        <activity android:name=".ModificarUsuario" />
+        <activity android:name=".MenuSeccionRecuerdos"></activity>
     </application>
 
 </manifest>
