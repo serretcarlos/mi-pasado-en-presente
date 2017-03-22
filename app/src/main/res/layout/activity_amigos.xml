@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_amigos"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="itesm.mx.losalacranes_mipasadoenpresente.AmigosActivity">
+
+    <ImageButton
+        android:id="@+id/button_agregar"
+        android:layout_width="295dp"
+        android:layout_height="80dp"
+        android:background="@drawable/boton_agregar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/button_amigo" />
+
+    <TextView
+        android:id="@+id/text_agregar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Agregar"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:layout_marginStart="10dp"
+        android:layout_alignTop="@+id/button_agregar"
+        android:layout_alignStart="@+id/text_nombre"
+        android:layout_marginTop="25dp" />
+
+    <ImageButton
+        android:id="@+id/button_amigo"
+        android:layout_width="295dp"
+        android:layout_height="80dp"
+        android:background="@drawable/button_blue"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/text_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fernanda Mata"
+        android:textSize="25sp"
+        android:textAlignment="textStart"
+        android:layout_marginStart="5dp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="24dp"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/image_persona" />
+
+    <ImageView
+        android:id="@+id/image_persona"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@drawable/persona"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/button_amigo" />
+
+</RelativeLayout>
