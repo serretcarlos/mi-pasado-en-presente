@@ -18,7 +18,7 @@
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/Persona1"
+        android:src="@drawable/persona1"
         android:id="@+id/imageButton_persona1"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
@@ -28,7 +28,7 @@
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/Persona2"
+        android:src="@drawable/persona2"
         android:id="@+id/imageButton_persona2"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
@@ -38,7 +38,7 @@
     <ImageButton
         android:layout_width="341dp"
         android:layout_height="103dp"
-        android:src="@drawable/BotonAgregar"
+        android:src="@drawable/botonagregar"
         android:id="@+id/imageButton_agregar"
         android:scaleType="centerCrop"
         android:adjustViewBounds="true"
