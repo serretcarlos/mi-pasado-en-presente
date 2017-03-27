@@ -28,34 +28,32 @@ public class MenuSeccionRecuerdos extends AppCompatActivity implements View.OnCl
     }
     @Override
     public void onClick(View v) {
-
-        public void onClick (View v){
-            switch (v.getId()) {
-                case R.id.imageButton_familia:
-                    Intent intent = new Intent(MenuSeccionRecuerdos.this, Familia.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButton_amigos:
-                    Intent intent = new Intent(MenuSeccionRecuerdos.this, Amigos.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButton_eventos:
-                    Intent intent = new Intent(MenuSeccionRecuerdos.this, Eventos.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButton_sucesos:
-                    Intent intent = new Intent(MenuSeccionRecuerdos.this, Suceos.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButton_historia:
-                    Intent intent = new Intent(MenuSeccionRecuerdos.this, Historia.class);
-                    startActivity(intent);
-                    break;
-                case R.id.imageButton_preguntas:
-                    Intent intent = new Intent(MenuSeccionRecuerdos.this, Preguntas.class);
-                    startActivity(intent);
-                    break;
-            }
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.imageButton_familia:
+                intent = new Intent(MenuSeccionRecuerdos.this, FamiliaActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButton_amigos:
+                intent = new Intent(MenuSeccionRecuerdos.this, AmigosActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButton_eventos:
+                intent = new Intent(MenuSeccionRecuerdos.this, EventosActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButton_sucesos:
+                intent = new Intent(MenuSeccionRecuerdos.this, SucesoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButton_historia:
+                intent = new Intent(MenuSeccionRecuerdos.this, PersonalActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.imageButton_preguntas:
+                intent = new Intent(MenuSeccionRecuerdos.this, PreguntasActivity.class);
+                startActivity(intent);
+                break;
         }
     }
 }

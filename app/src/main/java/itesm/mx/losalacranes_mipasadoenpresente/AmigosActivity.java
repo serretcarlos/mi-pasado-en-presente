@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 public class AmigosActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageButton btnAgregar;
+    private ImageButton btnAmigo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,12 +18,24 @@ public class AmigosActivity extends AppCompatActivity implements View.OnClickLis
 
         btnAgregar = (ImageButton)findViewById(R.id.button_agregar);
         btnAgregar.setOnClickListener(this);
+        btnAmigo = (ImageButton) findViewById(R.id.button_amigo);
+        btnAmigo.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v){
-        Intent intent = new Intent(this, AgregarPersona.class);
-        startActivity(intent);
+
+        Intent intent;
+        switch (v.getId()) {
+            case R.id.button_agregar:
+            intent = new Intent(this, AgregarPersona.class);
+            startActivity(intent);
+                break;
+            case R.id.button_amigo:
+                intent = new Intent(this, DetalleAmigoActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
