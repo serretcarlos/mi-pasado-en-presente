@@ -15,38 +15,38 @@
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@drawable/botonfamilia2"
+        android:background="@drawable/boton_familia_2"
         android:scrollY="2dp"
         android:id="@+id/imageButton_familia"/>
 
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@drawable/botonamigos3"
+        android:background="@drawable/boton_amigos_3"
         android:id="@+id/imageButton_amigos"
         android:scrollY="10dp"/>
 
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@drawable/botoneventos2"
+        android:background="@drawable/boton_eventos_2"
         android:id="@+id/imageButton_eventos" />
 
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@drawable/botonsucesos2"
+        android:background="@drawable/boton_sucesos_2"
         android:id="@+id/imageButton_sucesos" />
 
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@drawable/botonhistoria2"
+        android:background="@drawable/boton_historia_2"
         android:id="@+id/imageButton_historia" />
 
     <ImageButton
         android:layout_width="match_parent"
         android:layout_height="82dp"
-        android:background="@drawable/botonpreguntas2"
+        android:background="@drawable/boton_preguntas_2"
         android:id="@+id/imageButton_preguntas" />
 </LinearLayout>
