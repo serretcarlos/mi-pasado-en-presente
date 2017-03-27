@@ -28,7 +28,7 @@
                 <ImageView
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:src="@drawable/landscape"
+                    android:src="@drawable/persona"
                     android:id="@+id/image_familia"
                     android:layout_gravity="center_horizontal" />
 

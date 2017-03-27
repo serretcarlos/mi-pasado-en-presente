@@ -55,6 +55,7 @@ public class MenuSeccionRecuerdos extends AppCompatActivity implements View.OnCl
                 startActivity(intent);
                 break;
         }
+
     }
 }
 
