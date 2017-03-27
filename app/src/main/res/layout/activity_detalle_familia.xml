@@ -45,6 +45,7 @@
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="26dp"
+        android:id="@+id/button_audio_detalle_familia"
         android:textSize="20dp"
         android:textAllCaps="false"
         />
@@ -53,6 +54,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         app:srcCompat="@drawable/telefono"
+        android:layout_below="@+id/button_audio_detalle_familia"
         android:layout_marginTop="43dp"
         android:id="@+id/imageView2"
         android:layout_alignParentStart="true"
@@ -64,6 +66,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="43dp"
         android:id="@+id/textView3"
+        android:layout_below="@id/button_audio_detalle_familia"
         android:layout_toEndOf="@id/imageView2"
         android:textSize="30sp"
         android:layout_marginStart="20dp"
