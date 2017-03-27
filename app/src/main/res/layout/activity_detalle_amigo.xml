@@ -11,81 +11,86 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="itesm.mx.losalacranes_mipasadoenpresente.DetalleAmigoActivity">
 
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ScrollView01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
 
+        <RelativeLayout
+            android:id="@+id/RelativeLayout01"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/persona"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/image_persona_detalle_familia" />
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    app:srcCompat="@drawable/persona"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:id="@+id/image_persona_detalle_familia"/>
 
-    <TextView
-        android:text="Fernanda Mata"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/image_persona_detalle_familia"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="23dp"
-        android:textSize="35dp"
-        android:id="@+id/textView" />
+                <TextView
+                    android:text="Fernanda Mata"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image_persona_detalle_familia"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="23dp"
+                    android:textSize="35dp"
+                    android:id="@+id/textView"/>
 
-    <Button
-        android:text="Reproducir audio"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:id="@+id/button_audio_detalle_familia"
-        android:textSize="20dp"
-        android:textAllCaps="false"
-        />
+                <Button
+                    android:text="Reproducir audio"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="26dp"
+                    android:id="@+id/button_audio_detalle_familia"
+                    android:textSize="20dp"
+                    android:textAllCaps="false"/>
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/telefono"
-        android:layout_below="@+id/button_audio_detalle_familia"
-        android:layout_marginTop="43dp"
-        android:id="@+id/imageView2"
-        android:layout_alignParentStart="true"
-        />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/telefono"
+                    android:layout_below="@+id/button_audio_detalle_familia"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/imageView2"
+                    android:layout_alignParentStart="true"/>
 
-    <TextView
-        android:text="5555-6666"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_marginTop="43dp"
-        android:id="@+id/textView3"
-        android:layout_below="@id/button_audio_detalle_familia"
-        android:layout_toEndOf="@id/imageView2"
-        android:textSize="30sp"
-        android:layout_marginStart="20dp"
-        android:gravity="center_vertical"
+                <TextView
+                    android:text="5555-6666"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="20dp"
+                    android:id="@+id/textView3"
+                    android:layout_below="@id/button_audio_detalle_familia"
+                    android:layout_toEndOf="@id/imageView2"
+                    android:textSize="30sp"
+                    android:layout_marginStart="20dp"
+                    android:gravity="center_vertical"/>
 
-        />
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/casa"
+                    android:layout_below="@+id/imageView2"
+                    android:id="@+id/imageView3" />
 
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/casa"
-        android:layout_below="@+id/imageView2"
-        android:layout_marginTop="42dp"
-        android:id="@+id/imageView3" />
+                <TextView
+                    android:text="Miguel Hidalgo #300"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_below="@id/imageView2"
+                    android:id="@+id/textView4"
+                    android:gravity="center_vertical"
+                    android:layout_toEndOf="@id/imageView3"
+                    android:textSize="25sp"
+                    android:layout_marginStart="20dp"/>
 
-    <TextView
-        android:text="Miguel Hidalgo #300"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_below="@id/imageView2"
-        android:layout_marginTop="42dp"
-        android:id="@+id/textView4"
-        android:gravity="center_vertical"
-        android:layout_toEndOf="@id/imageView3"
-        android:textSize="30sp"
-        android:layout_marginStart="20dp"/>
+        </RelativeLayout>
 
+    </ScrollView>
 
 </RelativeLayout>

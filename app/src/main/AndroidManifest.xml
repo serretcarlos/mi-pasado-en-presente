@@ -26,7 +26,12 @@
         <activity android:name=".DetalleAmigoActivity" />
         <activity android:name=".DetalleEventoActivity" />
         <activity android:name=".DetalleSucesoActivity" />
-        <activity android:name=".PreguntasActivity"></activity>
+        <activity android:name=".PreguntasActivity"/>
+        <activity android:name=".FamiliaActivity"/>
+        <activity android:name=".AmigosActivity"/>
+        <activity android:name=".EventosActivity"/>
+        <activity android:name=".PersonalActivity"/>
+        <activity android:name=".SucesoActivity"></activity>
     </application>
 
 </manifest>

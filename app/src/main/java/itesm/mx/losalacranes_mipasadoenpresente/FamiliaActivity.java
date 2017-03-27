@@ -10,18 +10,18 @@ import android.widget.ImageButton;
 
 public class FamiliaActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private ImageButton btnAgregar;
-    private ImageButton btnFamilia;
+    ImageButton btnAgregar;
+    ImageButton btnFamilia;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_familia);
 
         btnAgregar = (ImageButton)findViewById(R.id.button_agregar);
-        btnAgregar.setOnClickListener(this);
         btnFamilia = (ImageButton) findViewById(R.id.button_familiar);
-        btnFamilia.setOnClickListener(this);
 
+        btnFamilia.setOnClickListener(this);
+        btnAgregar.setOnClickListener(this);
     }
 
     @Override
