@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
-            case R.id.imageButton_familia:
+            case R.id.imageButton_persona1:
                 intent = new Intent(MainActivity.this, MenuSeccionRecuerdos.class);
                 startActivity(intent);
                 break;

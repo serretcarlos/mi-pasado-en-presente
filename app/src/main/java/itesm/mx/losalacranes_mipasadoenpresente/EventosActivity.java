@@ -17,10 +17,10 @@ public class EventosActivity extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_eventos);
 
         btnAgregar = (ImageButton)findViewById(R.id.button_agregar);
-        btnAgregar.setOnClickListener(this);
         btnEvento = (ImageButton) findViewById(R.id.button_evento);
-        btnEvento.setOnClickListener(this);
 
+        btnAgregar.setOnClickListener(this);
+        btnEvento.setOnClickListener(this);
     }
 
     @Override
@@ -28,8 +28,8 @@ public class EventosActivity extends AppCompatActivity implements View.OnClickLi
         Intent intent;
         switch (v.getId()) {
             case R.id.button_agregar:
-            intent = new Intent(this, AgregarEvento.class);
-            startActivity(intent);
+                intent = new Intent(this, AgregarEvento.class);
+                startActivity(intent);
                 break;
             case R.id.button_evento:
                 intent = new Intent(this, DetalleEventoActivity.class);
