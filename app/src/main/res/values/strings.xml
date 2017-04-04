@@ -8,4 +8,5 @@
     <string name="cancelar">Cancelar</string>
     <string name="eliminar">Eliminar</string>
     <string name="title_activity_familia_detalle">familia_detalle</string>
+    <string name="title_activity_menu">MenuActivity</string>
 </resources>
