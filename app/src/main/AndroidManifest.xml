@@ -21,17 +21,20 @@
         <activity android:name=".ModificaEvento" />
         <activity android:name=".AgregarUsuario" />
         <activity android:name=".ModificarUsuario" />
-        <activity android:name=".MenuSeccionRecuerdos" />
         <activity android:name=".DetalleFamilia" />
         <activity android:name=".DetalleAmigoActivity" />
         <activity android:name=".DetalleEventoActivity" />
         <activity android:name=".DetalleSucesoActivity" />
-        <activity android:name=".PreguntasActivity"/>
-        <activity android:name=".FamiliaActivity"/>
-        <activity android:name=".AmigosActivity"/>
-        <activity android:name=".EventosActivity"/>
-        <activity android:name=".PersonalActivity"/>
-        <activity android:name=".SucesoActivity"></activity>
+        <activity android:name=".PreguntasActivity" />
+        <activity android:name=".FamiliaActivity" />
+        <activity android:name=".AmigosActivity" />
+        <activity android:name=".EventosActivity" />
+        <activity android:name=".PersonalActivity" />
+        <activity android:name=".SucesoActivity" />
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/title_activity_menu"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

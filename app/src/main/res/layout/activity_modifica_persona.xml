@@ -29,7 +29,7 @@
                 <ImageView
                     android:layout_width="200dp"
                     android:layout_height="200dp"
-                    android:src="@drawable/persona"
+                    android:src="@drawable/usuario"
                     android:id="@+id/image_familia"
                     android:layout_gravity="center_horizontal" />
 
