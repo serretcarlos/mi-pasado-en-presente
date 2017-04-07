@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 public class MenuActivity extends AppCompatActivity implements  View.OnClickListener{
+    Usuario usuarioActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,11 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
+        usuarioActual = globalUser.getUser();
+        String nombre = usuarioActual.getNombre();
+        setTitle("Hola, "+ nombre+".");
 
         CardView Card1 = (CardView) findViewById(R.id.card_view);
         CardView Card2 = (CardView) findViewById(R.id.card_view2);
@@ -39,8 +45,6 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
         Card4.setOnClickListener(this);
         Card5.setOnClickListener(this);
         Card6.setOnClickListener(this);
-
-
     }
 
     @Override
