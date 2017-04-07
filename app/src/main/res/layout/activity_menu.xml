@@ -59,7 +59,7 @@
                         <TextView
                             android:layout_width="250dp"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="Familia"
                             android:textSize="23sp"
                             android:textColor="#ffffff"
@@ -100,7 +100,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="Amigos y conocidos"
                             android:textSize="23sp"
                             android:id="@+id/text_amigos"
@@ -141,7 +141,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="Eventos relevantes"
                             android:textSize="23sp"
                             android:id="@+id/text_eventos_relevantes"
@@ -180,7 +180,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="Sucesos históricos"
                             android:textSize="23sp"
                             android:id="@+id/text_sucesos_historicos"
@@ -222,7 +222,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="Historia personal"
                             android:textSize="23sp"
                             android:id="@+id/text_mi_historia"
@@ -261,7 +261,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:gravity="start|center_vertical"
                             android:text="Sección de preguntas"
                             android:textSize="23sp"
                             android:id="@+id/text_preguntas"

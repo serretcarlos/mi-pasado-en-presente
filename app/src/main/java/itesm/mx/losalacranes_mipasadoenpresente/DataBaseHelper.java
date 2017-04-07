@@ -26,7 +26,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             DataBaseSchema.UsuarioTable.COLUMN_NAME_ESTADO_CIVIL + " TEXT,"+
             DataBaseSchema.UsuarioTable.COLUMN_NAME_NIETOS + " INT,"+
             DataBaseSchema.UsuarioTable.COLUMN_NAME_HIJOS + " INT," +
-            DataBaseSchema.UsuarioTable.COLUMN_NAME_HERMANOS + " INT," +
             DataBaseSchema.UsuarioTable.COLUMN_NAME_IMAGEN + " BLOB " +
             ")";
 

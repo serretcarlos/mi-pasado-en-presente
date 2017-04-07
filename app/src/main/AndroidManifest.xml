@@ -23,7 +23,7 @@
         <activity android:name=".AgregarEvento" />
         <activity android:name=".ModificaPersona" />
         <activity android:name=".ModificaEvento" />
-        <activity android:name=".AgregarUsuario" />
+        <activity android:name=".AgregarUsuarioActivity" />
         <activity android:name=".ModificarUsuario" />
         <activity android:name=".DetalleFamilia" />
         <activity android:name=".DetalleAmigoActivity" />
