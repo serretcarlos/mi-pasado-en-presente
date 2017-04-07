@@ -54,7 +54,6 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_ESTADO_CIVIL, usuario.getEstadoCivil());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_NIETOS, usuario.getNietos());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_HIJOS, usuario.getHijos());
-            values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_HERMANOS, usuario.getHermanos());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_IMAGEN, usuario.getImagen());
             newID = db.insert(DataBaseSchema.UsuarioTable.TABLE_NAME, null, values);
         } catch(SQLiteException e){
@@ -80,8 +79,7 @@ public class DataBaseOperations {
                         cursor.getString(5),
                         Integer.parseInt(cursor.getString(6)),
                         Integer.parseInt(cursor.getString(7)),
-                        Integer.parseInt(cursor.getString(8)),
-                        cursor.getBlob(9));
+                        cursor.getBlob(8));
             }
             cursor.close();
         } catch (SQLiteException e){
@@ -133,8 +131,7 @@ public class DataBaseOperations {
                             cursor.getString(5),
                             Integer.parseInt(cursor.getString(6)),
                             Integer.parseInt(cursor.getString(7)),
-                            Integer.parseInt(cursor.getString(8)),
-                            cursor.getBlob(9));
+                            cursor.getBlob(8));
                     listaUsuarios.add(usuario);
                 } while (cursor.moveToNext());
             }
@@ -156,7 +153,6 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_ESTADO_CIVIL, usuario.getEstadoCivil());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_NIETOS, usuario.getNietos());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_HIJOS, usuario.getHijos());
-            values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_HERMANOS, usuario.getHermanos());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_IMAGEN, usuario.getImagen());
             db.update(DataBaseSchema.UsuarioTable.TABLE_NAME, values, DataBaseSchema.UsuarioTable._ID +
                     " = ? ", new String[]{String.valueOf(usuario.getIdUsuario())});

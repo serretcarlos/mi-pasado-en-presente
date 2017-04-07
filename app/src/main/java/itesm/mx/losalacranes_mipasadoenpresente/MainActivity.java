@@ -1,43 +1,81 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
-
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.database.DatabaseUtilsCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener{
+
+
+    ArrayList<Usuario> listaUsuarios;
+    UsuarioAdapter usuarioAdapter;
+    Usuario usuarioActual;
+    DataBaseOperations dao;
+
+    public ArrayList<Usuario> getListaUsuarios(){
+        Usuario usuario;
+        ArrayList<Usuario> listUsers = new ArrayList<>();
+        usuario = new Usuario("Carlos", "Serret", 21, "18/11/1995", "soltero", 0, 0, null);
+        listUsers.add(usuario);
+        usuario = new Usuario("Daniel", "Serret", 21, "18/11/1995", "soltero", 0, 0, null);
+        listUsers.add(usuario);
+        usuario = new Usuario("Iram", "Diaz", 21, "29/05/1996", "soltero", 0, 0, null);
+        listUsers.add(usuario);
+        return  listUsers;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ImageButton iBtnPersona1 =(ImageButton) findViewById(R.id.imageButton_persona1);
-        ImageButton iBtnPersona2  =(ImageButton) findViewById(R.id.imageButton_persona2);
-        ImageButton iBtnAgregar  = (ImageButton) findViewById(R.id.imageButton_agregar);
-        iBtnPersona1.setOnClickListener(this);
-        iBtnPersona2.setOnClickListener(this);
-        iBtnAgregar.setOnClickListener(this);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        dao = new DataBaseOperations(this);
+        dao.open();
+        listaUsuarios = dao.getAllUsers();
+        GridView gridView = (GridView)findViewById(R.id.gridview_usuarios);
+        //listaUsuarios = getListaUsuarios();
+        usuarioAdapter = new UsuarioAdapter(this, listaUsuarios);
+        gridView.setAdapter(usuarioAdapter);
+        gridView.setOnItemClickListener(this);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(this);
     }
-
-
 
     @Override
     public void onClick(View v) {
-        Intent intent;
-        switch (v.getId()) {
-            case R.id.imageButton_persona1:
-                intent = new Intent(MainActivity.this, MenuActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.imageButton_persona2:
-                intent = new Intent(MainActivity.this, MenuActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.imageButton_agregar:
-                intent = new Intent(MainActivity.this, AgregarUsuario.class);
-                startActivity(intent);
-                break;
+        Intent intent = new Intent(this, AgregarUsuarioActivity.class);
+        startActivityForResult(intent, ActivityConstants.AGREGO_USUARIO);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
+        Usuario user = (Usuario)parent.getItemAtPosition(position);
+        globalUser.setUser(user);
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK){
+            if (requestCode == ActivityConstants.AGREGO_USUARIO){
+                Bundle datos = data.getExtras();
+                Usuario usuario = (Usuario)datos.getSerializable("usuario");
+                usuarioAdapter.add(usuario);
+                usuarioAdapter.notifyDataSetChanged();
+            }
         }
     }
 }

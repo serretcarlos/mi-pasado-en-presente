@@ -1,12 +1,13 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Carlos on 30/03/2017.
  */
 
-public class Usuario {
+public class Usuario implements Serializable{
     private long idUsuario;
     private String nombre;
     private String apellido;
@@ -15,7 +16,6 @@ public class Usuario {
     private String estadoCivil;
     private int nietos;
     private int hijos;
-    private int hermanos;
     private byte [] imagen;
 
     public Usuario() {
@@ -27,12 +27,11 @@ public class Usuario {
         this.estadoCivil = null;
         this.nietos = 0;
         this.hijos = 0;
-        this.hermanos = 0;
         this.imagen = null;
     }
 
     public Usuario(long idUsuario, String nombre, String apellido, int edad, String fechaNacimiento,
-                   String estadoCivil, int nietos, int hijos, int hermanos, byte[] imagen) {
+                   String estadoCivil, int nietos, int hijos, byte[] imagen) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -41,13 +40,12 @@ public class Usuario {
         this.estadoCivil = estadoCivil;
         this.nietos = nietos;
         this.hijos = hijos;
-        this.hermanos = hermanos;
         this.imagen = imagen;
     }
 
 
     public Usuario(String nombre, String apellido, int edad, String fechaNacimiento,
-                   String estadoCivil, int nietos, int hijos, int hermanos, byte[] imagen) {
+                   String estadoCivil, int nietos, int hijos, byte[] imagen) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
@@ -55,7 +53,6 @@ public class Usuario {
         this.estadoCivil = estadoCivil;
         this.nietos = nietos;
         this.hijos = hijos;
-        this.hermanos = hermanos;
         this.imagen = imagen;
     }
 
@@ -121,14 +118,6 @@ public class Usuario {
 
     public void setHijos(int hijos) {
         this.hijos = hijos;
-    }
-
-    public int getHermanos() {
-        return hermanos;
-    }
-
-    public void setHermanos(int hermanos) {
-        this.hermanos = hermanos;
     }
 
     public byte[] getImagen() {

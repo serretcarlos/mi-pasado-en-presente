@@ -18,7 +18,6 @@ public final class DataBaseSchema {
         public static final String COLUMN_NAME_ESTADO_CIVIL = "estadoCivil";
         public static final String COLUMN_NAME_NIETOS = "nietos";
         public static final String COLUMN_NAME_HIJOS = "hijos";
-        public static final String COLUMN_NAME_HERMANOS = "hermanos";
         public static final String COLUMN_NAME_IMAGEN = "imagen";
     }
 
