@@ -27,6 +27,7 @@ public final class DataBaseSchema {
         public static final String COLUMN_NAME_APELLIDO = "apellido";
         public static final String COLUMN_NAME_IMAGEN = "imagen";
         public static final String COLUMN_NAME_FRASE = "frase";
+        public static final String COLUMN_NAME_TIPO = "tipo";
     }
 
     public static class EventoTable implements  BaseColumns {
