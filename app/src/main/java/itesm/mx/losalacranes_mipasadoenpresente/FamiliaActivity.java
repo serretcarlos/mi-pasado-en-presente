@@ -2,40 +2,74 @@ package itesm.mx.losalacranes_mipasadoenpresente;
 
 import android.content.Intent;
 import android.media.Image;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
 
-public class FamiliaActivity extends AppCompatActivity implements View.OnClickListener{
+import java.util.ArrayList;
 
-    ImageButton btnAgregar;
-    ImageButton btnFamilia;
+public class FamiliaActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener{
+
+    ArrayList<Persona> listaPersonas;
+    PersonaAdapter personaAdapter;
+    Usuario usuarioActual;
+    DataBaseOperations dao;
+    long idUsuario;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_familia);
 
-        btnAgregar = (ImageButton)findViewById(R.id.button_agregar);
-        btnFamilia = (ImageButton) findViewById(R.id.button_familiar);
+        GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
+        usuarioActual = globalUser.getUser();
+        idUsuario = usuarioActual.getIdUsuario();
 
-        btnFamilia.setOnClickListener(this);
-        btnAgregar.setOnClickListener(this);
+        dao = new DataBaseOperations(this);
+        dao.open();
+
+        listaPersonas = dao.getAllFamiliares(idUsuario);
+        GridView gridView = (GridView)findViewById(R.id.gridview_usuarios);
+        personaAdapter = new PersonaAdapter(this, listaPersonas);
+        gridView.setAdapter(personaAdapter);
+        gridView.setOnItemClickListener(this);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(this);
     }
 
     @Override
-    public void onClick(View v){
-        Intent intent;
-        switch (v.getId()) {
-            case R.id.button_agregar:
-                intent = new Intent(this, AgregarPersona.class);
-                startActivity(intent);
-                break;
-            case R.id.button_familiar:
-                intent = new Intent(this, DetalleFamilia.class);
-                startActivity(intent);
-                break;
+    public void onClick(View v) {
+        Intent intent = new Intent(this, AgregarPersona.class);
+        String tipo = "Familiar";
+        intent.putExtra("Relacion", tipo);
+        startActivityForResult(intent, ActivityConstants.AGREGO_PERSONA);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
+        Persona persona = (Persona)parent.getItemAtPosition(position);
+        Intent intent = new Intent(this, DetalleFamilia.class);
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK){
+            if (requestCode == ActivityConstants.AGREGO_PERSONA){
+                Bundle datos = data.getExtras();
+                Persona persona = (Persona) datos.getSerializable("persona");
+                personaAdapter.add(persona);
+                personaAdapter.notifyDataSetChanged();
+            }
         }
     }
+
 }
