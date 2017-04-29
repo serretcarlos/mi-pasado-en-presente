@@ -8,176 +8,215 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="12dp">
 
-
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:id="@+id/image_usuario"
-        android:scaleType="centerCrop"
-        android:contentDescription="imagen"/>
+        android:layout_marginTop="5dp">
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/image_usuario"
-        android:id="@+id/til_nombre_usuario">
-
-
-        <EditText
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Nombre(s)"
-            android:ems="10"
-            android:id="@+id/edit_nombre_usuario"
-            android:layout_weight="1" />
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp">
 
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/til_nombre_usuario"
-        android:id="@+id/til_apellido_usuario">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:hint="Apellidos"
-            android:ems="10"
-            android:id="@+id/edit_apellido_usuario"
-            android:layout_weight="1" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/til_apellido_usuario"
-        android:id="@+id/til_edad_usuario">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number|numberSigned"
-            android:hint="Edad"
-            android:ems="10"
-            android:id="@+id/edit_edad_usuario"
-            android:layout_weight="1" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/til_edad_usuario"
-        android:id="@+id/til_fecha_usuario">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="date"
-            android:hint="Fecha de nacimiento"
-            android:ems="10"
-            android:id="@+id/edit_fecha_usuario"
-            android:layout_weight="1" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/til_fecha_usuario"
-        android:id="@+id/til_lugar_usuario">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="Lugar de nacimiento"
-            android:ems="10"
-            android:id="@+id/edit_lugar_nacimiento_usuario"
-            android:layout_weight="1" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/til_lugar_usuario"
-        android:id="@+id/til_estado_usuario">
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="Estado civil"
-            android:ems="10"
-            android:id="@+id/edit_estado_civil_usuario"
-            android:layout_weight="1" />
-    </android.support.design.widget.TextInputLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:id="@+id/layout_nietos_hijos"
-        android:layout_below="@id/til_estado_usuario"
-        android:orientation="horizontal">
-
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/til_estado_usuario"
-            android:id="@+id/til_nietos_usuario"
-            android:layout_weight=".5">
-            <EditText
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number|numberSigned"
-                android:hint="Nietos"
-                android:ems="10"
-                android:id="@+id/edit_nietos_usuario"
-                android:layout_weight="1" />
-        </android.support.design.widget.TextInputLayout>
+                android:id="@+id/foto_layout"
+                android:orientation="vertical"
+                android:layout_gravity="center">
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/til_nietos_usuario"
-            android:id="@+id/til_hijos_usuario"
-            android:layout_weight=".5">
-            <EditText
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    app:srcCompat="@mipmap/ic_launcher"
+                    android:id="@+id/image_usuario"
+                    android:scaleType="centerCrop"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/button_foto_usuario"
+                    android:textAllCaps="false"
+                    android:background="@color/colorPrimary"
+                    android:textColor="#fff"
+                    android:text="Tomar Foto"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="number|numberSigned"
-                android:hint="Hijos"
-                android:ems="10"
-                android:id="@+id/edit_hijos_usuario"
-                android:layout_weight="1" />
-        </android.support.design.widget.TextInputLayout>
+                android:orientation="vertical">
 
-    </LinearLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/til_nombre_usuario">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:layout_alignParentBottom="true">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/text_cancelar_usuario"
-            android:layout_weight=".5"
-            android:textAlignment="center"
-            android:text="@string/cancelar"
-            android:textSize="16sp"
-            />
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_guardar_usuario"
-            android:layout_weight=".5"
-            android:textAllCaps="false"
-            android:background="@color/colorPrimary"
-            android:textColor="#fff"
-            android:text="@string/guardar"
-            android:textSize="16sp"/>
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:hint="Nombre(s)"
+                        android:ems="10"
+                        android:id="@+id/edit_nombre_usuario"
+                        android:layout_weight="1" />
 
-    </LinearLayout>
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/til_apellido_usuario">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPersonName"
+                        android:hint="Apellidos"
+                        android:ems="10"
+                        android:id="@+id/edit_apellido_usuario"
+                        android:layout_weight="1" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/til_edad_usuario">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|numberSigned"
+                        android:hint="Edad"
+                        android:ems="10"
+                        android:id="@+id/edit_edad_usuario"
+                        android:layout_weight="1" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/til_fecha_usuario">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|numberSigned"
+                        android:hint="Fecha de nacimiento"
+                        android:ems="10"
+                        android:id="@+id/edit_fecha_usuario"
+                        android:layout_weight="1" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/til_fecha_usuario"
+                    android:id="@+id/til_lugar_usuario">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|numberSigned"
+                        android:hint="Lugar de nacimiento"
+                        android:ems="10"
+                        android:id="@+id/edit_lugar_nacimiento_usuario"
+                        android:layout_weight="1" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/til_lugar_usuario"
+                    android:id="@+id/til_estado_usuario">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number|numberSigned"
+                        android:hint="Estado civil"
+                        android:ems="10"
+                        android:id="@+id/edit_estado_civil_usuario"
+                        android:layout_weight="1" />
+                </android.support.design.widget.TextInputLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    android:id="@+id/layout_nietos_hijos"
+                    android:layout_below="@id/til_estado_usuario"
+                    android:orientation="horizontal">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/til_estado_usuario"
+                        android:id="@+id/til_nietos_usuario"
+                        android:layout_weight=".5">
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberSigned"
+                            android:hint="Nietos"
+                            android:ems="10"
+                            android:id="@+id/edit_nietos_usuario"
+                            android:layout_weight="1" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/til_nietos_usuario"
+                        android:id="@+id/til_hijos_usuario"
+                        android:layout_weight=".5">
+                        <EditText
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:inputType="number|numberSigned"
+                            android:hint="Hijos"
+                            android:ems="10"
+                            android:id="@+id/edit_hijos_usuario"
+                            android:layout_weight="1" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="1"
+                    android:layout_alignParentBottom="true">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/text_cancelar_usuario"
+                        android:layout_weight=".5"
+                        android:textAlignment="center"
+                        android:text="@string/cancelar"
+                        android:textSize="16sp"
+                        />
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button_guardar_usuario"
+                        android:layout_weight=".5"
+                        android:textAllCaps="false"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#fff"
+                        android:text="@string/guardar"
+                        android:textSize="16sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </RelativeLayout>

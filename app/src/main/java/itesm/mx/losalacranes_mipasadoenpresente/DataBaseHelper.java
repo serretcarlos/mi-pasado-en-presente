@@ -34,7 +34,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             DataBaseSchema.PersonaTable.COLUMN_NAME_NOMBRE + " TEXT," +
             DataBaseSchema.PersonaTable.COLUMN_NAME_APELLIDO + " TEXT," +
             DataBaseSchema.PersonaTable.COLUMN_NAME_IMAGEN + " BLOB," +
-            DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE + " TEXT " +
+            DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE + " TEXT, " +
+            DataBaseSchema.PersonaTable.COLUMN_NAME_TIPO + " TEXT " +
             ")";
 
     String CREATE_EVENTO_TABLE = "CREATE TABLE " + DataBaseSchema.EventoTable.TABLE_NAME + "(" +

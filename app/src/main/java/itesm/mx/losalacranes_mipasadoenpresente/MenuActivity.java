@@ -1,5 +1,6 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -23,12 +24,12 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
         String nombre = usuarioActual.getNombre();
         setTitle("Hola, "+ nombre+".");
 
-        CardView Card1 = (CardView) findViewById(R.id.card_view);
-        CardView Card2 = (CardView) findViewById(R.id.card_view2);
-        CardView Card3 = (CardView) findViewById(R.id.card_view3);
-        CardView Card4 = (CardView) findViewById(R.id.card_view4);
-        CardView Card5 = (CardView) findViewById(R.id.card_view5);
-        CardView Card6 = (CardView) findViewById(R.id.card_view6);
+        CardView Card1 = (CardView) findViewById(R.id.card_view); //familia
+        CardView Card2 = (CardView) findViewById(R.id.card_view2); //amigos
+        CardView Card3 = (CardView) findViewById(R.id.card_view3); //eventos relevantes
+        CardView Card4 = (CardView) findViewById(R.id.card_view4); //sucesos historicos
+        CardView Card5 = (CardView) findViewById(R.id.card_view5); //historia personal
+        CardView Card6 = (CardView) findViewById(R.id.card_view6); //seccion de preguntas
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -49,14 +50,15 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()){
             case R.id.card_view:
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                intent = new Intent(this, FamiliaActivity.class);
+                startActivity(intent);
                 break;
             case R.id.card_view2:
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                intent = new Intent(this, AmigosActivity.class);
+                startActivity(intent);
                 break;
             case R.id.card_view3:
                 Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -79,3 +81,4 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
     }
 
 }
+
