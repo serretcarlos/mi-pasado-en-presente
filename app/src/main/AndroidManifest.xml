@@ -3,12 +3,12 @@
     package="itesm.mx.losalacranes_mipasadoenpresente">
 
     <application
+        android:name=".GlobalUserClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:name=".GlobalUserClass">
+        android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
@@ -25,7 +25,7 @@
         <activity android:name=".ModificaEvento" />
         <activity android:name=".AgregarUsuarioActivity" />
         <activity android:name=".ModificarUsuario" />
-        <activity android:name=".DetalleFamilia" />
+        <activity android:name=".DetallePersonaActivity" />
         <activity android:name=".DetalleAmigoActivity" />
         <activity android:name=".DetalleEventoActivity" />
         <activity android:name=".DetalleSucesoActivity" />
@@ -38,7 +38,8 @@
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".DetalleHistoriaPersonalActivity"></activity>
     </application>
 
 </manifest>
