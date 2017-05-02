@@ -1,0 +1,86 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.FragmentDetalleEvento">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/image_usuario"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/text_evento_tag"
+            android:hint="Evento: "
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/image_usuario" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/text_evento"
+            android:hint="Mi evento"
+            android:layout_alignTop="@id/text_evento_tag"
+            android:layout_toEndOf="@+id/text_evento_tag"
+             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_marginTop="13dp"
+            android:id="@+id/text_fecha_tag"
+            android:hint="Fecha: "
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_evento_tag" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/text_fecha"
+            android:hint="00/00/00"
+            android:layout_alignTop="@id/text_fecha_tag"
+            android:layout_toEndOf="@+id/text_fecha_tag"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_marginTop="13dp"
+            android:id="@+id/text_descripcion_tag"
+            android:hint="Descripcion: "
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_fecha_tag" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/text_descripcion"
+            android:hint="hjrehjernjicnerjicnrejicnreijnceiuncjierncjiencjierncijerncjnejcnejcneijncjerncjencjiencijnercineriucn "
+            android:layout_alignTop="@id/text_descripcion_tag"
+            android:layout_toEndOf="@+id/text_descripcion_tag"/>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -1,0 +1,87 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="layout.FragmentDetallePersona">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/image_persona"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/text_nombre_tag"
+            android:hint="Nombre: "
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/image_persona" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/text_nombre"
+            android:hint="Nombre "
+            android:layout_below="@+id/image_persona"
+            android:layout_toEndOf="@+id/text_nombre_tag"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/text_apellido"
+            android:hint="Apellido"
+            android:layout_alignTop="@+id/text_nombre"
+            android:layout_toEndOf="@+id/text_nombre" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_marginTop="13dp"
+            android:id="@+id/text_relacion_tag"
+            android:hint="Relacion: "
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_nombre_tag" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/text_relacion"
+            android:hint="Relacion "
+            android:layout_alignTop="@id/text_relacion_tag"
+            android:layout_toEndOf="@+id/text_relacion_tag"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:layout_marginTop="13dp"
+            android:id="@+id/text_frase_tag"
+            android:hint="Frase: "
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_relacion_tag" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:id="@+id/text_frase"
+            android:hint="hjrehjernjicnerjicnrejicnreijnceiuncjierncjiencjierncijerncjnejcnejcneijncjerncjencjiencijnercineriucn "
+            android:layout_alignTop="@id/text_frase_tag"
+            android:layout_toEndOf="@+id/text_frase_tag"/>
+
+
+    </RelativeLayout>
+
+</FrameLayout>

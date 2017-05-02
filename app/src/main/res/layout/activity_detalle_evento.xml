@@ -11,55 +11,11 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="itesm.mx.losalacranes_mipasadoenpresente.DetalleEventoActivity">
 
-    <TextView
-        android:text="Boda de Laura"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:id="@+id/textView5"
-        android:textSize="35sp"/>
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        app:srcCompat="@drawable/boda"
-        android:layout_below="@+id/textView5"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="33dp"
-        android:id="@+id/imageView" />
-
-    <TextView
-        android:text="13 de abril de 2009"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:id="@+id/textView6"
-        android:textSize="25sp"/>
-
-    <TextView
-        android:text="Monterrey, MX. Salón La Ventana."
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView6"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textView7"
-        android:textSize="25sp"/>
-
-    <Button
-        android:text="Reproducir video"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView7"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/button"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-
-        />
-
+    <fragment
+        android:name="layout.FragmentDetalleEvento"
+        android:id="@+id/fragment_amigo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_detalle_evento"></fragment>
 
 </RelativeLayout>
