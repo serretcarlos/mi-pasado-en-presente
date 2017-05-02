@@ -13,7 +13,7 @@ public class DetallePersonaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_familia);
+        setContentView(R.layout.activity_detalle_persona);
 
         Intent intent = getIntent();
 
