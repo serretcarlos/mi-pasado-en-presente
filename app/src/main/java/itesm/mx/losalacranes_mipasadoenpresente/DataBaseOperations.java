@@ -416,7 +416,7 @@ public class DataBaseOperations {
                 DataBaseSchema.RelacionUsuarioEvento.TABLE_NAME +
                 " WHERE " + DataBaseSchema.RelacionUsuarioEvento.COLUMN_NAME_ID_USUARIO + " = " +
                 idUsuario + " AND " + DataBaseSchema.RelacionUsuarioEvento.COLUMN_NAME_TIPO +
-                " != \"" + tipo +"\" AND " + DataBaseSchema.EventoTable._ID + " = " +
+                " = \"" + tipo +"\" AND " + DataBaseSchema.EventoTable._ID + " = " +
                 DataBaseSchema.RelacionUsuarioEvento.COLUMN_NAME_ID_EVENTO;
         try {
             Cursor cursor = db.rawQuery(selectQuery, null);
