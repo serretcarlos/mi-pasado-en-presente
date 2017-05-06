@@ -8,12 +8,12 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class DetalleAmigoActivity extends AppCompatActivity {
+public class DetallePersonaActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detalle_amigo);
+        setContentView(R.layout.activity_detalle_persona);
 
         Intent intent = getIntent();
 
@@ -21,7 +21,7 @@ public class DetalleAmigoActivity extends AppCompatActivity {
         TextView text_apellido = (TextView) findViewById(R.id.text_apellido);
         TextView text_rel = (TextView) findViewById(R.id.text_relacion);
         TextView text_frase = (TextView) findViewById(R.id.text_frase);
-        ImageView image_fam = (ImageView) findViewById(R.id.image_persona);
+        ImageView image_persona = (ImageView) findViewById(R.id.image_persona);
 
         Persona person = (Persona)intent.getSerializableExtra("persona");
         text_nomb.setText(person.getNombre());
@@ -32,7 +32,10 @@ public class DetalleAmigoActivity extends AppCompatActivity {
         byte [] image = person.getImagen();
         if (image != null){
             Bitmap bmImage = BitmapFactory.decodeByteArray(image, 0, image.length);
-            image_fam.setImageBitmap(bmImage);
+            image_persona.setImageBitmap(bmImage);
         }
+
     }
+
+
 }
