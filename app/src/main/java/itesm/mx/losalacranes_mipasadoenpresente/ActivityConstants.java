@@ -10,4 +10,5 @@ public interface ActivityConstants {
     public static final int AGREGO_USUARIO = 1003;
     public static final int CANCELACION = 1004;
     public static final int AGREGO_PERSONA = 1005;
+    public static final int AGREGO_EVENTO = 1006;
 }

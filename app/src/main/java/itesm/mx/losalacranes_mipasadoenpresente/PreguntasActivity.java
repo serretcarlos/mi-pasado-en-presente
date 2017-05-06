@@ -1,13 +1,317 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-public class PreguntasActivity extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Random;
+
+public class PreguntasActivity extends AppCompatActivity implements View.OnClickListener {
+
+    ArrayList<Persona> listaFamilia;
+    ArrayList<Persona> listaAmigos;
+    ArrayList<Evento> listaEventos;
+    ArrayList<Evento> listaSucesos;
+    ArrayList<Evento> listaPersonal;
+
+    Usuario usuarioActual;
+    long idUsuario;
+    DataBaseOperations dao;
+
+    TextView tvOpcionA;
+    TextView tvOpcionB;
+    TextView tvOpcionC;
+    TextView tvPregunta;
+
+    ImageView ivFoto;
+
+    int categoria = 0;
+    int isUsedFamilia = 0;
+    int isUsedAmigos = 0;
+    int isUsedEventos = 0;
+    int isUsedSucesos = 0;
+    int isUsedPersonal = 0;
+    int opciones[] = new int[3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
+
+        GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
+        usuarioActual = globalUser.getUser();
+        idUsuario = usuarioActual.getIdUsuario();
+
+        ivFoto = (ImageView) findViewById(R.id.image_foto);
+        tvOpcionA = (TextView) findViewById(R.id.text_opcion_A);
+        tvOpcionB = (TextView) findViewById(R.id.text_opcion_B);
+        tvOpcionC = (TextView) findViewById(R.id.text_opcion_C);
+        tvPregunta = (TextView) findViewById(R.id.text_pregunta);
+
+        dao = new DataBaseOperations(this);
+        dao.open();
+
+        listaFamilia = dao.getAllFamiliares(idUsuario);
+        listaAmigos = dao.getAllAmigos(idUsuario);
+        listaEventos = dao.getAllEventos(idUsuario, "Evento");
+        listaSucesos = dao.getAllEventos(idUsuario, "Suceso");
+        listaPersonal = dao.getAllEventos(idUsuario, "Personal");
+
+        if(listaFamilia.size() >= 3){
+            isUsedFamilia = 1;
+        }
+
+        if(listaAmigos.size() >= 3){
+            isUsedAmigos = 1;
+        }
+
+        if(listaEventos.size() >= 3){
+            isUsedEventos = 1;
+        }
+
+        if(listaSucesos.size() >= 3){
+            isUsedSucesos = 1;
+        }
+
+        if(listaPersonal.size() >= 3){
+            isUsedPersonal = 1;
+        }
+
+        if(isUsedFamilia == 1 | isUsedAmigos == 1 | isUsedEventos == 1 | isUsedSucesos == 1 |
+                isUsedPersonal == 1){
+
+            tvOpcionA.setOnClickListener(this);
+            tvOpcionB.setOnClickListener(this);
+            tvOpcionC.setOnClickListener(this);
+            update();
+        }
+
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.text_opcion_A:
+                update();
+                break;
+            case R.id.text_opcion_B:
+                update();
+                break;
+            case R.id.text_opcion_C:
+                update();
+                break;
+        }
+    }
+
+    public void update() {
+
+        randomCategoria();
+        int respuesta = randomPregunta();
+        generaPregunta(respuesta);
+        generaOpciones(respuesta);
+    }
+
+    public void generaPregunta(int res){
+
+        byte[] foto;
+
+        if(categoria == 1 & isUsedFamilia == 1 | categoria == 2 & isUsedAmigos == 1){
+
+            String pregunta = "Como me llamo?";
+            if(categoria == 1 & isUsedFamilia == 1){
+                foto = listaFamilia.get(res).getImagen();
+                Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
+                ivFoto.setImageBitmap(bmImage);
+            }else {
+                foto = listaAmigos.get(res).getImagen();
+                Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
+                ivFoto.setImageBitmap(bmImage);
+
+            }
+            tvPregunta.setText(pregunta);
+        } else if(isUsedEventos == 1 | isUsedSucesos == 1 | isUsedPersonal == 1){
+
+            String pregunta = "Que evento es este?";
+            if(categoria == 3 & isUsedEventos == 1){
+                foto = listaEventos.get(res).getImagen();
+                Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
+                ivFoto.setImageBitmap(bmImage);
+
+            }else if(categoria == 4 & isUsedSucesos == 1){
+                foto = listaSucesos.get(res).getImagen();
+                Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
+                ivFoto.setImageBitmap(bmImage);
+
+            } else {
+                foto = listaPersonal.get(res).getImagen();
+                Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
+                ivFoto.setImageBitmap(bmImage);
+
+            }
+            tvPregunta.setText(pregunta);
+        }
+    }
+
+    public boolean repetidos(final int[] array, int value){
+        boolean flag = false;
+
+        if(array[0] == value){
+            flag = true;
+        }
+        if(array[1] == value){
+            flag = true;
+        }
+        if(array[2] == value){
+            flag = true;
+        }
+
+        return  flag;
+    }
+
+    public void generaOpciones(int res){
+
+        Random rand = new Random();
+        int numOpciones = 0;
+        int opcion = 0;
+        int pos = 0;
+        opciones[0] = 0;
+        opciones[1] = 0;
+        opciones[2] = 0;
+
+        pos = rand.nextInt(3);
+        opciones[pos] = res;
+
+        while(numOpciones < 2){
+            if(categoria == 1){
+                opcion = rand.nextInt(listaFamilia.size());
+                if(opcion != res){
+                    pos = rand.nextInt(3);
+                    if(opciones[pos] == 0) {
+                        //if(!repetidos(opciones, opcion)){
+                        opciones[pos] = opcion;
+                        numOpciones++;
+                        //}
+                    }
+                }
+                if(numOpciones == 2){
+                    tvOpcionA.setText(listaFamilia.get(opciones[0]).getNombre());
+                    tvOpcionB.setText(listaFamilia.get(opciones[1]).getNombre());
+                    tvOpcionC.setText(listaFamilia.get(opciones[2]).getNombre());
+                }
+            }
+            else if(categoria == 2){
+                tvOpcionA.setText(listaAmigos.get(res).getNombre());
+                opcion = rand.nextInt(listaAmigos.size());
+                if(opcion != res){
+                    if(opcion == 0){
+                        tvOpcionB.setText(listaAmigos.get(opcion).getNombre());
+                    } else{
+                        tvOpcionC.setText(listaAmigos.get(opcion).getNombre());
+                    }
+                    numOpciones++;
+                }
+            }
+            else if(categoria == 3){
+                opcion = rand.nextInt(listaEventos.size());
+                if(opcion != res){
+                    pos = rand.nextInt(3);
+                    if(opciones[pos] == 0) {
+                        //if(!repetidos(opciones, opcion)){
+                        opciones[pos] = opcion;
+                        numOpciones++;
+                        //}
+                    }
+                }
+                if(numOpciones == 2){
+                    tvOpcionA.setText(listaEventos.get(opciones[0]).getTitulo());
+                    tvOpcionB.setText(listaEventos.get(opciones[1]).getTitulo());
+                    tvOpcionC.setText(listaEventos.get(opciones[2]).getTitulo());
+                }
+            }
+            else if(categoria == 4){
+                tvOpcionA.setText(listaSucesos.get(res).getTitulo());
+                opcion = rand.nextInt(listaSucesos.size());
+                if(opcion != res){
+                    if(opcion == 0){
+                        tvOpcionB.setText(listaSucesos.get(opcion).getTitulo());
+                    } else{
+                        tvOpcionC.setText(listaSucesos.get(opcion).getTitulo());
+                    }
+                    numOpciones++;
+                }
+            }
+            else if(categoria == 5){
+                tvOpcionA.setText(listaPersonal.get(res).getTitulo());
+                opcion = rand.nextInt(listaPersonal.size());
+                if(opcion != res){
+                    if(opcion == 0){
+                        tvOpcionB.setText(listaPersonal.get(opcion).getTitulo());
+                    } else{
+                        tvOpcionC.setText(listaPersonal.get(opcion).getTitulo());
+                    }
+                    numOpciones++;
+                }
+            }
+        }
+    }
+
+    public void randomCategoria(){
+
+        Random rand = new Random();
+        categoria = rand.nextInt(6-1) + 1;
+    }
+
+    public int randomPregunta() {
+
+        int found = 0;
+        int pregunta = -1;
+        Random rand = new Random();
+
+        while (found != 1) {
+
+            if (categoria == 1 & listaFamilia.size() > 0) {
+                if (listaFamilia.size() > 0) {
+                    int num = listaFamilia.size();
+                    pregunta = rand.nextInt(num);
+                    found = 1;
+                }
+            } else if (categoria == 2 & listaAmigos.size() > 0) {
+                if (listaAmigos.size() > 0) {
+                    int num = listaAmigos.size();
+                    pregunta = rand.nextInt(num);
+                    found = 1;
+                }
+
+            } else if (categoria == 3 & listaEventos.size() > 0) {
+                if (listaEventos.size() > 0) {
+                    int num = listaEventos.size();
+                    pregunta = rand.nextInt(num);
+                    found = 1;
+                }
+
+            } else if (categoria == 4 & listaSucesos.size() > 0) {
+                if (listaSucesos.size() > 0) {
+                    int num = listaSucesos.size();
+                    pregunta = rand.nextInt(num);
+                    found = 1;
+                }
+
+            } else if (categoria == 5 & listaPersonal.size() > 0) {
+                if (listaPersonal.size() > 0) {
+                    int num = listaPersonal.size();
+                    pregunta = rand.nextInt(num);
+                    found = 1;
+                }
+            } else{
+                randomCategoria();
+            }
+        }
+        return pregunta;
     }
 }

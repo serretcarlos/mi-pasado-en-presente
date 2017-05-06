@@ -61,20 +61,20 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
                 startActivity(intent);
                 break;
             case R.id.card_view3:
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                intent = new Intent(this, EventosActivity.class);
+                startActivity(intent);
                 break;
             case R.id.card_view4:
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                intent = new Intent(this, SucesoActivity.class);
+                startActivity(intent);
                 break;
             case R.id.card_view5:
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                intent = new Intent(this, PersonalActivity.class);
+                startActivity(intent);
                 break;
             case R.id.card_view6:
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                intent = new Intent(this, PreguntasActivity.class);
+                startActivity(intent);
                 break;
         }
 
