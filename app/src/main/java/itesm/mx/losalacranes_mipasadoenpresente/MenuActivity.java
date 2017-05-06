@@ -73,8 +73,8 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
                 startActivity(intent);
                 break;
             case R.id.card_view6:
-                Snackbar.make(v, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                intent = new Intent(this, PreguntasActivity.class);
+                startActivity(intent);
                 break;
         }
 
