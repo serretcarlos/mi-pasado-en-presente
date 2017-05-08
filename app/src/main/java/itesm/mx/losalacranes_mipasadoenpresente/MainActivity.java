@@ -8,8 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
+
+import static itesm.mx.losalacranes_mipasadoenpresente.R.id.tutorialView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener{
 
@@ -18,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     UsuarioAdapter usuarioAdapter;
     Usuario usuarioActual;
     DataBaseOperations dao;
+    RelativeLayout tutorial;
+    public static int tutorialVisible=0;
 
     public ArrayList<Usuario> getListaUsuarios(){
         Usuario usuario;
@@ -48,12 +53,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gridView.setOnItemClickListener(this);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
+
+        tutorial = (RelativeLayout) findViewById(tutorialView);
+        if(listaUsuarios.isEmpty())
+            tutorial.setVisibility(RelativeLayout.VISIBLE);
+        else if(tutorialVisible>0 || listaUsuarios.isEmpty()==false)
+            tutorial.setVisibility(RelativeLayout.GONE);
+        tutorial.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, AgregarUsuarioActivity.class);
-        startActivityForResult(intent, ActivityConstants.AGREGO_USUARIO);
+        if(v.getId()==R.id.tutorialView)
+        {
+            tutorial.setVisibility(RelativeLayout.GONE);
+            tutorialVisible++;
+        }
+        else {
+            Intent intent = new Intent(this, AgregarUsuarioActivity.class);
+            startActivityForResult(intent, ActivityConstants.AGREGO_USUARIO);
+        }
     }
 
     @Override

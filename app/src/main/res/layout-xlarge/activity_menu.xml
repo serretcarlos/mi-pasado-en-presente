@@ -286,7 +286,18 @@
 
     </ScrollView>
 
+    <RelativeLayout android:id="@+id/tutorialMenu"
+        android:background="#D0000000"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <ImageView android:src="@drawable/tutorial_menu"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
