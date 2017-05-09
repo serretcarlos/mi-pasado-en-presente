@@ -4,11 +4,17 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
+
+import static itesm.mx.losalacranes_mipasadoenpresente.MainActivity.tutorialVisible;
+import static itesm.mx.losalacranes_mipasadoenpresente.R.id.tutorialFamilia;
+import static itesm.mx.losalacranes_mipasadoenpresente.R.id.tutorialView;
 
 public class FamiliaActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener{
 
@@ -17,11 +23,17 @@ public class FamiliaActivity extends AppCompatActivity implements View.OnClickLi
     Usuario usuarioActual;
     DataBaseOperations dao;
     long idUsuario;
+    RelativeLayout tutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_familia);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
         usuarioActual = globalUser.getUser();
@@ -37,14 +49,36 @@ public class FamiliaActivity extends AppCompatActivity implements View.OnClickLi
         gridView.setOnItemClickListener(this);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
+
+        tutorial = (RelativeLayout) findViewById(tutorialFamilia);
+        if(MainActivity.tutorialVisible<=7)
+            tutorial.setVisibility(RelativeLayout.VISIBLE);
+        else
+            tutorial.setVisibility(RelativeLayout.GONE);
+        tutorial.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, AgregarPersona.class);
-        String tipo = "Familiar";
-        intent.putExtra("Relacion", tipo);
-        startActivityForResult(intent, ActivityConstants.AGREGO_PERSONA);
+        if(v.getId()==R.id.tutorialFamilia){
+            tutorial.setVisibility(RelativeLayout.GONE);
+            MainActivity.tutorialVisible++;
+        }
+        else {
+            Intent intent = new Intent(this, AgregarPersona.class);
+            String tipo = "Familiar";
+            intent.putExtra("Relacion", tipo);
+            //tutorialVisible=false;
+            startActivityForResult(intent, ActivityConstants.AGREGO_PERSONA);
+        }
     }
 
     @Override

@@ -7,10 +7,15 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 public class MenuActivity extends AppCompatActivity implements  View.OnClickListener{
     Usuario usuarioActual;
+    String nombre;
+    RelativeLayout tutorial;
+    Boolean tutorialVisible=true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +23,11 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
         usuarioActual = globalUser.getUser();
@@ -31,12 +41,20 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
         CardView Card5 = (CardView) findViewById(R.id.card_view5); //historia personal
         CardView Card6 = (CardView) findViewById(R.id.card_view6); //seccion de preguntas
 
+        tutorial = (RelativeLayout) findViewById(R.id.tutorialMenu);
+        if(MainActivity.tutorialVisible<=2)
+        {
+            tutorial.setVisibility(RelativeLayout.VISIBLE);
+        }
+        else
+            tutorial.setVisibility(RelativeLayout.GONE);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent =  new Intent(MenuActivity.this, ModificarUsuario.class);
+                startActivity(intent);
             }
         });
 
@@ -46,6 +64,22 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
         Card4.setOnClickListener(this);
         Card5.setOnClickListener(this);
         Card6.setOnClickListener(this);
+        tutorial.setOnClickListener(this);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        nombre = usuarioActual.getNombre();
+        setTitle("Hola, "+ nombre+".");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -76,6 +110,10 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
                 intent = new Intent(this, PreguntasActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.tutorialMenu:
+                tutorial.setVisibility(RelativeLayout.GONE);
+                //tutorialVisible=false;
+                MainActivity.tutorialVisible++;
         }
 
     }

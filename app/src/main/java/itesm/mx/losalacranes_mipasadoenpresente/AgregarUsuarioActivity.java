@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,12 +26,15 @@ public class AgregarUsuarioActivity extends AppCompatActivity implements View.On
     EditText etNumNietos;
     EditText etFecha;
     TextView tvCancelar;
+    ImageView ivFoto;
     Button btnGuardar;
     Button btnFoto;
 
     DataBaseOperations dao;
+
     int REQUEST_CODE = 1;
-    byte[] foto;
+    int validaFoto = 0;
+    byte[] foto = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,7 @@ public class AgregarUsuarioActivity extends AppCompatActivity implements View.On
         etEstadoCivil = (EditText) findViewById(R.id.edit_estado_civil_usuario);
         etNumHijos = (EditText) findViewById(R.id.edit_hijos_usuario);
         etNumNietos = (EditText) findViewById(R.id.edit_nietos_usuario);
+        ivFoto = (ImageView) findViewById(R.id.image_usuario);
         tvCancelar.setOnClickListener(this);
         btnGuardar.setOnClickListener(this);
         btnFoto.setOnClickListener(this);
@@ -63,11 +68,16 @@ public class AgregarUsuarioActivity extends AppCompatActivity implements View.On
         Usuario usuario;
         switch (v.getId()) {
             case R.id.button_guardar_usuario:
-                usuario = agregarUsuario();
-                intent = new Intent();
-                intent.putExtra("usuario", usuario);
-                setResult(RESULT_OK, intent);
-                finish();
+                if(validaCampos()){
+                    usuario = agregarUsuario();
+                    intent = new Intent();
+                    intent.putExtra("usuario", usuario);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Faltan campos por llenar", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.text_cancelar_usuario:
                 Toast.makeText(getApplicationContext(), "Operacion Cancelada", Toast.LENGTH_SHORT).show();
@@ -80,7 +90,6 @@ public class AgregarUsuarioActivity extends AppCompatActivity implements View.On
                     startActivityForResult(intent, REQUEST_CODE);
                 }
                 break;
-
         }
     }
 
@@ -94,10 +103,51 @@ public class AgregarUsuarioActivity extends AppCompatActivity implements View.On
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             foto = stream.toByteArray();
+            ivFoto.setImageBitmap(bitmap);
+            validaFoto = 1;
         }
     }
 
+    public boolean validaCampos(){
+        boolean flag = true;
+        if(etNombre.getText().toString().equals("")){
+            flag = false;
+        }
 
+        if(etApellido.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etEdad.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etFecha.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etLugarNacimiento.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etEstadoCivil.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etNumNietos.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etNumHijos.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(validaFoto ==  0){
+            flag = false;
+        }
+
+        return flag;
+    }
 
     public Usuario agregarUsuario(){
         Usuario usuario = new Usuario();
@@ -109,7 +159,7 @@ public class AgregarUsuarioActivity extends AppCompatActivity implements View.On
         String estado = etEstadoCivil.getText().toString();
         int nietos = Integer.parseInt(etNumNietos.getText().toString());
         int hijos = Integer.parseInt(etNumHijos.getText().toString());
-        usuario = new Usuario(nombre, apellido, edad, fecha, estado, nietos, hijos, foto);
+        usuario = new Usuario(nombre, apellido, edad, fecha, lugar, estado, nietos, hijos, foto);
         long id = dao.addUsuario(usuario);
         usuario.setIdUsuario(id);
         return usuario;

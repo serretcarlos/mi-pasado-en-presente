@@ -7,16 +7,17 @@ import java.util.Date;
  * Created by Carlos on 30/03/2017.
  */
 
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
     private long idUsuario;
     private String nombre;
     private String apellido;
     private int edad;
     private String fechaNacimiento;
+    private String lugarNacimiento;
     private String estadoCivil;
     private int nietos;
     private int hijos;
-    private byte [] imagen;
+    private byte[] imagen;
 
     public Usuario() {
         this.idUsuario = 0;
@@ -24,6 +25,7 @@ public class Usuario implements Serializable{
         this.apellido = null;
         this.edad = 0;
         this.fechaNacimiento = null;
+        this.lugarNacimiento = null;
         this.estadoCivil = null;
         this.nietos = 0;
         this.hijos = 0;
@@ -31,12 +33,13 @@ public class Usuario implements Serializable{
     }
 
     public Usuario(long idUsuario, String nombre, String apellido, int edad, String fechaNacimiento,
-                   String estadoCivil, int nietos, int hijos, byte[] imagen) {
+                   String lugarNacimiento, String estadoCivil, int nietos, int hijos, byte[] imagen) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
+        this.lugarNacimiento = lugarNacimiento;
         this.estadoCivil = estadoCivil;
         this.nietos = nietos;
         this.hijos = hijos;
@@ -45,11 +48,12 @@ public class Usuario implements Serializable{
 
 
     public Usuario(String nombre, String apellido, int edad, String fechaNacimiento,
-                   String estadoCivil, int nietos, int hijos, byte[] imagen) {
+                   String lugarNacimiento, String estadoCivil, int nietos, int hijos, byte[] imagen) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
         this.fechaNacimiento = fechaNacimiento;
+        this.lugarNacimiento = lugarNacimiento;
         this.estadoCivil = estadoCivil;
         this.nietos = nietos;
         this.hijos = hijos;
@@ -127,6 +131,12 @@ public class Usuario implements Serializable{
     public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
+
+    public void setLugarNacimiento(String lugarNacimiento) {
+        this.lugarNacimiento = lugarNacimiento;
+    }
+
+    public String getLugarNacimiento() {
+        return lugarNacimiento;
+    }
 }
-
-

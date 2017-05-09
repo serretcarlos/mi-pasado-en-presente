@@ -27,6 +27,7 @@ public class DetalleHistoriaPersonalActivity extends AppCompatActivity implement
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_historia_personal);
+
         Intent intent = getIntent();
 
         TextView text_nomb = (TextView) findViewById(R.id.text_evento);

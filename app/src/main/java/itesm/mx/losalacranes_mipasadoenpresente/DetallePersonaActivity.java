@@ -29,14 +29,13 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_persona);
 
-
         Intent intent = getIntent();
 
         TextView text_nomb = (TextView) findViewById(R.id.text_nombre);
         TextView text_apellido = (TextView) findViewById(R.id.text_apellido);
         TextView text_rel = (TextView) findViewById(R.id.text_relacion);
         TextView text_frase = (TextView) findViewById(R.id.text_frase);
-        ImageView image_persona = (ImageView) findViewById(R.id.image_persona);
+
         Button btn_play = (Button) findViewById(R.id.button_play);
         Button btn_pause = (Button) findViewById(R.id.button_pause);
         seekbar = (SeekBar) findViewById(R.id.seekBar3);
@@ -59,6 +58,7 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
             Bitmap bmImage = BitmapFactory.decodeByteArray(image, 0, image.length);
             image_persona.setImageBitmap(bmImage);
         }
+
 
         btn_play.setOnClickListener(this);
         btn_pause.setOnClickListener(this);

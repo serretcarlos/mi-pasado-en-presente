@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,12 +20,14 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
     EditText etFecha;
     EditText etDesc;
     TextView tvCancelar;
+    ImageView ivFoto;
     Button btnGuardar;
     Button btnFoto;
 
     DataBaseOperations dao;
 
     int REQUEST_CODE = 1;
+    int validaFoto;
     byte[] foto = null;
     long idUsuario;
     Usuario usuarioActual;
@@ -50,10 +53,13 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
         etTitulo = (EditText) findViewById(R.id.edit_titulo_evento);
         etFecha = (EditText) findViewById(R.id.edit_fecha_evento);
         etDesc = (EditText) findViewById(R.id.edit_desc_evento);
+        ivFoto = (ImageView) findViewById(R.id.image_evento);
 
         tvCancelar.setOnClickListener(this);
         btnGuardar.setOnClickListener(this);
         btnFoto.setOnClickListener(this);
+
+        validaFoto = 0;
     }
 
     @Override
@@ -62,11 +68,16 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
         Evento evento;
         switch (v.getId()) {
             case R.id.button_guardar_evento:
-                evento = agregarEvento();
-                intent = new Intent();
-                intent.putExtra("evento", evento);
-                setResult(RESULT_OK, intent);
-                finish();
+                if(validaCampos()){
+                    evento = agregarEvento();
+                    intent = new Intent();
+                    intent.putExtra("evento", evento);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Faltan campos por llenar", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.text_cancelar_evento:
                 Toast.makeText(getApplicationContext(), "Operacion Cancelada", Toast.LENGTH_SHORT).show();
@@ -92,7 +103,34 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             foto = stream.toByteArray();
+            ivFoto.setImageBitmap(bitmap);
+            validaFoto = 1;
         }
+    }
+
+    public boolean validaCampos(){
+        boolean flag = true;
+        if(etTitulo.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etFecha.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etFecha.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etDesc.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(validaFoto == 0){
+            flag = false;
+        }
+
+        return flag;
     }
 
     public Evento agregarEvento(){

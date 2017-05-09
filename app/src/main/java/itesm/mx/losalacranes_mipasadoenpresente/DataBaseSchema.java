@@ -15,6 +15,7 @@ public final class DataBaseSchema {
         public static final String COLUMN_NAME_APELLIDO = "apellido";
         public static final String COLUMN_NAME_EDAD = "edad";
         public static final String COLUMN_NAME_FECHA_NACIMIENTO = "fechaNacimiento";
+        public static final String COLUMN_NAME_LUGAR_NACIMIENTO = "lugarNacimiento";
         public static final String COLUMN_NAME_ESTADO_CIVIL = "estadoCivil";
         public static final String COLUMN_NAME_NIETOS = "nietos";
         public static final String COLUMN_NAME_HIJOS = "hijos";
