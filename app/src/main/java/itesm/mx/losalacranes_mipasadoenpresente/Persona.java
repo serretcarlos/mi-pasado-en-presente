@@ -13,6 +13,7 @@ public class Persona implements Serializable {
     private byte [] imagen;
     private String frase;
     private String relacion;
+    private byte [] sonido;
     //audio queda pendiente
 
     public Persona() {
@@ -22,23 +23,28 @@ public class Persona implements Serializable {
         this.imagen = null;
         this.frase = null;
         this.relacion = null;
+        this.sonido = null;
     }
 
-    public Persona(String nombre, String apellido, byte[] imagen, String frase, String relacion) {
+    public Persona(String nombre, String apellido, byte[] imagen, String frase, String relacion, byte[] sonido) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.imagen = imagen;
         this.frase = frase;
         this.relacion = relacion;
+        this.sonido = sonido;
+
     }
 
-    public Persona(long idPersona, String nombre, String apellido, byte[] imagen, String frase, String relacion) {
+    public Persona(long idPersona, String nombre, String apellido, byte[] imagen, String frase, String relacion, byte[] sonido) {
         this.idPersona = idPersona;
         this.nombre = nombre;
         this.apellido = apellido;
         this.imagen = imagen;
         this.frase = frase;
         this.relacion = relacion;
+        this.sonido = sonido;
+
     }
 
     public long getIdPersona() {
@@ -87,6 +93,14 @@ public class Persona implements Serializable {
 
     public void setRelacion(String relacion) {
         this.relacion = relacion;
+    }
+
+    public byte[] getSonido() {
+        return sonido;
+    }
+
+    public void setSonido(byte[] sonido) {
+        this.sonido = sonido;
     }
 }
 

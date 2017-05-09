@@ -188,7 +188,10 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_IMAGEN, persona.getImagen());
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE, persona.getFrase());
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_TIPO, persona.getRelacion());
+            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO, persona.getSonido());
             newID = db.insert(DataBaseSchema.PersonaTable.TABLE_NAME, null, values);
+
+
             AgregarRelacionPersona(idUsuario, newID, tipo);
         } catch(SQLiteException e){
             Log.e("SQLADD", e.toString());
@@ -210,7 +213,8 @@ public class DataBaseOperations {
                         cursor.getString(2),
                         cursor.getBlob(3),
                         cursor.getString(4),
-                        cursor.getString(5));
+                        cursor.getString(5),
+                        cursor.getBlob(6));
             }
             cursor.close();
         } catch (SQLiteException e){
@@ -251,7 +255,8 @@ public class DataBaseOperations {
                 DataBaseSchema.PersonaTable.COLUMN_NAME_APELLIDO + ", " +
                 DataBaseSchema.PersonaTable.COLUMN_NAME_IMAGEN + ", " +
                 DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE + ", " +
-                DataBaseSchema.PersonaTable.COLUMN_NAME_TIPO +
+                DataBaseSchema.PersonaTable.COLUMN_NAME_TIPO + ", "+
+                DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO +
                 " FROM " + DataBaseSchema.PersonaTable.TABLE_NAME + ", " +
                 DataBaseSchema.RelacionUsuarioPersona.TABLE_NAME +
                 " WHERE " + DataBaseSchema.RelacionUsuarioPersona.COLUMN_NAME_ID_USUARIO + " = " +
@@ -268,7 +273,8 @@ public class DataBaseOperations {
                             cursor.getString(2),
                             cursor.getBlob(3),
                             cursor.getString(4),
-                            cursor.getString(5));
+                            cursor.getString(5),
+                            cursor.getBlob(6));
                     listaAmigos.add(persona);
                 } while (cursor.moveToNext());
             }
@@ -286,7 +292,8 @@ public class DataBaseOperations {
                 DataBaseSchema.PersonaTable.COLUMN_NAME_APELLIDO + ", " +
                 DataBaseSchema.PersonaTable.COLUMN_NAME_IMAGEN + ", " +
                 DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE + ", " +
-                DataBaseSchema.PersonaTable.COLUMN_NAME_TIPO +
+                DataBaseSchema.PersonaTable.COLUMN_NAME_TIPO + ", " +
+                DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO +
                 " FROM " + DataBaseSchema.PersonaTable.TABLE_NAME + ", " +
                 DataBaseSchema.RelacionUsuarioPersona.TABLE_NAME +
                 " WHERE " + DataBaseSchema.RelacionUsuarioPersona.COLUMN_NAME_ID_USUARIO + " = " +
@@ -304,7 +311,8 @@ public class DataBaseOperations {
                             cursor.getString(2),
                             cursor.getBlob(3),
                             cursor.getString(4),
-                            cursor.getString(5));
+                            cursor.getString(5),
+                            cursor.getBlob(6));
                     listaFamiliares.add(persona);
                 } while (cursor.moveToNext());
             }
@@ -325,6 +333,8 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_IMAGEN, persona.getImagen());
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE, persona.getFrase());
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_TIPO, persona.getRelacion());
+            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO, persona.getSonido());
+
             db.update(DataBaseSchema.PersonaTable.TABLE_NAME, values,
                     DataBaseSchema.PersonaTable._ID +
                             " = ? ", new String[]{String.valueOf(persona.getIdPersona())});
@@ -356,6 +366,7 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.EventoTable.COLUMN_NAME_FECHA, evento.getFecha());
             values.put(DataBaseSchema.EventoTable.COLUMN_NAME_DESCRIPCION, evento.getDescripcion());
             values.put(DataBaseSchema.EventoTable.COLUMN_NAME_IMAGEN, evento.getImagen());
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_SONIDO, evento.getSonido());
             newID = db.insert(DataBaseSchema.EventoTable.TABLE_NAME, null, values);
             AgregarRelacionEvento(idUsuario, newID, tipoEvento);
         } catch(SQLiteException e){
@@ -377,7 +388,8 @@ public class DataBaseOperations {
                         cursor.getString(1),
                         cursor.getString(2),
                         cursor.getString(3),
-                        cursor.getBlob(4));
+                        cursor.getBlob(4),
+                        cursor.getBlob(5));
             }
             cursor.close();
         } catch (SQLiteException e){
@@ -415,7 +427,8 @@ public class DataBaseOperations {
                 DataBaseSchema.EventoTable.COLUMN_NAME_TITULO + ", " +
                 DataBaseSchema.EventoTable.COLUMN_NAME_FECHA + ", " +
                 DataBaseSchema.EventoTable.COLUMN_NAME_DESCRIPCION + ", " +
-                DataBaseSchema.EventoTable.COLUMN_NAME_IMAGEN +
+                DataBaseSchema.EventoTable.COLUMN_NAME_IMAGEN + ", " +
+                DataBaseSchema.EventoTable.COLUMN_NAME_SONIDO +
                 " FROM " + DataBaseSchema.EventoTable.TABLE_NAME + ", " +
                 DataBaseSchema.RelacionUsuarioEvento.TABLE_NAME +
                 " WHERE " + DataBaseSchema.RelacionUsuarioEvento.COLUMN_NAME_ID_USUARIO + " = " +
@@ -430,7 +443,8 @@ public class DataBaseOperations {
                             cursor.getString(1),
                             cursor.getString(2),
                             cursor.getString(3),
-                            cursor.getBlob(4));
+                            cursor.getBlob(4),
+                            cursor.getBlob(5));
                     listaEventos.add(evento);
                 } while (cursor.moveToNext());
             }
@@ -452,6 +466,7 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_APELLIDO, persona.getApellido());
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_IMAGEN, persona.getImagen());
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE, persona.getFrase());
+            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO, persona.getSonido());
             db.update(DataBaseSchema.UsuarioTable.TABLE_NAME, values, DataBaseSchema.PersonaTable._ID +
                     " = ? ", new String[]{String.valueOf(persona.getIdPersona())});
             result = true;

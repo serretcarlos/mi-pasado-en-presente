@@ -138,7 +138,7 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
         String titulo = etTitulo.getText().toString();
         String fecha = etFecha.getText().toString();
         String desc = etDesc.getText().toString();
-        evento = new Evento(titulo, fecha, desc, foto);
+        evento = new Evento(titulo, fecha, desc, foto, null);
         long id = dao.addEvento(evento, idUsuario, tipo);
         evento.setIdEvento(id);
         return evento;
