@@ -5,10 +5,15 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -20,8 +25,13 @@ public class DetalleSucesoActivity extends AppCompatActivity implements View.OnC
     private SeekBar seekbar;
     private double startTime = 0;
     private double finalTime = 0;
-    private Button btn_play;
-    private Button btn_pause;
+    private ImageButton btn_play;
+    private ImageButton btn_pause;
+    Evento evento;
+    TextView text_nomb;
+    TextView text_desc;
+    TextView text_fecha;
+    ImageView image_evento;
     private Handler myHandler = new Handler();
 
 
@@ -31,19 +41,24 @@ public class DetalleSucesoActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_detalle_suceso);
 
         Intent intent = getIntent();
+        evento = (Evento)intent.getSerializableExtra("evento");
 
-        TextView text_nomb = (TextView) findViewById(R.id.text_evento);
-        TextView text_desc = (TextView) findViewById(R.id.text_descripcion);
-        TextView text_fecha = (TextView) findViewById(R.id.text_fecha);
-        ImageView image_evento = (ImageView) findViewById(R.id.image_detalle_evento);
-        Button btn_play = (Button) findViewById(R.id.button_play_evento);
-        Button btn_pause = (Button) findViewById(R.id.button_pause_evento);
+        text_nomb = (TextView) findViewById(R.id.text_evento);
+        text_desc = (TextView) findViewById(R.id.text_descripcion);
+        text_fecha = (TextView) findViewById(R.id.text_fecha);
+        image_evento = (ImageView) findViewById(R.id.image_detalle_evento);
+        btn_play = (ImageButton) findViewById(R.id.button_play_evento);
+        btn_pause = (ImageButton) findViewById(R.id.button_pause_evento);
         seekbar = (SeekBar) findViewById(R.id.seekBar_evento);
 
-        Evento event = (Evento)intent.getSerializableExtra("evento");
-        text_nomb.setText(event.getTitulo());
-        text_desc.setText(event.getDescripcion());
-        text_fecha.setText(event.getFecha());
+        text_nomb.setText(evento.getTitulo());
+        text_desc.setText(evento.getDescripcion());
+        text_fecha.setText(evento.getFecha());
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         //mediaPlayer = MediaPlayer.create(this, R.raw.song);
         //seekbar = (SeekBar)findViewById(R.id.seekBar3);
@@ -51,7 +66,7 @@ public class DetalleSucesoActivity extends AppCompatActivity implements View.OnC
         seekbar.setClickable(false);
         btn_pause.setEnabled(false);
 
-        byte [] image = event.getImagen();
+        byte [] image = evento.getImagen();
         if (image != null){
             Bitmap bmImage = BitmapFactory.decodeByteArray(image, 0, image.length);
             image_evento.setImageBitmap(bmImage);
@@ -60,6 +75,50 @@ public class DetalleSucesoActivity extends AppCompatActivity implements View.OnC
         btn_play.setOnClickListener(this);
         btn_pause.setOnClickListener(this);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_editar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+            case R.id.menu_modificar:
+                Intent intent = new Intent(this, ModificaEvento.class);
+                intent.putExtra("evento", evento);
+                startActivityForResult(intent, ActivityConstants.AGREGO_EVENTO);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK){
+            if (requestCode == ActivityConstants.AGREGO_EVENTO){
+                Bundle datos = data.getExtras();
+                evento = (Evento)datos.getSerializable("evento");
+
+                text_nomb.setText(evento.getTitulo());
+                text_desc.setText(evento.getDescripcion());
+                text_fecha.setText(evento.getFecha());
+                byte [] image = evento.getImagen();
+                if (image != null){
+                    Bitmap bmImage = BitmapFactory.decodeByteArray(image, 0, image.length);
+                    image_evento.setImageBitmap(bmImage);
+                }
+            }
+        }
     }
 
     @Override

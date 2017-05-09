@@ -59,6 +59,15 @@ public class FamiliaActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        listaPersonas = dao.getAllFamiliares(idUsuario);
+        GridView gridView = (GridView)findViewById(R.id.gridview_usuarios);
+        personaAdapter = new PersonaAdapter(this, listaPersonas);
+        gridView.setAdapter(personaAdapter);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == android.R.id.home){
             finish();

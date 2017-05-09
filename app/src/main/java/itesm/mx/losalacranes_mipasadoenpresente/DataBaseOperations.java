@@ -444,23 +444,22 @@ public class DataBaseOperations {
 
 
 
-    public boolean updateEvento(Persona persona){
+    public boolean updateEvento(Evento evento){
         boolean result = false;
         try {
             ContentValues values = new ContentValues();
-            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_NOMBRE, persona.getNombre());
-            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_APELLIDO, persona.getApellido());
-            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_IMAGEN, persona.getImagen());
-            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE, persona.getFrase());
-            db.update(DataBaseSchema.UsuarioTable.TABLE_NAME, values, DataBaseSchema.PersonaTable._ID +
-                    " = ? ", new String[]{String.valueOf(persona.getIdPersona())});
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_TITULO, evento.getTitulo());
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_FECHA, evento.getFecha());
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_IMAGEN, evento.getImagen());
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_DESCRIPCION, evento.getDescripcion());
+            db.update(DataBaseSchema.EventoTable.TABLE_NAME, values, DataBaseSchema.EventoTable._ID +
+                    " = ? ", new String[]{String.valueOf(evento.getIdEvento())});
             result = true;
         } catch (SQLiteException e){
             Log.e("SQLUPDATE", e.toString());
         }
         return result;
     }
-
 
 
 

@@ -10,105 +10,170 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-
-            android:src="@mipmap/ic_launcher"
-            android:id="@+id/image_persona"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center_horizontal|top"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:id="@+id/text_nombre_tag"
-            android:hint="Nombre: "
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/image_persona" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:id="@+id/text_nombre"
-            android:hint="Nombre "
-            android:layout_below="@+id/image_persona"
-            android:layout_toEndOf="@+id/text_nombre_tag"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:id="@+id/text_apellido"
-            android:hint="Apellido"
-            android:layout_alignTop="@+id/text_nombre"
-            android:layout_toEndOf="@+id/text_nombre" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:layout_marginTop="13dp"
-            android:id="@+id/text_relacion_tag"
-            android:hint="Relacion: "
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/text_nombre_tag" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:id="@+id/text_relacion"
-            android:hint="Relacion "
-            android:layout_alignTop="@id/text_relacion_tag"
-            android:layout_toEndOf="@+id/text_relacion_tag"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:layout_marginTop="13dp"
-            android:id="@+id/text_frase_tag"
-            android:hint="Frase: "
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/text_relacion_tag" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="22sp"
-            android:id="@+id/text_frase"
-            android:hint="hjrehjernjicnerjicnrejicnreijnceiuncjierncjiencjierncijerncjnejcnejcneijncjerncjencjiencijnercineriucn "
-            android:layout_alignTop="@id/text_frase_tag"
-            android:layout_toEndOf="@+id/text_frase_tag"/>
-
-        <SeekBar
-            android:id="@+id/seekBar3"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/button_play"
-            android:layout_marginBottom="14dp"
-            android:layout_toEndOf="@+id/button_play" />
+            android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/button_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="43dp"
-            android:text=">"
-            android:textSize="24sp"
-            android:layout_marginStart="8dp"
-            android:layout_below="@+id/text_frase"
-            android:layout_toEndOf="@+id/text_relacion_tag" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <Button
-            android:id="@+id/button_pause"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:layout_alignTop="@+id/button_play"
-            android:layout_toStartOf="@+id/button_play"
-            android:text="||" />
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:id="@+id/image_persona"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image_persona"
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/LinearLayout01"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:id="@+id/text_nombre_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Nombre: "
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:id="@+id/text_nombre"
+                        android:hint="Nombre "/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LinearLayout01"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:id="@+id/text_apellio_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Apellido: "
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="22sp"
+                        android:id="@+id/text_apellido"
+                        android:hint="Apellido" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout03"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LinearLayout02"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:id="@+id/text_relacion_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Relacion: "
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_relacion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Relacion "
+                        android:textSize="22sp" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout04"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/LinearLayout03"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:id="@+id/text_frase_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Frase: "
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_frase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="mensaje "
+                        android:textSize="22sp"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout05"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/LinearLayout04"
+                    android:layout_marginTop="15dp"
+                    android:gravity="center">
+
+                    <ImageButton
+                        android:id="@+id/button_play"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/play_button"
+                        android:textSize="24sp"
+                        android:layout_marginStart="8dp"/>
+
+                    <ImageButton
+                        android:id="@+id/button_pause"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/pause_button"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <SeekBar
+                    android:id="@+id/seekBar3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    android:layout_below="@+id/LinearLayout05"
+                    android:layout_marginTop="15dp"/>
+
+            </LinearLayout>
+
+
+        </ScrollView>
 
     </RelativeLayout>
 
