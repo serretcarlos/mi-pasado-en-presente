@@ -64,10 +64,10 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
         tvOpcionC = (TextView) findViewById(R.id.text_opcion_C);
         tvPregunta = (TextView) findViewById(R.id.text_pregunta);
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.acierto);
-
         dao = new DataBaseOperations(this);
         dao.open();
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.acierto);
 
         listaFamilia = dao.getAllFamiliares(idUsuario);
         listaAmigos = dao.getAllAmigos(idUsuario);
@@ -115,42 +115,6 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
     }
 
 
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()) {
-            case R.id.text_opcion_A:
-                if (opciones[0]== respuesta){
-                    Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
-                    mediaPlayer.start();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Vamos! sigue intentado", Toast.LENGTH_SHORT).show();
-                }
-                update();
-                break;
-            case R.id.text_opcion_B:
-                if (opciones[1]== respuesta){
-                    Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
-                    mediaPlayer.start();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Vamos! sigue intentado", Toast.LENGTH_SHORT).show();
-                }
-                update();
-                break;
-            case R.id.text_opcion_C:
-                if (opciones[2]== respuesta){
-                    Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
-                    mediaPlayer.start();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Vamos! sigue intentado", Toast.LENGTH_SHORT).show();
-                }
-                update();
-                break;
-        }
-    }
 
     public void update() {
 
@@ -198,6 +162,43 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
 
             }
             tvPregunta.setText(pregunta);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.text_opcion_A:
+                if (opciones[0]== respuesta){
+                    Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
+                    mediaPlayer.start();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Vamos! sigue intentado", Toast.LENGTH_SHORT).show();
+                }
+                update();
+                break;
+            case R.id.text_opcion_B:
+                if (opciones[1]== respuesta){
+                    Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
+                    mediaPlayer.start();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Vamos! sigue intentado", Toast.LENGTH_SHORT).show();
+                }
+                update();
+                break;
+            case R.id.text_opcion_C:
+                if (opciones[2]== respuesta){
+                    Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
+                    mediaPlayer.start();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Vamos! sigue intentado", Toast.LENGTH_SHORT).show();
+                }
+                update();
+                break;
         }
     }
 
