@@ -7,8 +7,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-public class DetalleAmigoActivity extends AppCompatActivity {
+public class DetalleAmigoActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private MediaPlayer mediaPlayer;
+    private SeekBar seekbar;
+    private double startTime = 0;
+    private double finalTime = 0;
+    private Button btn_play;
+    private Button btn_pause;
+    private Handler myHandler = new Handler();
+    ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +43,17 @@ public class DetalleAmigoActivity extends AppCompatActivity {
         ImageView image_fam = (ImageView) findViewById(R.id.image_persona);
 
         Persona person = (Persona)intent.getSerializableExtra("persona");
+
+        Button btn_play = (Button) findViewById(R.id.button_play);
+        Button btn_pause = (Button) findViewById(R.id.button_pause);
+        seekbar = (SeekBar) findViewById(R.id.seekBar3);
+
+
+        //mediaPlayer = MediaPlayer.create(this, R.raw.song);
+        //seekbar = (SeekBar)findViewById(R.id.seekBar3);
+
+        seekbar.setClickable(false);
+        btn_pause.setEnabled(false);
         text_nomb.setText(person.getNombre());
         text_apellido.setText(person.getApellido());
         text_rel.setText(person.getRelacion());
@@ -34,5 +64,43 @@ public class DetalleAmigoActivity extends AppCompatActivity {
             Bitmap bmImage = BitmapFactory.decodeByteArray(image, 0, image.length);
             image_fam.setImageBitmap(bmImage);
         }
+        btn_play.setOnClickListener(this);
+        btn_pause.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.button_play:
+
+                Toast.makeText(getApplicationContext(), "Playing sound", Toast.LENGTH_SHORT).show();
+                mediaPlayer.start();
+
+                finalTime = mediaPlayer.getDuration();
+                startTime = mediaPlayer.getCurrentPosition();
+
+                seekbar.setProgress((int) startTime);
+                myHandler.postDelayed(UpdateSongTime, 100);
+                btn_pause.setEnabled(true);
+                btn_play.setEnabled(false);
+
+                break;
+            case R.id.button_pause:
+                Toast.makeText(getApplicationContext(), "Pausing sound",Toast.LENGTH_SHORT).show();
+                mediaPlayer.pause();
+                btn_pause.setEnabled(false);
+                btn_play.setEnabled(true);
+
+                break;
+
+        }
+    }
+
+    private Runnable UpdateSongTime = new Runnable() {
+        public void run() {
+            startTime = mediaPlayer.getCurrentPosition();
+            seekbar.setProgress((int) startTime);
+            myHandler.postDelayed(this, 100);
+        }
+    };
 }

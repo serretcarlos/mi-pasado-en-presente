@@ -9,8 +9,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
+
+import static itesm.mx.losalacranes_mipasadoenpresente.R.id.tutorialAmigo;
+import static itesm.mx.losalacranes_mipasadoenpresente.R.id.tutorialEventos;
 
 public class EventosActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener{
 
@@ -20,6 +24,7 @@ public class EventosActivity extends AppCompatActivity implements View.OnClickLi
     DataBaseOperations dao;
     String tipo = "Evento";
     long idUsuario;
+    RelativeLayout tutorial;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,12 @@ public class EventosActivity extends AppCompatActivity implements View.OnClickLi
         gridView.setOnItemClickListener(this);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
+        tutorial = (RelativeLayout) findViewById(tutorialEventos);
+        if(MainActivity.tutorialVisible<=7)
+            tutorial.setVisibility(RelativeLayout.VISIBLE);
+        else
+            tutorial.setVisibility(RelativeLayout.GONE);
+        tutorial.setOnClickListener(this);
     }
 
     @Override
@@ -57,9 +68,15 @@ public class EventosActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View v) {
-        Intent intent = new Intent(this, AgregarEvento.class);
-        intent.putExtra("Tipo", tipo);
-        startActivityForResult(intent, ActivityConstants.AGREGO_EVENTO);
+        if(v.getId()==R.id.tutorialEventos){
+            tutorial.setVisibility(RelativeLayout.GONE);
+            MainActivity.tutorialVisible++;
+        }
+        else {
+            Intent intent = new Intent(this, AgregarEvento.class);
+            intent.putExtra("Tipo", tipo);
+            startActivityForResult(intent, ActivityConstants.AGREGO_EVENTO);
+        }
     }
 
     @Override

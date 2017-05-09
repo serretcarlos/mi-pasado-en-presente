@@ -81,6 +81,100 @@
             android:layout_alignTop="@id/text_frase_tag"
             android:layout_toEndOf="@+id/text_frase_tag"/>
 
+        <TextView
+            android:id="@+id/text_nombre_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/image_persona"
+            android:hint="Nombre: "
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/text_nombre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/image_persona"
+            android:layout_toEndOf="@+id/text_nombre_tag"
+            android:hint="N"
+            android:layout_marginRight="4dp"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/text_apellido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/text_nombre"
+            android:layout_toEndOf="@+id/text_nombre"
+            android:hint="Apellido"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/text_relacion_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_nombre_tag"
+            android:layout_marginTop="13dp"
+            android:hint="Relacion: "
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/text_relacion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/text_relacion_tag"
+            android:layout_toEndOf="@+id/text_relacion_tag"
+            android:hint="Relacion "
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/text_frase_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/text_relacion_tag"
+            android:layout_marginTop="13dp"
+            android:hint="Frase: "
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/text_frase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/text_frase_tag"
+            android:layout_toEndOf="@+id/text_frase_tag"
+            android:hint="hjrehjernjicnerjicnrejicnreijnceiuncjierncjiencjierncijerncjnejcnejcneijncjerncjencjiencijnercineriucn "
+            android:textSize="22sp" />
+
+        <SeekBar
+            android:id="@+id/seekBar3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/button_play"
+            android:layout_marginBottom="14dp"
+            android:layout_toEndOf="@+id/button_play" />
+
+        <Button
+            android:id="@+id/button_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="43dp"
+            android:text=">"
+            android:textSize="24sp"
+            android:layout_marginStart="8dp"
+            android:layout_below="@+id/text_frase"
+            android:layout_toEndOf="@+id/text_relacion_tag" />
+
+        <Button
+            android:id="@+id/button_pause"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_alignTop="@+id/button_play"
+            android:layout_toStartOf="@+id/button_play"
+            android:text="||" />
+
 
     </RelativeLayout>
 
