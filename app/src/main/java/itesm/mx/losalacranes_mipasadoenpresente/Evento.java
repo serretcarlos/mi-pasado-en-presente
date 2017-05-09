@@ -1,12 +1,13 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by Carlos on 30/03/2017.
  */
 
-public class Evento {
+public class Evento implements Serializable {
     private long idEvento;
     private String titulo;
     private String fecha;
