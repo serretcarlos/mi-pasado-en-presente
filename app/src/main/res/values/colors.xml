@@ -3,10 +3,38 @@
     <color name="colorPrimary">#1a416d</color>
     <color name="colorPrimaryDark">#1a416d</color>
     <color name="colorAccent">#1a416d</color>
+
     <color name="familia">#8BC34A</color>
+    <color name="familia_primary">#8bc34a</color>
+    <color name="familia_detail">#5a9216</color>
+    <color name="familia_accent">#8BC34A</color>
+
     <color name="amigos">#43A047</color>
+    <color name="amigos_primary">#43A047</color>
+    <color name="amigos_detail">#00701a</color>
+    <color name="amigos_accent">#43A047</color>
+
     <color name="eventos">#7E57C2</color>
+    <color name="eventos_primary">#7E57C2</color>
+    <color name="eventos_detail">#4d2c91</color>
+    <color name="eventos_accent">#7E57C2</color>
+
     <color name="historia">#5C6BC0</color>
+    <color name="historia_primary">#5C6BC0</color>
+    <color name="historia_detail">#26418f</color>
+    <color name="historia_accent">#5C6BC0</color>
+
     <color name="personal">#F44336</color>
+    <color name="personal_primary">#F44336</color>
+    <color name="personal_detail">#ba000d</color>
+    <color name="personal_accent">#F44336</color>
+
     <color name="preguntas">#C2185B</color>
+    <color name="preguntas_primary">#C2185B</color>
+    <color name="preguntas_detail">#8c0032</color>
+    <color name="preguntas_accent">#C2185B</color>
+
+    <color name="primary">#0097a7</color>
+    <color name="detail">#006978</color>
+    <color name="accent">#56c8d8</color>
 </resources>

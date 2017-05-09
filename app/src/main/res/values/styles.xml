@@ -3,9 +3,44 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/detail</item>
+        <item name="colorAccent">@color/accent</item>
+    </style>
+
+    <style name="AppThemeFamilia" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/familia_primary</item>
+        <item name="colorPrimaryDark">@color/familia_detail</item>
+        <item name="colorAccent">@color/familia_accent</item>
+    </style>
+
+    <style name="AppThemeAmigos" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/amigos_primary</item>
+        <item name="colorPrimaryDark">@color/amigos_detail</item>
+        <item name="colorAccent">@color/amigos_accent</item>
+    </style>
+
+    <style name="AppThemeEventos" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/eventos_primary</item>
+        <item name="colorPrimaryDark">@color/eventos_detail</item>
+        <item name="colorAccent">@color/eventos_accent</item>
+    </style>
+
+    <style name="AppThemeSucesos" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/historia_primary</item>
+        <item name="colorPrimaryDark">@color/historia_detail</item>
+        <item name="colorAccent">@color/historia_accent</item>
+    </style>
+
+    <style name="AppThemePersonal" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/personal_primary</item>
+        <item name="colorPrimaryDark">@color/personal_detail</item>
+        <item name="colorAccent">@color/personal_accent</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +32,7 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
     ImageView ivFoto;
 
     int categoria = 0;
+    int respuesta = 0;
     int isUsedFamilia = 0;
     int isUsedAmigos = 0;
     int isUsedEventos = 0;
@@ -42,6 +44,11 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_preguntas);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
         usuarioActual = globalUser.getUser();
@@ -92,6 +99,15 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
         }
 
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     public void onClick(View v) {
@@ -275,34 +291,34 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
 
         while (found != 1) {
 
-            if (categoria == 1 & listaFamilia.size() > 0) {
+            if (categoria == 1 & listaFamilia.size() >= 3) {
                 if (listaFamilia.size() > 0) {
                     int num = listaFamilia.size();
                     pregunta = rand.nextInt(num);
                     found = 1;
                 }
-            } else if (categoria == 2 & listaAmigos.size() > 0) {
+            } else if (categoria == 2 & listaAmigos.size() >= 3) {
                 if (listaAmigos.size() > 0) {
                     int num = listaAmigos.size();
                     pregunta = rand.nextInt(num);
                     found = 1;
                 }
 
-            } else if (categoria == 3 & listaEventos.size() > 0) {
+            } else if (categoria == 3 & listaEventos.size() >= 3) {
                 if (listaEventos.size() > 0) {
                     int num = listaEventos.size();
                     pregunta = rand.nextInt(num);
                     found = 1;
                 }
 
-            } else if (categoria == 4 & listaSucesos.size() > 0) {
+            } else if (categoria == 4 & listaSucesos.size() >= 3) {
                 if (listaSucesos.size() > 0) {
                     int num = listaSucesos.size();
                     pregunta = rand.nextInt(num);
                     found = 1;
                 }
 
-            } else if (categoria == 5 & listaPersonal.size() > 0) {
+            } else if (categoria == 5 & listaPersonal.size() >= 3) {
                 if (listaPersonal.size() > 0) {
                     int num = listaPersonal.size();
                     pregunta = rand.nextInt(num);
@@ -312,6 +328,7 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
                 randomCategoria();
             }
         }
+        respuesta = pregunta;
         return pregunta;
     }
 }

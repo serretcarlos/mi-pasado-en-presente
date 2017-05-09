@@ -1,8 +1,11 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.database.DatabaseUtilsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,22 +17,11 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener{
 
 
+
     ArrayList<Usuario> listaUsuarios;
     UsuarioAdapter usuarioAdapter;
     Usuario usuarioActual;
     DataBaseOperations dao;
-
-    public ArrayList<Usuario> getListaUsuarios(){
-        Usuario usuario;
-        ArrayList<Usuario> listUsers = new ArrayList<>();
-        usuario = new Usuario("Carlos", "Serret", 21, "18/11/1995", "soltero", 0, 0, null);
-        listUsers.add(usuario);
-        usuario = new Usuario("Daniel", "Serret", 21, "18/11/1995", "soltero", 0, 0, null);
-        listUsers.add(usuario);
-        usuario = new Usuario("Iram", "Diaz", 21, "29/05/1996", "soltero", 0, 0, null);
-        listUsers.add(usuario);
-        return  listUsers;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,16 +30,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        initCollapsingToolbar();
+
         dao = new DataBaseOperations(this);
         dao.open();
         listaUsuarios = dao.getAllUsers();
         GridView gridView = (GridView)findViewById(R.id.gridview_usuarios);
-        //listaUsuarios = getListaUsuarios();
         usuarioAdapter = new UsuarioAdapter(this, listaUsuarios);
         gridView.setAdapter(usuarioAdapter);
         gridView.setOnItemClickListener(this);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
+
+        ViewCompat.setNestedScrollingEnabled(gridView,true);
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        dao = new DataBaseOperations(this);
+        dao.open();
+        listaUsuarios = dao.getAllUsers();
+        GridView gridView = (GridView)findViewById(R.id.gridview_usuarios);
+        usuarioAdapter = new UsuarioAdapter(this, listaUsuarios);
+        gridView.setAdapter(usuarioAdapter);
     }
 
     @Override
@@ -77,5 +83,37 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 usuarioAdapter.notifyDataSetChanged();
             }
         }
+    }
+
+    /**
+     * Initializing collapsing toolbar
+     * Will show and hide the toolbar title on scroll
+     */
+    private void initCollapsingToolbar() {
+        final CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        collapsingToolbar.setTitle(" ");
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+        appBarLayout.setExpanded(true);
+
+        // hiding & showing the title when toolbar expanded & collapsed
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbar.setTitle(getString(R.string.app_name));
+                    isShow = true;
+                } else if (isShow) {
+                    collapsingToolbar.setTitle(" ");
+                    isShow = false;
+                }
+            }
+        });
     }
 }

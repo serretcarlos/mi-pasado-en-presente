@@ -23,4 +23,6 @@ public class FragmentDetallePersona extends Fragment {
 
 
 
+
+
 }
