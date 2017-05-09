@@ -83,7 +83,7 @@ public class AmigosActivity extends AppCompatActivity implements View.OnClickLis
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
         Persona persona = (Persona)parent.getItemAtPosition(position);
-        Intent intent = new Intent(this, DetallePersonaActivity.class);
+        Intent intent = new Intent(this, DetalleAmigoActivity.class);
         intent.putExtra("persona", persona);
         startActivity(intent);
     }
