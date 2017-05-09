@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,18 +16,19 @@ import java.io.ByteArrayOutputStream;
 
 public class AgregarPersona extends AppCompatActivity implements View.OnClickListener{
 
-
     EditText etNombre;
     EditText etApellido;
     EditText etRelacion;
     EditText etFrase;
     TextView tvCancelar;
+    ImageView ivFoto;
     Button btnGuardar;
     Button btnFoto;
 
     DataBaseOperations dao;
 
     int REQUEST_CODE = 1;
+    int validaFoto = 0;
     byte[] foto = null;
     long idUsuario;
     Usuario usuarioActual;
@@ -48,6 +50,7 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
         tvCancelar = (TextView) findViewById(R.id.text_cancelar_persona);
         btnGuardar = (Button) findViewById(R.id.button_guardar_persona);
         btnFoto = (Button) findViewById(R.id.button_foto_persona);
+        ivFoto = (ImageView) findViewById(R.id.image_persona);
 
         etNombre = (EditText) findViewById(R.id.edit_nombre_persona);
         etApellido = (EditText) findViewById(R.id.edit_apellido_persona);
@@ -65,11 +68,17 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
         Persona persona;
         switch (v.getId()) {
             case R.id.button_guardar_persona:
-                persona = agregarPersona();
-                intent = new Intent();
-                intent.putExtra("persona", persona);
-                setResult(RESULT_OK, intent);
-                finish();
+
+                if(validaCampos()){
+                    persona = agregarPersona();
+                    intent = new Intent();
+                    intent.putExtra("persona", persona);
+                    setResult(RESULT_OK, intent);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Faltan campos por llenar", Toast.LENGTH_SHORT).show();
+                }
+
                 break;
             case R.id.text_cancelar_persona:
                 Toast.makeText(getApplicationContext(), "Operacion Cancelada", Toast.LENGTH_SHORT).show();
@@ -95,7 +104,34 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             foto = stream.toByteArray();
+            ivFoto.setImageBitmap(bitmap);
+            validaFoto = 1;
         }
+    }
+
+    public boolean validaCampos(){
+        boolean flag = true;
+        if(etNombre.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etApellido.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etRelacion.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(etFrase.getText().toString().equals("")){
+            flag = false;
+        }
+
+        if(validaFoto == 0){
+            flag = false;
+        }
+
+        return flag;
     }
 
     public Persona agregarPersona(){

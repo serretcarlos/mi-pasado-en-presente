@@ -51,6 +51,7 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_APELLIDO, usuario.getApellido());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_EDAD, usuario.getEdad());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_FECHA_NACIMIENTO, usuario.getFechaNacimiento());
+            values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_LUGAR_NACIMIENTO, usuario.getLugarNacimiento());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_ESTADO_CIVIL, usuario.getEstadoCivil());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_NIETOS, usuario.getNietos());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_HIJOS, usuario.getHijos());
@@ -77,9 +78,10 @@ public class DataBaseOperations {
                         Integer.parseInt(cursor.getString(3)),
                         cursor.getString(4),
                         cursor.getString(5),
-                        Integer.parseInt(cursor.getString(6)),
+                        cursor.getString(6),
                         Integer.parseInt(cursor.getString(7)),
-                        cursor.getBlob(8));
+                        Integer.parseInt(cursor.getString(8)),
+                        cursor.getBlob(9));
             }
             cursor.close();
         } catch (SQLiteException e){
@@ -129,9 +131,10 @@ public class DataBaseOperations {
                             Integer.parseInt(cursor.getString(3)),
                             cursor.getString(4),
                             cursor.getString(5),
-                            Integer.parseInt(cursor.getString(6)),
+                            cursor.getString(6),
                             Integer.parseInt(cursor.getString(7)),
-                            cursor.getBlob(8));
+                            Integer.parseInt(cursor.getString(8)),
+                            cursor.getBlob(9));
                     listaUsuarios.add(usuario);
                 } while (cursor.moveToNext());
             }
@@ -150,6 +153,7 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_APELLIDO, usuario.getApellido());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_EDAD, usuario.getEdad());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_FECHA_NACIMIENTO, usuario.getFechaNacimiento());
+            values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_LUGAR_NACIMIENTO, usuario.getLugarNacimiento());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_ESTADO_CIVIL, usuario.getEstadoCivil());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_NIETOS, usuario.getNietos());
             values.put(DataBaseSchema.UsuarioTable.COLUMN_NAME_HIJOS, usuario.getHijos());

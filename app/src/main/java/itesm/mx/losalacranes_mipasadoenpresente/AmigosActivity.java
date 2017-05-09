@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -28,6 +29,11 @@ public class AmigosActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_amigos);
 
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
         usuarioActual = globalUser.getUser();
         idUsuario = usuarioActual.getIdUsuario();
@@ -49,6 +55,14 @@ public class AmigosActivity extends AppCompatActivity implements View.OnClickLis
         else
             tutorial.setVisibility(RelativeLayout.GONE);
         tutorial.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

@@ -8,11 +8,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:largeHeap="true">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="Memorical"
+            android:theme="@style/AppTheme"
+            android:largeHeap="true">
 
-    <activity
-            android:name=".Inicio"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,14 +38,14 @@
         <activity android:name=".DetalleEventoActivity" />
         <activity android:name=".DetalleSucesoActivity" />
         <activity android:name=".PreguntasActivity" />
-        <activity android:name=".FamiliaActivity" />
-        <activity android:name=".AmigosActivity" />
-        <activity android:name=".EventosActivity" />
-        <activity android:name=".PersonalActivity" />
-        <activity android:name=".SucesoActivity" />
+        <activity android:name=".FamiliaActivity" android:theme="@style/AppThemeFamilia" android:label="Tu familia."/>
+        <activity android:name=".AmigosActivity" android:theme="@style/AppThemeAmigos" android:label="Tus amigos y conocidos."/>
+        <activity android:name=".EventosActivity" android:theme="@style/AppThemeEventos" android:label="Eventos en tu vida."/>
+        <activity android:name=".PersonalActivity" android:theme="@style/AppThemePersonal" android:label="Tu historia personal."/>
+        <activity android:name=".SucesoActivity" android:theme="@style/AppThemeSucesos" android:label="Sucesos historicos."/>
         <activity
             android:name=".MenuActivity"
-            android:label="@string/title_activity_menu"
+            android:label="Memorical"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".DetalleHistoriaPersonalActivity"></activity>
     </application>
