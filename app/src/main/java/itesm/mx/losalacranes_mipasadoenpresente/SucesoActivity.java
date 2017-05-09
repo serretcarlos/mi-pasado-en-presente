@@ -83,7 +83,8 @@ public class SucesoActivity extends AppCompatActivity implements View.OnClickLis
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
         Evento evento = (Evento)parent.getItemAtPosition(position);
-        Intent intent = new Intent(this, DetalleEventoActivity.class);
+        Intent intent = new Intent(this, DetalleSucesoActivity.class);
+        intent.putExtra("evento", evento);
         startActivity(intent);
     }
 
