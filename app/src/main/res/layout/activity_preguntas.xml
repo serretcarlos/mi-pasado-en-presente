@@ -15,46 +15,99 @@
         android:text="Pregunta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:id="@+id/text_pregunta"
-        android:textSize="30sp"/>
-
-    <TextView
-        android:text="Opcion A"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/image_foto"
-        android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:id="@+id/text_opcion_A" />
-
-    <TextView
-        android:id="@+id/text_opcion_B"
-        android:text="Opcion B"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_opcion_A"
-        android:layout_centerHorizontal="true"
-        android:textSize="30sp"/>
-
-    <TextView
-        android:text="Opcion C"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/text_opcion_B"
-        android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:id="@+id/text_opcion_C" />
+        android:textSize="35sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
         app:srcCompat="@drawable/usuario"
-        android:layout_marginTop="30dp"
         android:id="@+id/image_foto"
         android:layout_below="@+id/text_pregunta"
         android:layout_centerHorizontal="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_foto"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/layout_opcion_a">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/opcion_a"
+                android:id="@+id/image_opcion_a"/>
+
+            <TextView
+                android:text="Opcion A"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:id="@+id/text_opcion_A"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/layout_opcion_b">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/opcion_b"
+                android:id="@+id/image_opcion_b"/>
+
+            <TextView
+                android:id="@+id/text_opcion_B"
+                android:text="Opcion B"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_opcion_A"
+                android:layout_centerHorizontal="true"
+                android:textSize="30sp"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/layout_opcion_c">
+
+            <ImageView
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/opcion_c"
+                android:id="@+id/image_opcion_c"/>
+
+            <TextView
+                android:text="Opcion C"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/text_opcion_B"
+                android:layout_centerHorizontal="true"
+                android:textSize="30sp"
+                android:id="@+id/text_opcion_C"
+                android:layout_marginTop="10dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
 
 </RelativeLayout>
