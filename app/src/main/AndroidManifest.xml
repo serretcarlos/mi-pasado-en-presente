@@ -28,6 +28,7 @@
         <activity android:name=".DetallePersonaActivity"/>
         <activity android:name=".DetalleAmigoActivity" />
         <activity android:name=".DetalleEventoActivity" />
+        <activity android:name=".DetalleHistoriaPersonalActivity" />
         <activity android:name=".DetalleSucesoActivity" />
         <activity android:name=".FamiliaActivity" android:theme="@style/AppThemeFamilia" android:label="Tu familia."/>
         <activity android:name=".PreguntasActivity" />
