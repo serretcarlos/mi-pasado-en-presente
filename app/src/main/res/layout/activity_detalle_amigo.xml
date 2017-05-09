@@ -17,6 +17,6 @@
         android:id="@+id/fragment_amigo"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_detalle_persona"></fragment>
+        tools:layout="@layout/fragment_detalle_persona"/>
 
 </LinearLayout>

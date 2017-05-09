@@ -37,7 +37,7 @@ public class DetalleEventoActivity extends AppCompatActivity implements View.OnC
         TextView text_nomb = (TextView) findViewById(R.id.text_evento);
         TextView text_desc = (TextView) findViewById(R.id.text_descripcion);
         TextView text_fecha = (TextView) findViewById(R.id.text_fecha);
-        ImageView image_evento = (ImageView) findViewById(R.id.image_persona);
+        ImageView image_evento = (ImageView) findViewById(R.id.image_detalle_evento);
         Button btn_play = (Button) findViewById(R.id.button_play_evento);
         Button btn_pause = (Button) findViewById(R.id.button_pause_evento);
         seekbar = (SeekBar) findViewById(R.id.seekBar_evento);

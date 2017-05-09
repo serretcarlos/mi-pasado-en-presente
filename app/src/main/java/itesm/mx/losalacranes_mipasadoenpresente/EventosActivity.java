@@ -84,6 +84,7 @@ public class EventosActivity extends AppCompatActivity implements View.OnClickLi
         GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
         Evento evento = (Evento)parent.getItemAtPosition(position);
         Intent intent = new Intent(this, DetalleEventoActivity.class);
+        intent.putExtra("evento", evento);
         startActivity(intent);
     }
 

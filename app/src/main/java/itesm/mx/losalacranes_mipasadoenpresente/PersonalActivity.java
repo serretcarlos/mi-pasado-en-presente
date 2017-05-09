@@ -84,7 +84,8 @@ public class PersonalActivity extends AppCompatActivity implements View.OnClickL
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
         Evento evento = (Evento)parent.getItemAtPosition(position);
-        Intent intent = new Intent(this, DetalleEventoActivity.class);
+        Intent intent = new Intent(this, DetalleHistoriaPersonalActivity.class);
+        intent.putExtra("evento", evento);
         startActivity(intent);
     }
 

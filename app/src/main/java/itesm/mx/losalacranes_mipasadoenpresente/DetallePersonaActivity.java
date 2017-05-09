@@ -35,6 +35,7 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
         TextView text_apellido = (TextView) findViewById(R.id.text_apellido);
         TextView text_rel = (TextView) findViewById(R.id.text_relacion);
         TextView text_frase = (TextView) findViewById(R.id.text_frase);
+        ImageView image_persona = (ImageView) findViewById(R.id.image_persona);
 
         Button btn_play = (Button) findViewById(R.id.button_play);
         Button btn_pause = (Button) findViewById(R.id.button_pause);
