@@ -59,6 +59,15 @@ public class SucesoActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        listaEventos = dao.getAllEventos(idUsuario, tipo);
+        GridView gridView = (GridView)findViewById(R.id.gridview_usuarios);
+        eventoAdapter = new EventoAdapter(this, listaEventos);
+        gridView.setAdapter(eventoAdapter);
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == android.R.id.home){
             finish();

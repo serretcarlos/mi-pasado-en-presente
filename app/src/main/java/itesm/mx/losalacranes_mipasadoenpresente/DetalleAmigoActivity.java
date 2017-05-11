@@ -3,8 +3,13 @@ package itesm.mx.losalacranes_mipasadoenpresente;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.media.MediaPlayer;
@@ -24,10 +29,17 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
     private SeekBar seekbar;
     private double startTime = 0;
     private double finalTime = 0;
-    private Button btn_play;
-    private Button btn_pause;
+    private ImageButton btn_play;
+    private ImageButton btn_pause;
     private Handler myHandler = new Handler();
-    ;
+    Persona persona;
+    DataBaseOperations dao;
+
+    TextView text_nomb;
+    TextView text_apellido;
+    TextView text_rel;
+    TextView text_frase;
+    ImageView image_persona;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,36 +48,86 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
 
         Intent intent = getIntent();
 
-        TextView text_nomb = (TextView) findViewById(R.id.text_nombre);
-        TextView text_apellido = (TextView) findViewById(R.id.text_apellido);
-        TextView text_rel = (TextView) findViewById(R.id.text_relacion);
-        TextView text_frase = (TextView) findViewById(R.id.text_frase);
-        ImageView image_fam = (ImageView) findViewById(R.id.image_persona);
+        text_nomb = (TextView) findViewById(R.id.text_nombre);
+        text_apellido = (TextView) findViewById(R.id.text_apellido);
+        text_rel = (TextView) findViewById(R.id.text_relacion);
+        text_frase = (TextView) findViewById(R.id.text_frase);
+        image_persona = (ImageView) findViewById(R.id.image_persona);
 
-        Persona person = (Persona)intent.getSerializableExtra("persona");
+        persona = (Persona)intent.getSerializableExtra("persona");
 
-        Button btn_play = (Button) findViewById(R.id.button_play);
-        Button btn_pause = (Button) findViewById(R.id.button_pause);
+        btn_play = (ImageButton) findViewById(R.id.button_play);
+        btn_pause = (ImageButton) findViewById(R.id.button_pause);
         seekbar = (SeekBar) findViewById(R.id.seekBar3);
 
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
         //mediaPlayer = MediaPlayer.create(this, R.raw.song);
         //seekbar = (SeekBar)findViewById(R.id.seekBar3);
 
         seekbar.setClickable(false);
         btn_pause.setEnabled(false);
-        text_nomb.setText(person.getNombre());
-        text_apellido.setText(person.getApellido());
-        text_rel.setText(person.getRelacion());
-        text_frase.setText(person.getFrase());
+        text_nomb.setText(persona.getNombre());
+        text_apellido.setText(persona.getApellido());
+        text_rel.setText(persona.getRelacion());
+        text_frase.setText(persona.getFrase());
 
-        byte [] image = person.getImagen();
+
+        byte [] image = persona.getImagen();
         if (image != null){
             Bitmap bmImage = BitmapFactory.decodeByteArray(image, 0, image.length);
-            image_fam.setImageBitmap(bmImage);
+            image_persona.setImageBitmap(bmImage);
         }
         btn_play.setOnClickListener(this);
         btn_pause.setOnClickListener(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_editar, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                break;
+            case R.id.menu_modificar:
+                Intent intent = new Intent(this, ModificaPersona.class);
+                intent.putExtra("persona", persona);
+                startActivityForResult(intent, ActivityConstants.AGREGO_PERSONA);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == RESULT_OK){
+            if (requestCode == ActivityConstants.AGREGO_PERSONA){
+                Bundle datos = data.getExtras();
+                persona = (Persona)datos.getSerializable("persona");
+
+                text_nomb.setText(persona.getNombre());
+                text_apellido.setText(persona.getApellido());
+                text_rel.setText(persona.getRelacion());
+                text_frase.setText(persona.getFrase());
+                byte [] image = persona.getImagen();
+                if (image != null){
+                    Bitmap bmImage = BitmapFactory.decodeByteArray(image, 0, image.length);
+                    image_persona.setImageBitmap(bmImage);
+                }
+            }
+        }
     }
 
     @Override

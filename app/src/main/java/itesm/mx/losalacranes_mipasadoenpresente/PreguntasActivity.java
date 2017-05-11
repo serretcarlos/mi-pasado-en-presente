@@ -33,6 +33,10 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
     TextView tvOpcionC;
     TextView tvPregunta;
 
+    ImageView ivOpcion_a;
+    ImageView ivOpcion_b;
+    ImageView ivOpcion_c;
+
     ImageView ivFoto;
 
     int categoria = 0;
@@ -63,6 +67,10 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
         tvOpcionB = (TextView) findViewById(R.id.text_opcion_B);
         tvOpcionC = (TextView) findViewById(R.id.text_opcion_C);
         tvPregunta = (TextView) findViewById(R.id.text_pregunta);
+        ivOpcion_a = (ImageView) findViewById(R.id.image_opcion_a);
+        ivOpcion_b = (ImageView) findViewById(R.id.image_opcion_b);
+        ivOpcion_c = (ImageView) findViewById(R.id.image_opcion_c);
+
 
         dao = new DataBaseOperations(this);
         dao.open();
@@ -101,6 +109,9 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
             tvOpcionA.setOnClickListener(this);
             tvOpcionB.setOnClickListener(this);
             tvOpcionC.setOnClickListener(this);
+            ivOpcion_a.setOnClickListener(this);
+            ivOpcion_b.setOnClickListener(this);
+            ivOpcion_c.setOnClickListener(this);
             update();
         }
 
@@ -179,6 +190,16 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
                 }
                 update();
                 break;
+            case R.id.image_opcion_a:
+                if (opciones[0]== respuesta){
+                    Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
+                    mediaPlayer.start();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Vamos! sigue intentado", Toast.LENGTH_SHORT).show();
+                }
+                update();
+                break;
             case R.id.text_opcion_B:
                 if (opciones[1]== respuesta){
                     Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
@@ -189,7 +210,27 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
                 }
                 update();
                 break;
+            case R.id.image_opcion_b:
+                if (opciones[1]== respuesta){
+                    Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
+                    mediaPlayer.start();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Vamos! sigue intentado", Toast.LENGTH_SHORT).show();
+                }
+                update();
+                break;
             case R.id.text_opcion_C:
+                if (opciones[2]== respuesta){
+                    Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
+                    mediaPlayer.start();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Vamos! sigue intentado", Toast.LENGTH_SHORT).show();
+                }
+                update();
+                break;
+            case R.id.image_opcion_c:
                 if (opciones[2]== respuesta){
                     Toast.makeText(getApplicationContext(), "Bien Hecho", Toast.LENGTH_SHORT).show();
                     mediaPlayer.start();

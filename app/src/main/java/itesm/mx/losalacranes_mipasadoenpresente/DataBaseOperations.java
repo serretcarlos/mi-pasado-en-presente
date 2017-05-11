@@ -458,7 +458,7 @@ public class DataBaseOperations {
 
 
 
-    public boolean updateEvento(Persona persona){
+    public boolean updateEvento(Evento evento){
         boolean result = false;
         try {
             ContentValues values = new ContentValues();
@@ -469,13 +469,13 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO, persona.getSonido());
             db.update(DataBaseSchema.UsuarioTable.TABLE_NAME, values, DataBaseSchema.PersonaTable._ID +
                     " = ? ", new String[]{String.valueOf(persona.getIdPersona())});
+
             result = true;
         } catch (SQLiteException e){
             Log.e("SQLUPDATE", e.toString());
         }
         return result;
     }
-
 
 
 

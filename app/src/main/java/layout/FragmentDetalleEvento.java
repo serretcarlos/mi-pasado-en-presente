@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 
 import itesm.mx.losalacranes_mipasadoenpresente.R;
 
-
 public class FragmentDetalleEvento extends Fragment {
 
     @Override
@@ -19,6 +18,5 @@ public class FragmentDetalleEvento extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detalle_evento, container, false);
     }
-
 
 }
