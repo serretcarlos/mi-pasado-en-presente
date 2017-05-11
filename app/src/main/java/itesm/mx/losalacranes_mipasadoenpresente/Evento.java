@@ -13,6 +13,7 @@ public class Evento implements Serializable {
     private String fecha;
     private String descripcion;
     private byte [] imagen;
+    private byte [] sonido;
 
     public Evento() {
         this.idEvento = 0;
@@ -20,21 +21,24 @@ public class Evento implements Serializable {
         this.fecha = null;
         this.descripcion = null;
         this.imagen = null;
+        this.sonido = null;
     }
 
-    public Evento(String titulo, String fecha, String descripcion, byte[] imagen) {
+    public Evento(String titulo, String fecha, String descripcion, byte[] imagen, byte[] sonido) {
         this.titulo = titulo;
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.imagen = imagen;
+        this.sonido = sonido;
     }
 
-    public Evento(long idEvento, String titulo, String fecha, String descripcion, byte[] imagen) {
+    public Evento(long idEvento, String titulo, String fecha, String descripcion, byte[] imagen, byte [] sonido) {
         this.idEvento = idEvento;
         this.titulo = titulo;
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.imagen = imagen;
+        this.sonido = sonido;
     }
 
     public long getIdEvento() {
@@ -75,5 +79,13 @@ public class Evento implements Serializable {
 
     public void setImagen(byte[] imagen) {
         this.imagen = imagen;
+    }
+
+    public byte[] getSonido() {
+        return sonido;
+    }
+
+    public void setSonido(byte[] sonido) {
+        this.sonido = sonido;
     }
 }

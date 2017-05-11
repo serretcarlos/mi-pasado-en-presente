@@ -140,7 +140,7 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
         String apellido = etApellido.getText().toString();
         String frase = etFrase.getText().toString();
         String relacion = etRelacion.getText().toString();
-        persona = new Persona(nombre, apellido, foto, frase, relacion);
+        persona = new Persona(nombre, apellido, foto, frase, relacion, null);
         long id = dao.addPersona(persona, idUsuario, tipo);
         persona.setIdPersona(id);
         return persona;
