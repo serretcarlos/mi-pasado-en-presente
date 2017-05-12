@@ -90,7 +90,7 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.modifica_usuario, menu);
+        inflater.inflate(R.menu.menu_elimina, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -98,10 +98,10 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
     public boolean onOptionsItemSelected(MenuItem item){
 
         switch (item.getItemId()){
-            case R.id.home:
+            case android.R.id.home:
                 finish();
                 break;
-            case R.id.menu_eliminar_usuario:
+            case R.id.menu_eliminar:
                 dao.deleteUsuario(usuarioActual.getIdUsuario());
                 Toast.makeText(getApplicationContext(), "El usuario se ha eliminado existosamente", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(this, MainActivity.class);
