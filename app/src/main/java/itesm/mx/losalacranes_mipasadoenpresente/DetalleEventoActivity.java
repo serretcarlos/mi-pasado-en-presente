@@ -50,7 +50,7 @@ public class DetalleEventoActivity extends AppCompatActivity implements View.OnC
         image_evento = (ImageView) findViewById(R.id.image_detalle_evento);
         btn_play = (ImageButton) findViewById(R.id.button_play_evento);
         btn_pause = (ImageButton) findViewById(R.id.button_pause_evento);
-        seekbar = (SeekBar) findViewById(R.id.seekBar_evento);
+        //seekbar = (SeekBar) findViewById(R.id.seekBar_evento);
 
         evento = (Evento)intent.getSerializableExtra("evento");
 
@@ -66,7 +66,7 @@ public class DetalleEventoActivity extends AppCompatActivity implements View.OnC
         //mediaPlayer = MediaPlayer.create(this, R.raw.song);
         //seekbar = (SeekBar)findViewById(R.id.seekBar3);
 
-        seekbar.setClickable(false);
+        //seekbar.setClickable(false);
         btn_pause.setEnabled(false);
         byte [] image = evento.getImagen();
         if (image != null){
@@ -132,11 +132,11 @@ public class DetalleEventoActivity extends AppCompatActivity implements View.OnC
                 Toast.makeText(getApplicationContext(), "Playing sound", Toast.LENGTH_SHORT).show();
                 mediaPlayer.start();
 
-                finalTime = mediaPlayer.getDuration();
-                startTime = mediaPlayer.getCurrentPosition();
+                //finalTime = mediaPlayer.getDuration();
+                //startTime = mediaPlayer.getCurrentPosition();
 
-                seekbar.setProgress((int)startTime);
-                myHandler.postDelayed(UpdateSongTime,100);
+                //seekbar.setProgress((int)startTime);
+                //myHandler.postDelayed(UpdateSongTime,100);
                 btn_pause.setEnabled(true);
                 btn_play.setEnabled(false);
 
@@ -152,6 +152,7 @@ public class DetalleEventoActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    /*
     private Runnable UpdateSongTime = new Runnable() {
         public void run() {
             startTime = mediaPlayer.getCurrentPosition();
@@ -159,7 +160,7 @@ public class DetalleEventoActivity extends AppCompatActivity implements View.OnC
             myHandler.postDelayed(this, 100);
         }
     };
-
+*/
 
 
 }

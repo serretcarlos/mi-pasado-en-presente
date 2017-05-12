@@ -3,9 +3,11 @@ package itesm.mx.losalacranes_mipasadoenpresente;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -23,9 +25,14 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 public class DetalleAmigoActivity extends AppCompatActivity implements View.OnClickListener{
 
     private MediaPlayer mediaPlayer;
+    String mFileName;
     private SeekBar seekbar;
     private double startTime = 0;
     private double finalTime = 0;
@@ -56,19 +63,30 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
 
         persona = (Persona)intent.getSerializableExtra("persona");
 
+
         btn_play = (ImageButton) findViewById(R.id.button_play);
         btn_pause = (ImageButton) findViewById(R.id.button_pause);
-        seekbar = (SeekBar) findViewById(R.id.seekBar3);
+        //seekbar = (SeekBar) findViewById(R.id.seekBar3);
 
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        //mediaPlayer = MediaPlayer.create(this, R.raw.song);
+
+
+        //////////////////////////--AUDIO--/////////////////////////
+
+       mFileName = getExternalCacheDir().getAbsolutePath();
+        mFileName += "/audiorecordtest.3gp";
+        Toast.makeText(getApplicationContext(), mFileName, Toast.LENGTH_LONG).show();
+
+
+
         //seekbar = (SeekBar)findViewById(R.id.seekBar3);
 
-        seekbar.setClickable(false);
+        //////////////////////////--AUDIO--/////////////////////////
+        //seekbar.setClickable(false);
         btn_pause.setEnabled(false);
         text_nomb.setText(persona.getNombre());
         text_apellido.setText(persona.getApellido());
@@ -135,20 +153,32 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
         switch (v.getId()) {
             case R.id.button_play:
 
-                Toast.makeText(getApplicationContext(), "Playing sound", Toast.LENGTH_SHORT).show();
-                mediaPlayer.start();
+                Toast.makeText(getApplicationContext(), "Reproduciendo", Toast.LENGTH_SHORT).show();
 
-                finalTime = mediaPlayer.getDuration();
-                startTime = mediaPlayer.getCurrentPosition();
+                mediaPlayer = new MediaPlayer();
+                try {
 
-                seekbar.setProgress((int) startTime);
-                myHandler.postDelayed(UpdateSongTime, 100);
+                    mediaPlayer.setDataSource(mFileName);
+                    mediaPlayer.prepare();
+                    mediaPlayer.start();
+                } catch (IOException e) {
+                    Log.e("Falla", "prepare() failed");
+                }
+
+
+
+
+               // finalTime = mediaPlayer.getDuration();
+                //startTime = mediaPlayer.getCurrentPosition();
+
+                //seekbar.setProgress((int) startTime);
+               // myHandler.postDelayed(UpdateSongTime, 100);
                 btn_pause.setEnabled(true);
                 btn_play.setEnabled(false);
 
                 break;
             case R.id.button_pause:
-                Toast.makeText(getApplicationContext(), "Pausing sound",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Pausando",Toast.LENGTH_SHORT).show();
                 mediaPlayer.pause();
                 btn_pause.setEnabled(false);
                 btn_play.setEnabled(true);
@@ -158,11 +188,11 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
-    private Runnable UpdateSongTime = new Runnable() {
+    /*private Runnable UpdateSongTime = new Runnable() {
         public void run() {
             startTime = mediaPlayer.getCurrentPosition();
             seekbar.setProgress((int) startTime);
             myHandler.postDelayed(this, 100);
         }
-    };
+    };*/
 }

@@ -141,7 +141,7 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
 
         if(categoria == 1 & isUsedFamilia == 1 | categoria == 2 & isUsedAmigos == 1){
 
-            String pregunta = "Como me llamo?";
+            String pregunta = "Cómo me llamo?";
             if(categoria == 1 & isUsedFamilia == 1){
                 foto = listaFamilia.get(res).getImagen();
                 Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
@@ -155,7 +155,7 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
             tvPregunta.setText(pregunta);
         } else if(isUsedEventos == 1 | isUsedSucesos == 1 | isUsedPersonal == 1){
 
-            String pregunta = "Que evento es este?";
+            String pregunta = "Qué evento es este?";
             if(categoria == 3 & isUsedEventos == 1){
                 foto = listaEventos.get(res).getImagen();
                 Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
