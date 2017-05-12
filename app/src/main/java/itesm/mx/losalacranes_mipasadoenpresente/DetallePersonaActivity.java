@@ -50,7 +50,7 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
 
         btn_play = (ImageButton) findViewById(R.id.button_play);
         btn_pause = (ImageButton) findViewById(R.id.button_pause);
-        seekbar = (SeekBar) findViewById(R.id.seekBar3);
+        //seekbar = (SeekBar) findViewById(R.id.seekBar3);
 
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -61,7 +61,7 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
         //mediaPlayer = MediaPlayer.create(this, R.raw.song);
         //seekbar = (SeekBar)findViewById(R.id.seekBar3);
 
-        seekbar.setClickable(false);
+        //seekbar.setClickable(false);
         btn_pause.setEnabled(false);
 
         persona = (Persona)intent.getSerializableExtra("persona");
@@ -133,20 +133,20 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
         switch (v.getId()){
             case R.id.button_play:
 
-                Toast.makeText(getApplicationContext(), "Playing sound", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Reproduciendo", Toast.LENGTH_SHORT).show();
                         mediaPlayer.start();
 
-                finalTime = mediaPlayer.getDuration();
-                startTime = mediaPlayer.getCurrentPosition();
+                //finalTime = mediaPlayer.getDuration();
+                //startTime = mediaPlayer.getCurrentPosition();
 
-                seekbar.setProgress((int)startTime);
-                myHandler.postDelayed(UpdateSongTime,100);
+                //seekbar.setProgress((int)startTime);
+                //myHandler.postDelayed(UpdateSongTime,100);
                 btn_pause.setEnabled(true);
                 btn_play.setEnabled(false);
 
                 break;
             case R.id.button_pause:
-                Toast.makeText(getApplicationContext(), "Pausing sound",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Pausando",Toast.LENGTH_SHORT).show();
                 mediaPlayer.pause();
                 btn_pause.setEnabled(false);
                 btn_play.setEnabled(true);
@@ -156,12 +156,12 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
         }
     }
 
-    private Runnable UpdateSongTime = new Runnable() {
+    /*private Runnable UpdateSongTime = new Runnable() {
         public void run() {
             startTime = mediaPlayer.getCurrentPosition();
             seekbar.setProgress((int)startTime);
             myHandler.postDelayed(this, 100);
         }
-    };
+    };*/
 
 }
