@@ -1,5 +1,6 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -13,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.RelativeLayout;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import static itesm.mx.losalacranes_mipasadoenpresente.R.id.tutorialView;
@@ -40,12 +42,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         dao = new DataBaseOperations(this);
         dao.open();
         listaUsuarios = dao.getAllUsers();
+
+
+
         GridView gridView = (GridView)findViewById(R.id.gridview_usuarios);
         usuarioAdapter = new UsuarioAdapter(this, listaUsuarios);
         gridView.setAdapter(usuarioAdapter);
         gridView.setOnItemClickListener(this);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
+
+
+
 
         ViewCompat.setNestedScrollingEnabled(gridView,true);
     }

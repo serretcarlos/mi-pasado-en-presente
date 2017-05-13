@@ -29,6 +29,7 @@ public final class DataBaseSchema {
         public static final String COLUMN_NAME_IMAGEN = "imagen";
         public static final String COLUMN_NAME_FRASE = "frase";
         public static final String COLUMN_NAME_TIPO = "tipo";
+        public static final String COLUMN_NAME_SONIDO = "sonido";
     }
 
     public static class EventoTable implements  BaseColumns {
@@ -37,6 +38,7 @@ public final class DataBaseSchema {
         public static final String COLUMN_NAME_FECHA = "fecha";
         public static final String COLUMN_NAME_DESCRIPCION = "descripcion";
         public static final String COLUMN_NAME_IMAGEN = "imagen";
+        public static final String COLUMN_NAME_SONIDO= "sonido";
     }
 
     public static class RelacionUsuarioPersona implements BaseColumns {

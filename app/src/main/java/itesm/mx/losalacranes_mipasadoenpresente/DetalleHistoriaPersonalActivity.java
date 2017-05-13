@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,9 +20,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 public class DetalleHistoriaPersonalActivity extends AppCompatActivity implements View.OnClickListener {
 
     private MediaPlayer mediaPlayer;
+    String mFileName;
     private SeekBar seekbar;
     private double startTime = 0;
     private double finalTime = 0;
@@ -47,7 +51,7 @@ public class DetalleHistoriaPersonalActivity extends AppCompatActivity implement
         image_evento = (ImageView) findViewById(R.id.image_detalle_evento);
         btn_play = (ImageButton) findViewById(R.id.button_play_evento);
         btn_pause = (ImageButton) findViewById(R.id.button_pause_evento);
-        seekbar = (SeekBar) findViewById(R.id.seekBar_evento);
+        //seekbar = (SeekBar) findViewById(R.id.seekBar_evento);
 
 
         text_nomb.setText(evento.getTitulo());
@@ -59,10 +63,13 @@ public class DetalleHistoriaPersonalActivity extends AppCompatActivity implement
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-        //mediaPlayer = MediaPlayer.create(this, R.raw.song);
-        //seekbar = (SeekBar)findViewById(R.id.seekBar3);
+        //////////////////////////--AUDIO--/////////////////////////
 
-        seekbar.setClickable(false);
+        mFileName = getExternalCacheDir().getAbsolutePath();
+        mFileName += "/audiorecordtest.3gp";
+
+
+        //////////////////////////--AUDIO--/////////////////////////
         btn_pause.setEnabled(false);
 
         byte [] image = evento.getImagen();
@@ -125,31 +132,41 @@ public class DetalleHistoriaPersonalActivity extends AppCompatActivity implement
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.button_play:
+            //////////////////////////--AUDIO--/////////////////////////
+            case R.id.button_play_evento:
 
-                Toast.makeText(getApplicationContext(), "Playing sound", Toast.LENGTH_SHORT).show();
-                mediaPlayer.start();
+                Toast.makeText(getApplicationContext(), "Reproduciendo", Toast.LENGTH_SHORT).show();
+                mediaPlayer = new MediaPlayer();
+                try {
 
-                finalTime = mediaPlayer.getDuration();
-                startTime = mediaPlayer.getCurrentPosition();
-
-                seekbar.setProgress((int)startTime);
-                myHandler.postDelayed(UpdateSongTime,100);
+                    mediaPlayer.setDataSource(mFileName);
+                    mediaPlayer.prepare();
+                    mediaPlayer.start();
+                } catch (IOException e) {
+                    Log.e("Falla", "prepare() failed");
+                }
+                // finalTime = mediaPlayer.getDuration();
+                //startTime = mediaPlayer.getCurrentPosition();
+                //seekbar.setProgress((int) startTime);
+                // myHandler.postDelayed(UpdateSongTime, 100);
                 btn_pause.setEnabled(true);
                 btn_play.setEnabled(false);
 
                 break;
-            case R.id.button_pause:
-                Toast.makeText(getApplicationContext(), "Pausing sound",Toast.LENGTH_SHORT).show();
+
+            case R.id.button_pause_evento:
+                Toast.makeText(getApplicationContext(), "Pausando",Toast.LENGTH_SHORT).show();
                 mediaPlayer.pause();
                 btn_pause.setEnabled(false);
                 btn_play.setEnabled(true);
 
                 break;
+            //////////////////////////--AUDIO--/////////////////////////
 
         }
     }
 
+    /*
     private Runnable UpdateSongTime = new Runnable() {
         public void run() {
             startTime = mediaPlayer.getCurrentPosition();
@@ -157,5 +174,6 @@ public class DetalleHistoriaPersonalActivity extends AppCompatActivity implement
             myHandler.postDelayed(this, 100);
         }
     };
+    */
 
 }

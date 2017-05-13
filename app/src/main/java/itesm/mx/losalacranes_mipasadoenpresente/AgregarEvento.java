@@ -1,10 +1,16 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.media.MediaRecorder;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class AgregarEvento extends AppCompatActivity implements View.OnClickListener{
 
@@ -23,6 +30,21 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
     ImageView ivFoto;
     Button btnGuardar;
     Button btnFoto;
+
+    //////////////////////////--AUDIO--/////////////////////////
+    boolean mStartRecording = true;
+    private static final String LOG_TAG = "AudioRecordTest";
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+    private static String mFileName = null;
+
+    private Button RecordButton;
+    private MediaRecorder mRecorder = null;
+
+    // Requesting permission to RECORD_AUDIO
+    private boolean permissionToRecordAccepted = false;
+    private String [] permissions = {Manifest.permission.RECORD_AUDIO};
+
+    //////////////////////////--AUDIO--/////////////////////////
 
     DataBaseOperations dao;
 
@@ -55,6 +77,18 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
         etDesc = (EditText) findViewById(R.id.edit_desc_evento);
         ivFoto = (ImageView) findViewById(R.id.image_evento);
 
+        //////////////////////////--AUDIO--/////////////////////////
+        RecordButton = (Button) findViewById(R.id.button_grabar_evento);
+        mFileName = getExternalCacheDir().getAbsolutePath();
+        mFileName += "/audiorecordtest.3gp";
+        // mFileName = Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator + "raw"+ File.separator + "myFile.3gp";
+        //mFileName += "/audiorecordtest.3gp";
+
+        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+
+        RecordButton.setOnClickListener(this);
+        //////////////////////////--AUDIO--/////////////////////////
+
         tvCancelar.setOnClickListener(this);
         btnGuardar.setOnClickListener(this);
         btnFoto.setOnClickListener(this);
@@ -83,6 +117,19 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
                 Toast.makeText(getApplicationContext(), "Operacion Cancelada", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
+            /////////////////////////--AUDIO--/////////////////////////
+            case R.id.button_grabar_evento:
+
+                onRecord(mStartRecording);
+                if (mStartRecording) {
+                    RecordButton.setText("Parar");
+                } else {
+                    RecordButton.setText("Grabar Sonido");
+                }
+                mStartRecording = !mStartRecording;
+
+                break;
+            /////////////////////////--AUDIO--/////////////////////////
             case R.id.button_foto_evento:
                 intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -138,9 +185,59 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
         String titulo = etTitulo.getText().toString();
         String fecha = etFecha.getText().toString();
         String desc = etDesc.getText().toString();
-        evento = new Evento(titulo, fecha, desc, foto);
+        evento = new Evento(titulo, fecha, desc, foto, null);
         long id = dao.addEvento(evento, idUsuario, tipo);
         evento.setIdEvento(id);
         return evento;
     }
+
+    //////////////////////////--AUDIO--/////////////////////////
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case REQUEST_RECORD_AUDIO_PERMISSION:
+                permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                break;
+
+        }
+        if (!permissionToRecordAccepted ) finish();
+
+    }
+    private void onRecord(boolean start) {
+        if (start) {
+            startRecording();
+        } else {
+            stopRecording();
+        }
+    }
+
+    private void startRecording() {
+        mRecorder = new MediaRecorder();
+        mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mRecorder.setOutputFile(mFileName);
+        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        try {
+            mRecorder.prepare();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+
+        mRecorder.start();
+        Toast.makeText(getApplicationContext(), "Grabando", Toast.LENGTH_SHORT).show();
+    }
+
+    private void stopRecording() {
+        mRecorder.stop();
+        mRecorder.release();
+        Toast.makeText(getApplicationContext(), "Sonido Guardado", Toast.LENGTH_SHORT).show();
+        mRecorder = null;
+    }
+
+
+
+    //////////////////////////--AUDIO--/////////////////////////
 }

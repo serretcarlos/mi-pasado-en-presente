@@ -162,13 +162,7 @@
                         android:textSize="24sp" />
                 </LinearLayout>
 
-                <SeekBar
-                    android:id="@+id/seekBar3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="14dp"
-                    android:layout_below="@+id/LinearLayout05"
-                    android:layout_marginTop="15dp"/>
+
 
             </LinearLayout>
 

@@ -12,8 +12,8 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp">
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,19 +33,47 @@
                     android:layout_height="150dp"
                     app:srcCompat="@mipmap/ic_launcher"
                     android:id="@+id/image_evento"
-                    android:scaleType="centerCrop"/>
-
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/button_foto_evento"
-                    android:textAllCaps="false"
-                    android:background="@color/colorPrimary"
-                    android:textColor="#fff"
-                    android:text="Tomar Foto"
-                    android:textSize="16sp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginBottom="8dp"/>
+
+
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+
+                    <Button
+
+                        android:id="@+id/button_grabar_evento"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/colorPrimary"
+                        android:text="Grabar Sonido"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="38dp" />
+
+                    <Button
+                        android:id="@+id/button_foto_evento"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@color/colorPrimary"
+                        android:text="Tomar Foto"
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="38dp" />
+
+                </RelativeLayout>
 
             </LinearLayout>
 
