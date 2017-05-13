@@ -136,13 +136,7 @@
                         android:textSize="24sp" />
                 </LinearLayout>
 
-                <SeekBar
-                    android:id="@+id/seekBar_evento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/LinearLayout04"
-                    android:layout_marginBottom="14dp"
-                    android:layout_marginTop="15dp" />
+
 
 
 

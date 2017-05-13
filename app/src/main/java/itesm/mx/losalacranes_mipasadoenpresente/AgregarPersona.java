@@ -86,15 +86,15 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
         RecordButton = (Button) findViewById(R.id.button_grabar);
         mFileName = getExternalCacheDir().getAbsolutePath();
         mFileName += "/audiorecordtest.3gp";
-        Toast.makeText(getApplicationContext(), mFileName, Toast.LENGTH_LONG).show();
         // mFileName = Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator + "raw"+ File.separator + "myFile.3gp";
         //mFileName += "/audiorecordtest.3gp";
 
         ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
 
+        RecordButton.setOnClickListener(this);
         //////////////////////////--AUDIO--/////////////////////////
 
-        RecordButton.setOnClickListener(this);
+
         tvCancelar.setOnClickListener(this);
         btnGuardar.setOnClickListener(this);
         btnFoto.setOnClickListener(this);
