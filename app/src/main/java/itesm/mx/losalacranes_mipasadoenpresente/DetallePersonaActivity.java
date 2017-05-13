@@ -9,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -20,9 +21,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.IOException;
+
 public class DetallePersonaActivity extends AppCompatActivity implements View.OnClickListener {
 
     private MediaPlayer mediaPlayer;
+    String mFileName;
     private SeekBar seekbar;
     private double startTime = 0;
     private double finalTime = 0;
@@ -58,6 +62,13 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
         }
 
 
+        //////////////////////////--AUDIO--/////////////////////////
+
+        mFileName = getExternalCacheDir().getAbsolutePath();
+        mFileName += "/audiorecordtest.3gp";
+
+
+        //////////////////////////--AUDIO--/////////////////////////
         //mediaPlayer = MediaPlayer.create(this, R.raw.song);
         //seekbar = (SeekBar)findViewById(R.id.seekBar3);
 
@@ -131,20 +142,28 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
     @Override
     public void onClick(View v) {
         switch (v.getId()){
+            //////////////////////////--AUDIO--/////////////////////////
             case R.id.button_play:
 
                 Toast.makeText(getApplicationContext(), "Reproduciendo", Toast.LENGTH_SHORT).show();
-                        mediaPlayer.start();
+                mediaPlayer = new MediaPlayer();
+                try {
 
-                //finalTime = mediaPlayer.getDuration();
+                    mediaPlayer.setDataSource(mFileName);
+                    mediaPlayer.prepare();
+                    mediaPlayer.start();
+                } catch (IOException e) {
+                    Log.e("Falla", "prepare() failed");
+                }
+                // finalTime = mediaPlayer.getDuration();
                 //startTime = mediaPlayer.getCurrentPosition();
-
-                //seekbar.setProgress((int)startTime);
-                //myHandler.postDelayed(UpdateSongTime,100);
+                //seekbar.setProgress((int) startTime);
+                // myHandler.postDelayed(UpdateSongTime, 100);
                 btn_pause.setEnabled(true);
                 btn_play.setEnabled(false);
 
                 break;
+
             case R.id.button_pause:
                 Toast.makeText(getApplicationContext(), "Pausando",Toast.LENGTH_SHORT).show();
                 mediaPlayer.pause();
@@ -152,6 +171,7 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
                 btn_play.setEnabled(true);
 
                 break;
+            //////////////////////////--AUDIO--/////////////////////////
 
         }
     }

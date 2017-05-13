@@ -79,13 +79,11 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
 
        mFileName = getExternalCacheDir().getAbsolutePath();
         mFileName += "/audiorecordtest.3gp";
-        Toast.makeText(getApplicationContext(), mFileName, Toast.LENGTH_LONG).show();
 
-
-
-        //seekbar = (SeekBar)findViewById(R.id.seekBar3);
 
         //////////////////////////--AUDIO--/////////////////////////
+
+        //seekbar = (SeekBar)findViewById(R.id.seekBar3);
         //seekbar.setClickable(false);
         btn_pause.setEnabled(false);
         text_nomb.setText(persona.getNombre());
@@ -151,6 +149,7 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            //////////////////////////--AUDIO--/////////////////////////
             case R.id.button_play:
 
                 Toast.makeText(getApplicationContext(), "Reproduciendo", Toast.LENGTH_SHORT).show();
@@ -177,6 +176,7 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
                 btn_play.setEnabled(false);
 
                 break;
+
             case R.id.button_pause:
                 Toast.makeText(getApplicationContext(), "Pausando",Toast.LENGTH_SHORT).show();
                 mediaPlayer.pause();
@@ -184,7 +184,7 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
                 btn_play.setEnabled(true);
 
                 break;
-
+//////////////////////////--AUDIO--/////////////////////////
         }
     }
 
