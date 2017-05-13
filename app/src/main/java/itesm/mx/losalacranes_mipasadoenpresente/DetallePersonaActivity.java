@@ -62,13 +62,6 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
         }
 
 
-        //////////////////////////--AUDIO--/////////////////////////
-
-        mFileName = getExternalCacheDir().getAbsolutePath();
-        mFileName += "/audiorecordtest.3gp";
-
-
-        //////////////////////////--AUDIO--/////////////////////////
         //mediaPlayer = MediaPlayer.create(this, R.raw.song);
         //seekbar = (SeekBar)findViewById(R.id.seekBar3);
 
@@ -80,6 +73,12 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
         text_apellido.setText(persona.getApellido());
         text_rel.setText(persona.getRelacion());
         text_frase.setText(persona.getFrase());
+
+        //////////////////////////--AUDIO--/////////////////////////
+
+        mFileName = persona.getSonido();
+
+        //////////////////////////--AUDIO--/////////////////////////
 
         byte [] image = persona.getImagen();
         if (image != null){

@@ -40,7 +40,6 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
     private ImageButton btn_pause;
     private Handler myHandler = new Handler();
     Persona persona;
-    DataBaseOperations dao;
 
     TextView text_nomb;
     TextView text_apellido;
@@ -73,13 +72,9 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
             getSupportActionBar().setDisplayShowHomeEnabled(true);
         }
 
-
-
         //////////////////////////--AUDIO--/////////////////////////
 
-       mFileName = getExternalCacheDir().getAbsolutePath();
-        mFileName += "/audiorecordtest.3gp";
-
+        mFileName = persona.getSonido();
 
         //////////////////////////--AUDIO--/////////////////////////
 

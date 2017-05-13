@@ -69,9 +69,7 @@ public class DetalleEventoActivity extends AppCompatActivity implements View.OnC
 
         //////////////////////////--AUDIO--/////////////////////////
 
-        mFileName = getExternalCacheDir().getAbsolutePath();
-        mFileName += "/audiorecordtest.3gp";
-
+        mFileName = evento.getSonido();
 
         //////////////////////////--AUDIO--/////////////////////////
         btn_pause.setEnabled(false);

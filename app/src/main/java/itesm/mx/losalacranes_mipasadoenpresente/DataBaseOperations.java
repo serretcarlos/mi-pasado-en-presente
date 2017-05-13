@@ -214,7 +214,7 @@ public class DataBaseOperations {
                         cursor.getBlob(3),
                         cursor.getString(4),
                         cursor.getString(5),
-                        cursor.getBlob(6));
+                        cursor.getString(6));
             }
             cursor.close();
         } catch (SQLiteException e){
@@ -274,7 +274,7 @@ public class DataBaseOperations {
                             cursor.getBlob(3),
                             cursor.getString(4),
                             cursor.getString(5),
-                            cursor.getBlob(6));
+                            cursor.getString(6));
                     listaAmigos.add(persona);
                 } while (cursor.moveToNext());
             }
@@ -312,7 +312,7 @@ public class DataBaseOperations {
                             cursor.getBlob(3),
                             cursor.getString(4),
                             cursor.getString(5),
-                            cursor.getBlob(6));
+                            cursor.getString(6));
                     listaFamiliares.add(persona);
                 } while (cursor.moveToNext());
             }
@@ -389,7 +389,7 @@ public class DataBaseOperations {
                         cursor.getString(2),
                         cursor.getString(3),
                         cursor.getBlob(4),
-                        cursor.getBlob(5));
+                        cursor.getString(5));
             }
             cursor.close();
         } catch (SQLiteException e){
@@ -444,7 +444,7 @@ public class DataBaseOperations {
                             cursor.getString(2),
                             cursor.getString(3),
                             cursor.getBlob(4),
-                            cursor.getBlob(5));
+                            cursor.getString(5));
                     listaEventos.add(evento);
                 } while (cursor.moveToNext());
             }
