@@ -30,6 +30,7 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
     ImageView ivFoto;
     Button btnGuardar;
     Button btnFoto;
+    GlobalUserClass globalUser;
 
     //////////////////////////--AUDIO--/////////////////////////
     boolean mStartRecording = true;
@@ -54,12 +55,14 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
     long idUsuario;
     Usuario usuarioActual;
     String tipo;
+    int indexAudio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_evento);
-        GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
+        globalUser = (GlobalUserClass) getApplicationContext();
+        indexAudio = globalUser.getSoundIndex();
         usuarioActual = globalUser.getUser();
         idUsuario = usuarioActual.getIdUsuario();
 
@@ -80,7 +83,7 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
         //////////////////////////--AUDIO--/////////////////////////
         RecordButton = (Button) findViewById(R.id.button_grabar_evento);
         mFileName = getExternalCacheDir().getAbsolutePath();
-        mFileName += "/audiorecordtest.3gp";
+        mFileName += "/" + "audio" + idUsuario + indexAudio + ".3gp";
         // mFileName = Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator + "raw"+ File.separator + "myFile.3gp";
         //mFileName += "/audiorecordtest.3gp";
 
@@ -106,6 +109,7 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
                     evento = agregarEvento();
                     intent = new Intent();
                     intent.putExtra("evento", evento);
+                    dao.close();
                     setResult(RESULT_OK, intent);
                     finish();
                 } else {
@@ -115,6 +119,7 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.text_cancelar_evento:
                 Toast.makeText(getApplicationContext(), "Operacion Cancelada", Toast.LENGTH_SHORT).show();
+                dao.close();
                 finish();
                 break;
             /////////////////////////--AUDIO--/////////////////////////
@@ -185,7 +190,9 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
         String titulo = etTitulo.getText().toString();
         String fecha = etFecha.getText().toString();
         String desc = etDesc.getText().toString();
-        evento = new Evento(titulo, fecha, desc, foto, null);
+        ((GlobalUserClass) this.getApplication()).setSoundIndex(indexAudio+1);
+        String audio = mFileName;
+        evento = new Evento(titulo, fecha, desc, foto, audio);
         long id = dao.addEvento(evento, idUsuario, tipo);
         evento.setIdEvento(id);
         return evento;

@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tutorial = (RelativeLayout) findViewById(tutorialView);
         if(listaUsuarios.isEmpty())
             tutorial.setVisibility(RelativeLayout.VISIBLE);
-        else if(tutorialVisible>0 || listaUsuarios.isEmpty()==false)
+        else if(tutorialVisible>0 || !listaUsuarios.isEmpty())
             tutorial.setVisibility(RelativeLayout.GONE);
         tutorial.setOnClickListener(this);
     }

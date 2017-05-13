@@ -34,6 +34,7 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
     ImageView ivFoto;
     Button btnGuardar;
     Button btnFoto;
+    GlobalUserClass globalUser;
 
     //////////////////////////--AUDIO--/////////////////////////
     boolean mStartRecording = true;
@@ -58,12 +59,15 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
     long idUsuario;
     Usuario usuarioActual;
     String tipo;
+    int indexAudio;
+    int tipoAudio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agregar_persona);
-        GlobalUserClass globalUser = (GlobalUserClass) getApplicationContext();
+        globalUser = (GlobalUserClass) getApplicationContext();
+        indexAudio = globalUser.getSoundIndex();
         usuarioActual = globalUser.getUser();
         idUsuario = usuarioActual.getIdUsuario();
 
@@ -85,7 +89,7 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
         //////////////////////////--AUDIO--/////////////////////////
         RecordButton = (Button) findViewById(R.id.button_grabar);
         mFileName = getExternalCacheDir().getAbsolutePath();
-        mFileName += "/audiorecordtest.3gp";
+        mFileName += "/" + "audio" + idUsuario + indexAudio + ".3gp";
         // mFileName = Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator + "raw"+ File.separator + "myFile.3gp";
         //mFileName += "/audiorecordtest.3gp";
 
@@ -111,6 +115,7 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
                     persona = agregarPersona();
                     intent = new Intent();
                     intent.putExtra("persona", persona);
+                    dao.close();
                     setResult(RESULT_OK, intent);
                     finish();
                 } else {
@@ -120,11 +125,12 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.text_cancelar_persona:
                 Toast.makeText(getApplicationContext(), "Operacion Cancelada", Toast.LENGTH_SHORT).show();
+                dao.close();
                 finish();
                 break;
             /////////////////////////--AUDIO--/////////////////////////
             case R.id.button_grabar:
-
+                tipoAudio = 1;
                 onRecord(mStartRecording);
                 if (mStartRecording) {
                     RecordButton.setText("Parar");
@@ -191,7 +197,9 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
         String apellido = etApellido.getText().toString();
         String frase = etFrase.getText().toString();
         String relacion = etRelacion.getText().toString();
-        persona = new Persona(nombre, apellido, foto, frase, relacion, null);
+        ((GlobalUserClass) this.getApplication()).setSoundIndex(indexAudio+1);
+        String audio = mFileName;
+        persona = new Persona(nombre, apellido, foto, frase, relacion, audio);
         long id = dao.addPersona(persona, idUsuario, tipo);
         persona.setIdPersona(id);
         return persona;

@@ -37,7 +37,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             DataBaseSchema.PersonaTable.COLUMN_NAME_IMAGEN + " BLOB," +
             DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE + " TEXT, " +
             DataBaseSchema.PersonaTable.COLUMN_NAME_TIPO + " TEXT, " +
-            DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO + " BLOB"+
+            DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO + " TEXT "+
             ")";
 
     String CREATE_EVENTO_TABLE = "CREATE TABLE " + DataBaseSchema.EventoTable.TABLE_NAME + "(" +
@@ -46,7 +46,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             DataBaseSchema.EventoTable.COLUMN_NAME_FECHA + " TEXT," +
             DataBaseSchema.EventoTable.COLUMN_NAME_DESCRIPCION + " TEXT," +
             DataBaseSchema.EventoTable.COLUMN_NAME_IMAGEN + " BLOB, " +
-            DataBaseSchema.EventoTable.COLUMN_NAME_SONIDO + " BLOB " +
+            DataBaseSchema.EventoTable.COLUMN_NAME_SONIDO + " TEXT " +
             ")";
 
     String CREATE_RELACION_USUARIO_PERSONA_TABLE = "CREATE TABLE " +
