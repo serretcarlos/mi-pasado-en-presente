@@ -2,9 +2,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="layout.FragmentDetalleEvento">
+    tools:context="layout.FragmentDetallePersona">
 
     <!-- TODO: Update blank fragment layout -->
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,66 +20,64 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/image_detalle_evento"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center_horizontal|top"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
                     android:layout_marginTop="10dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:id="@+id/image_persona"
                     android:scaleType="centerCrop"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_gravity="center_horizontal|top"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
 
                 <LinearLayout
-                    android:id="@+id/LinearLayout01"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/image_detalle_evento"
+                    android:layout_below="@+id/image_persona"
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal"
+                    android:id="@+id/LinearLayout01"
                     android:layout_marginStart="8dp">
 
                     <TextView
-                        android:id="@+id/text_evento_tag"
+                        android:id="@+id/text_nombre_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Titulo: "
-                        android:textSize="22sp"
+                        android:hint="Nombre: "
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/text_evento"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Mi evento "
-                        android:textSize="22sp" />
+                        android:textSize="34sp"
+                        android:id="@+id/text_nombre"
+                        android:hint="Nombre "/>
 
                 </LinearLayout>
-
 
                 <LinearLayout
                     android:id="@+id/LinearLayout02"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/LinearLayout01"
-                    android:layout_marginTop="15dp"
                     android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp">
 
                     <TextView
-                        android:id="@+id/text_fecha_tag"
+                        android:id="@+id/text_apellio_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Fecha: "
-                        android:textSize="22sp"
+                        android:hint="Apellido: "
+                        android:textSize="35sp"
                         android:textStyle="bold" />
-
                     <TextView
-                        android:id="@+id/text_fecha"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="00/00/00"
-                        android:textSize="22sp" />
+                        android:textSize="34sp"
+                        android:id="@+id/text_apellido"
+                        android:hint="Apellido" />
 
                 </LinearLayout>
 
@@ -88,25 +87,24 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/LinearLayout02"
-                    android:layout_marginTop="15dp"
                     android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
                     android:layout_marginStart="8dp">
 
                     <TextView
-                        android:id="@+id/text_descripcion_tag"
+                        android:id="@+id/text_relacion_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Descripcion: "
-                        android:textSize="22sp"
+                        android:hint="Relacion: "
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/text_descripcion"
+                        android:id="@+id/text_relacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="descripcion"
-                        android:textSize="22sp"
-                        android:textStyle="italic" />
+                        android:hint="Relacion "
+                        android:textSize="34sp" />
 
                 </LinearLayout>
 
@@ -116,21 +114,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/LinearLayout03"
-                    android:layout_marginTop="15dp"
                     android:orientation="horizontal"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:id="@+id/text_frase_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Frase: "
+                        android:textSize="35sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/text_frase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="mensaje "
+                        android:textSize="34sp"
+                        android:textStyle="italic" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout05"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/LinearLayout04"
+                    android:layout_marginTop="40dp"
                     android:gravity="center">
 
                     <ImageButton
-                        android:id="@+id/button_play_evento"
-                        android:layout_width="100dp"
+                        android:id="@+id/button_play"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/play_button"
-                        android:textSize="24sp" />
+                        android:textSize="24sp"
+                        android:layout_marginStart="8dp"/>
 
                     <ImageButton
-                        android:id="@+id/button_pause_evento"
-                        android:layout_width="100dp"
+                        android:id="@+id/button_pause"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/pause_button"
                         android:textSize="24sp" />
@@ -138,9 +164,8 @@
 
 
 
-
-
             </LinearLayout>
+
 
         </ScrollView>
 
