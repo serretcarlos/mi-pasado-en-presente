@@ -20,8 +20,8 @@
 
                 <ImageView
                     android:id="@+id/image_detalle_evento"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_gravity="center_horizontal|top"
@@ -43,7 +43,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Titulo: "
-                        android:textSize="22sp"
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -51,7 +51,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Mi evento "
-                        android:textSize="22sp" />
+                        android:textSize="34sp" />
 
                 </LinearLayout>
 
@@ -70,7 +70,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Fecha: "
-                        android:textSize="22sp"
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -78,7 +78,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="00/00/00"
-                        android:textSize="22sp" />
+                        android:textSize="34sp" />
 
                 </LinearLayout>
 
@@ -97,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Descripcion: "
-                        android:textSize="22sp"
+                        android:textSize="35sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -105,7 +105,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="descripcion"
-                        android:textSize="22sp"
+                        android:textSize="34sp"
                         android:textStyle="italic" />
 
                 </LinearLayout>
@@ -116,21 +116,21 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/LinearLayout03"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="40dp"
                     android:orientation="horizontal"
                     android:layout_marginStart="8dp"
                     android:gravity="center">
 
                     <ImageButton
                         android:id="@+id/button_play_evento"
-                        android:layout_width="100dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/play_button"
                         android:textSize="24sp" />
 
                     <ImageButton
                         android:id="@+id/button_pause_evento"
-                        android:layout_width="100dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
                         android:src="@drawable/pause_button"
                         android:textSize="24sp" />
