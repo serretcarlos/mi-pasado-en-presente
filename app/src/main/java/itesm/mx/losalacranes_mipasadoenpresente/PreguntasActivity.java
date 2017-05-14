@@ -5,6 +5,8 @@ import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -75,7 +77,7 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
         dao = new DataBaseOperations(this);
         dao.open();
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.acierto);
+        mediaPlayer = MediaPlayer.create(this, R.raw.acierto4);
 
         listaFamilia = dao.getAllFamiliares(idUsuario);
         listaAmigos = dao.getAllAmigos(idUsuario);
@@ -115,6 +117,13 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
             update();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_editar, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
