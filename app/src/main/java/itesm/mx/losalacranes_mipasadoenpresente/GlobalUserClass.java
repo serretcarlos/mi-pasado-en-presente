@@ -8,6 +8,7 @@ import android.app.Application;
 
 public class GlobalUserClass extends Application {
     private Usuario user;
+    private int soundIndex = 0;
 
     private int sound = 1;
 
@@ -27,7 +28,9 @@ public class GlobalUserClass extends Application {
     public void setUser(Usuario user) {
         this.user = user;
     }
+   public int getSoundIndex(){return soundIndex;}
 
+   public void setSoundIndex(int index){this.soundIndex = index;}
 
 
 }

@@ -70,6 +70,7 @@ public class EventosActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == android.R.id.home){
+            dao.close();
             finish();
         }
         return super.onOptionsItemSelected(item);
