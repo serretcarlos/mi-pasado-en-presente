@@ -54,7 +54,7 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
             @Override
             public void onClick(View view) {
                 Intent intent =  new Intent(MenuActivity.this, ModificarUsuario.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -118,5 +118,12 @@ public class MenuActivity extends AppCompatActivity implements  View.OnClickList
 
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK){
+            finish();
+        }
+    }
 }
 
