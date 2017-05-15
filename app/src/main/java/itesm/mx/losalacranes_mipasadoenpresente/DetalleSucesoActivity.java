@@ -1,5 +1,7 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,6 +39,7 @@ public class DetalleSucesoActivity extends AppCompatActivity implements View.OnC
     TextView text_fecha;
     ImageView image_evento;
     private Handler myHandler = new Handler();
+    DataBaseOperations dao;
 
 
     @Override
@@ -46,6 +49,8 @@ public class DetalleSucesoActivity extends AppCompatActivity implements View.OnC
 
         Intent intent = getIntent();
         evento = (Evento)intent.getSerializableExtra("evento");
+        dao = new DataBaseOperations(this);
+        dao.open();
 
         text_nomb = (TextView) findViewById(R.id.text_evento);
         text_desc = (TextView) findViewById(R.id.text_descripcion);
@@ -100,6 +105,23 @@ public class DetalleSucesoActivity extends AppCompatActivity implements View.OnC
                 Intent intent = new Intent(this, ModificaEvento.class);
                 intent.putExtra("evento", evento);
                 startActivityForResult(intent, ActivityConstants.AGREGO_EVENTO);
+                break;
+            case R.id.menu_delete:
+                new AlertDialog.Builder(this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Eliminar suceso")
+                        .setMessage("¿Está seguro que desea eliminar este suceso?")
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dao.deleteEvento(evento.getIdEvento());
+                                Toast.makeText(getApplicationContext(), "Este suceso ha sido eliminado.", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
                 break;
         }
         return super.onOptionsItemSelected(item);
