@@ -1,5 +1,7 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -102,10 +104,22 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.menu_eliminar:
-                dao.deleteUsuario(usuarioActual.getIdUsuario());
-                Toast.makeText(getApplicationContext(), "El usuario se ha eliminado existosamente", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                new AlertDialog.Builder(this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Eliminar persona")
+                        .setMessage("¿Está seguro que desea eliminar esta persona de sus relaciones? Los cambios serán permanentes.")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dao.deleteUsuario(usuarioActual.getIdUsuario());
+                                Toast.makeText(getApplicationContext(), "Este usuario ha sido eliminado.", Toast.LENGTH_SHORT).show();
+                                setResult(1);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
                 break;
         }
         if(item.getItemId() == android.R.id.home){

@@ -1,5 +1,7 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,13 +41,16 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
     TextView text_frase;
     ImageView image_persona;
     Persona persona;
+    DataBaseOperations dao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_persona);
 
         Intent intent = getIntent();
-
+        dao = new DataBaseOperations(this);
+        dao.open();
         text_nomb = (TextView) findViewById(R.id.text_nombre);
         text_apellido = (TextView) findViewById(R.id.text_apellido);
         text_rel = (TextView) findViewById(R.id.text_relacion);
@@ -110,6 +115,24 @@ public class DetallePersonaActivity extends AppCompatActivity implements View.On
                 intent.putExtra("persona", persona);
                 startActivityForResult(intent, ActivityConstants.AGREGO_PERSONA);
                 break;
+            case R.id.menu_delete:
+                new AlertDialog.Builder(this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Eliminar persona")
+                        .setMessage("¿Está seguro que desea eliminar esta persona de sus relaciones?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dao.deletePersona(persona.getIdPersona());
+                                Toast.makeText(getApplicationContext(), "Esta persona ha sido eliminada", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
