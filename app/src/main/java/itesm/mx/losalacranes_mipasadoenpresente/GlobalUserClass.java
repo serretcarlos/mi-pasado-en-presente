@@ -10,6 +10,17 @@ public class GlobalUserClass extends Application {
     private Usuario user;
     private int soundIndex = 0;
 
+    private int sound = 1;
+
+
+    public int getSound() {
+        return sound;
+    }
+
+    public void setSound(int i) {
+        this.sound = i;
+    }
+
     public Usuario getUser() {
         return user;
     }
@@ -17,9 +28,9 @@ public class GlobalUserClass extends Application {
     public void setUser(Usuario user) {
         this.user = user;
     }
+   public int getSoundIndex(){return soundIndex;}
 
-    public int getSoundIndex(){return soundIndex;}
+   public void setSoundIndex(int index){this.soundIndex = index;}
 
-    public void setSoundIndex(int index){this.soundIndex = index;}
 
 }

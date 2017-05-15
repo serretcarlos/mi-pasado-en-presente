@@ -1,5 +1,6 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
@@ -50,6 +51,9 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
     int isUsedPersonal = 0;
     int opciones[] = new int[3];
 
+    GlobalUserClass globalUser;
+    int sonido;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,8 +80,22 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
 
         dao = new DataBaseOperations(this);
         dao.open();
+        
+        //celebración
+        globalUser = (GlobalUserClass) getApplicationContext();
+        sonido = globalUser.getSound();
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.acierto4);
+        if (sonido == 2){
+            mediaPlayer = MediaPlayer.create(this, R.raw.acierto2);
+            Toast.makeText(getApplicationContext(), "2", Toast.LENGTH_SHORT).show();
+        } else if (sonido == 3){
+            mediaPlayer = MediaPlayer.create(this, R.raw.acierto3);
+            Toast.makeText(getApplicationContext(), "3", Toast.LENGTH_SHORT).show();
+        } else {
+            mediaPlayer = MediaPlayer.create(this, R.raw.acierto);
+            Toast.makeText(getApplicationContext(), "1", Toast.LENGTH_SHORT).show();
+        }
+
 
         listaFamilia = dao.getAllFamiliares(idUsuario);
         listaAmigos = dao.getAllAmigos(idUsuario);
@@ -119,21 +137,44 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
 
     }
 
+    protected void onResume() {
+        globalUser = (GlobalUserClass) getApplicationContext();
+        sonido = globalUser.getSound();
+
+        super.onResume();
+        if (sonido == 2){
+            mediaPlayer = MediaPlayer.create(this, R.raw.acierto2);
+        } else if (sonido == 3){
+            mediaPlayer = MediaPlayer.create(this, R.raw.acierto3);
+        } else {
+            mediaPlayer = MediaPlayer.create(this, R.raw.acierto);
+        }
+
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_editar, menu);
+        inflater.inflate(R.menu.menu_sonidos, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-        if(item.getItemId() == android.R.id.home){
-            dao.close();
-            finish();
+      switch (item.getItemId()){
+            case android.R.id.home:
+                dao.close();
+                finish();
+                break;
+            case R.id.menu_selecciona_sonido:
+                Intent intent = new Intent(this, SeleccionSonidoActivity.class);
+                startActivity(intent);
+                break;
+
         }
         return super.onOptionsItemSelected(item);
     }
+
 
 
 

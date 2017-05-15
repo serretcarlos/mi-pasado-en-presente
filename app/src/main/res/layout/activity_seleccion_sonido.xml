@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="itesm.mx.losalacranes_mipasadoenpresente.SeleccionSonidoActivity">
+
+    <RelativeLayout
+        android:layout_width="395dp"
+        android:layout_height="587dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
+
+        <TextView
+            android:id="@+id/text_selecciona"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seleccionar sonido de acierto"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="177dp"
+            tools:layout_editor_absoluteY="16dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            />
+
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/text_selecciona"
+            android:layout_alignStart="@+id/text_selecciona">
+
+            <RadioButton
+                android:id="@+id/radioButton_s1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:layout_marginTop="70dp"
+                android:text="Sonido 1"
+                android:textSize="23sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton_s2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="47dp"
+                android:text="Sonido 2"
+                android:onClick="onRadioButtonClicked"
+                android:textSize="23sp" />
+
+            <RadioButton
+                android:id="@+id/radioButton_s3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sonido 3"
+                android:onClick="onRadioButtonClicked"
+                android:textSize="23sp"
+                android:layout_marginTop="46dp" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
