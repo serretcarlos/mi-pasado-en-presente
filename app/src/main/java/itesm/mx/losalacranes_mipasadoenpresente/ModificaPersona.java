@@ -43,7 +43,10 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
 
         Intent intent = getIntent();
         persona = (Persona) intent.getSerializableExtra("persona");
-
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         dao = new DataBaseOperations(this);
         dao.open();
         tvCancelar = (TextView) findViewById(R.id.text_cancelar_persona);
@@ -69,6 +72,7 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
         Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
         ivFoto.setImageBitmap(bmImage);
     }
+
 
 
     @Override
@@ -131,5 +135,14 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
         persona.setImagen(foto);
         dao.updatePersona(persona);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            dao.close();
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

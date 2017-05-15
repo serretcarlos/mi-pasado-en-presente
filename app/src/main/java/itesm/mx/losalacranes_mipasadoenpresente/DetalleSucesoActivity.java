@@ -52,6 +52,7 @@ public class DetalleSucesoActivity extends AppCompatActivity implements View.OnC
         dao = new DataBaseOperations(this);
         dao.open();
 
+
         text_nomb = (TextView) findViewById(R.id.text_evento);
         text_desc = (TextView) findViewById(R.id.text_descripcion);
         text_fecha = (TextView) findViewById(R.id.text_fecha);
