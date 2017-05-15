@@ -80,7 +80,7 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
 
         dao = new DataBaseOperations(this);
         dao.open();
-
+        
         //celebración
         globalUser = (GlobalUserClass) getApplicationContext();
         sonido = globalUser.getSound();
@@ -137,7 +137,6 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-    @Override
     protected void onResume() {
         globalUser = (GlobalUserClass) getApplicationContext();
         sonido = globalUser.getSound();
