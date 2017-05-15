@@ -65,9 +65,7 @@ public class DetalleHistoriaPersonalActivity extends AppCompatActivity implement
 
         //////////////////////////--AUDIO--/////////////////////////
 
-        mFileName = getExternalCacheDir().getAbsolutePath();
-        mFileName += "/audiorecordtest.3gp";
-
+        mFileName = evento.getSonido();
 
         //////////////////////////--AUDIO--/////////////////////////
         btn_pause.setEnabled(false);

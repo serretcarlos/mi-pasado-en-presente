@@ -70,6 +70,7 @@ public class SucesoActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
         if(item.getItemId() == android.R.id.home){
+            dao.close();
             finish();
         }
         return super.onOptionsItemSelected(item);

@@ -162,15 +162,16 @@ public class PreguntasActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
-
-        switch (item.getItemId()){
+      switch (item.getItemId()){
             case android.R.id.home:
+                dao.close();
                 finish();
                 break;
             case R.id.menu_selecciona_sonido:
                 Intent intent = new Intent(this, SeleccionSonidoActivity.class);
                 startActivity(intent);
                 break;
+
         }
         return super.onOptionsItemSelected(item);
     }

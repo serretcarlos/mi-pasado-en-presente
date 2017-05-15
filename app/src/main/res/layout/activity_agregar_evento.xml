@@ -39,25 +39,24 @@
 
 
 
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="8dp">
 
 
                     <Button
-
                         android:id="@+id/button_grabar_evento"
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
                         android:background="@color/colorPrimary"
                         android:text="Grabar Sonido"
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="16sp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="38dp" />
+                        android:layout_marginRight="5dp"/>
 
                     <Button
                         android:id="@+id/button_foto_evento"
@@ -69,11 +68,9 @@
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="16sp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="38dp" />
+                        android:layout_marginLeft="5dp"/>
 
-                </RelativeLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
