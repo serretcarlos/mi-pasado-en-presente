@@ -29,21 +29,37 @@
         <activity android:name=".ModificaEvento" />
         <activity android:name=".AgregarUsuarioActivity" />
         <activity android:name=".ModificarUsuario" />
-        <activity android:name=".DetallePersonaActivity"/>
+        <activity android:name=".DetallePersonaActivity" />
         <activity android:name=".DetalleAmigoActivity" />
         <activity android:name=".DetalleEventoActivity" />
         <activity android:name=".DetalleHistoriaPersonalActivity" />
         <activity android:name=".DetalleSucesoActivity" />
-        <activity android:name=".FamiliaActivity" android:theme="@style/AppThemeFamilia" android:label="Tu familia."/>
+        <activity
+            android:name=".FamiliaActivity"
+            android:label="Tu familia."
+            android:theme="@style/AppThemeFamilia" />
         <activity android:name=".PreguntasActivity" />
-        <activity android:name=".AmigosActivity" android:theme="@style/AppThemeAmigos" android:label="Tus amigos y conocidos."/>
-        <activity android:name=".EventosActivity" android:theme="@style/AppThemeEventos" android:label="Eventos en tu vida."/>
-        <activity android:name=".PersonalActivity" android:theme="@style/AppThemePersonal" android:label="Tu historia personal."/>
-        <activity android:name=".SucesoActivity" android:theme="@style/AppThemeSucesos" android:label="Sucesos históricos."/>
+        <activity
+            android:name=".AmigosActivity"
+            android:label="Tus amigos y conocidos."
+            android:theme="@style/AppThemeAmigos" />
+        <activity
+            android:name=".EventosActivity"
+            android:label="Eventos en tu vida."
+            android:theme="@style/AppThemeEventos" />
+        <activity
+            android:name=".PersonalActivity"
+            android:label="Tu historia personal."
+            android:theme="@style/AppThemePersonal" />
+        <activity
+            android:name=".SucesoActivity"
+            android:label="Sucesos históricos."
+            android:theme="@style/AppThemeSucesos" />
         <activity
             android:name=".MenuActivity"
             android:label="@string/title_activity_menu"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".SeleccionSonidoActivity"></activity>
     </application>
 
 </manifest>
