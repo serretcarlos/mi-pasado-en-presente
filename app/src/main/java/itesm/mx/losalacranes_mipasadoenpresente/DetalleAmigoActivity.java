@@ -125,7 +125,7 @@ public class DetalleAmigoActivity extends AppCompatActivity implements View.OnCl
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setTitle("Eliminar persona")
                         .setMessage("¿Está seguro que desea eliminar esta persona de sus relaciones?")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener()
                         {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {

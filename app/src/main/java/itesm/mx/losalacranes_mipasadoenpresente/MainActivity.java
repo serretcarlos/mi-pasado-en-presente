@@ -52,9 +52,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(this);
 
-
-
-
         ViewCompat.setNestedScrollingEnabled(gridView,true);
     }
 

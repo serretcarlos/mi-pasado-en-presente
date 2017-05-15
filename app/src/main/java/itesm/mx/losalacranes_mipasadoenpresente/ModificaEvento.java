@@ -68,13 +68,6 @@ public class ModificaEvento extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_elimina, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
     public void onClick(View v) {
         Intent intent;
         switch (v.getId()) {
