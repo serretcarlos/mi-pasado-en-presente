@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_preguntas"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="itesm.mx.losalacranes_mipasadoenpresente.PreguntasActivity">
+
+    <TextView
+        android:text="Pregunta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/text_pregunta"
+        android:textSize="60sp"/>
+
+    <TextView
+        android:text="Opcion A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_foto"
+        android:layout_centerHorizontal="true"
+        android:textSize="45sp"
+        android:id="@+id/text_opcion_A" />
+
+    <TextView
+        android:id="@+id/text_opcion_B"
+        android:text="Opcion B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_opcion_A"
+        android:layout_centerHorizontal="true"
+        android:textSize="45sp"/>
+
+    <TextView
+        android:text="Opcion C"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_opcion_B"
+        android:layout_centerHorizontal="true"
+        android:textSize="45sp"
+        android:id="@+id/text_opcion_C" />
+
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        app:srcCompat="@drawable/usuario"
+        android:layout_marginTop="30dp"
+        android:id="@+id/image_foto"
+        android:layout_below="@+id/text_pregunta"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"/>
+
+</RelativeLayout>
