@@ -70,12 +70,6 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
         ivFoto.setImageBitmap(bmImage);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_elimina, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
     @Override
     public void onClick(View v) {
