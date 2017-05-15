@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,7 +42,10 @@ public class ModificaEvento extends AppCompatActivity implements View.OnClickLis
 
         Intent intent = getIntent();
         evento = (Evento) intent.getSerializableExtra("evento");
-
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
         dao = new DataBaseOperations(this);
         dao.open();
 
@@ -65,13 +69,6 @@ public class ModificaEvento extends AppCompatActivity implements View.OnClickLis
         foto = evento.getImagen();
         Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
         ivFoto.setImageBitmap(bmImage);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_elimina, menu);
-        return super.onCreateOptionsMenu(menu);
     }
 
     @Override
@@ -131,5 +128,14 @@ public class ModificaEvento extends AppCompatActivity implements View.OnClickLis
         evento.setImagen(foto);
         dao.updateEvento(evento);
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        if(item.getItemId() == android.R.id.home){
+            dao.close();
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

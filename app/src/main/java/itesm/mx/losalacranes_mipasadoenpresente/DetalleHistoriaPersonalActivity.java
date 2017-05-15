@@ -1,11 +1,13 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -36,11 +38,15 @@ public class DetalleHistoriaPersonalActivity extends AppCompatActivity implement
     TextView text_desc;
     TextView text_fecha;
     ImageView image_evento;
+    DataBaseOperations dao;
+
     private Handler myHandler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detalle_historia_personal);
+        dao = new DataBaseOperations(this);
+        dao.open();
 
         Intent intent = getIntent();
         evento = (Evento)intent.getSerializableExtra("evento");
@@ -100,6 +106,23 @@ public class DetalleHistoriaPersonalActivity extends AppCompatActivity implement
                 Intent intent = new Intent(this, ModificaEvento.class);
                 intent.putExtra("evento", evento);
                 startActivityForResult(intent, ActivityConstants.AGREGO_EVENTO);
+                break;
+            case R.id.menu_delete:
+                new AlertDialog.Builder(this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Eliminar suceso")
+                        .setMessage("¿Está seguro que desea eliminar este suceso?")
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dao.deleteEvento(evento.getIdEvento());
+                                Toast.makeText(getApplicationContext(), "Este suceso ha sido eliminado.", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
                 break;
         }
         return super.onOptionsItemSelected(item);

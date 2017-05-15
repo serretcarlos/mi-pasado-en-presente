@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.provider.MediaStore;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -125,13 +124,13 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setTitle("Eliminar persona")
                         .setMessage("¿Está seguro que desea eliminar esta persona de sus relaciones? Los cambios serán permanentes.")
-                        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener()
                         {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 dao.deleteUsuario(usuarioActual.getIdUsuario());
                                 Toast.makeText(getApplicationContext(), "Este usuario ha sido eliminado.", Toast.LENGTH_SHORT).show();
-                                setResult(1);
+                                setResult(RESULT_OK);
                                 finish();
                             }
                         })
