@@ -1,11 +1,13 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,12 +36,14 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
     ImageView ivFoto;
     Button btnGuardar;
     Button btnFoto;
+    Button btnEliminar;
 
     DataBaseOperations dao;
     Usuario usuarioActual;
 
     int REQUEST_CODE = 1;
     int validaFoto = 0;
+    int eliminarUsuario = 0;
     byte[] foto = null;
 
     @Override
@@ -60,6 +64,7 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
         tvCancelar = (TextView) findViewById(R.id.text_cancelar_usuario);
         btnGuardar = (Button) findViewById(R.id.button_guardar_usuario);
         btnFoto = (Button) findViewById(R.id.button_foto_usuario);
+        btnEliminar = (Button) findViewById(R.id.button_eliminar);
 
         etNombre = (EditText) findViewById(R.id.edit_nombre_usuario);
         etApellido = (EditText) findViewById(R.id.edit_apellido_usuario);
@@ -74,6 +79,7 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
         tvCancelar.setOnClickListener(this);
         btnGuardar.setOnClickListener(this);
         btnFoto.setOnClickListener(this);
+        btnEliminar.setOnClickListener(this);
 
         etNombre.setText(usuarioActual.getNombre());
         etApellido.setText(usuarioActual.getApellido());
@@ -87,6 +93,17 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
         foto = usuarioActual.getImagen();
         Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
         ivFoto.setImageBitmap(bmImage);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        if(eliminarUsuario == 1){
+            dao.deleteUsuario(usuarioActual.getIdUsuario());
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -124,6 +141,7 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
         }
         if(item.getItemId() == android.R.id.home){
             finish();
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -141,7 +159,7 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
             case R.id.text_cancelar_usuario:
-                Toast.makeText(getApplicationContext(), "Operacion Cancelada", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Operación cancelada", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
             case R.id.button_foto_usuario:
@@ -150,6 +168,9 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
                 if(intent.resolveActivity(getPackageManager()) != null){
                     startActivityForResult(intent, REQUEST_CODE);
                 }
+                break;
+            case R.id.button_eliminar:
+                eliminaPopup();
                 break;
         }
     }
@@ -191,4 +212,38 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
         dao.updateUsuario(usuarioActual);
 
     }
+
+    public void eliminaPopup(){
+        btnEliminar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ModificarUsuario.this);
+                builder.setTitle("Eliminar?");
+                builder.setMessage("¿Está seguro que desea eliminar este usuario?");
+                builder.setCancelable(false);
+
+                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        dao.deleteUsuario(usuarioActual.getIdUsuario());
+                        eliminarUsuario = 1;
+                    }
+                });
+
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        Toast.makeText(getApplicationContext(), "Operación cancelada", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                AlertDialog alert = builder.create();
+                alert.show();
+            }
+        });
+    }
+
 }
