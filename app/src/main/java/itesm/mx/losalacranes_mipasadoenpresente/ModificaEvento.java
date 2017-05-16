@@ -181,6 +181,7 @@ public class ModificaEvento extends AppCompatActivity implements View.OnClickLis
 
         if (grabarAudio == 1) {
             evento.setSonido(mFileName);
+            ((GlobalUserClass) this.getApplication()).setSoundIndex(indexAudio+1);
         } else {
             evento.setSonido(audioActual);
         }

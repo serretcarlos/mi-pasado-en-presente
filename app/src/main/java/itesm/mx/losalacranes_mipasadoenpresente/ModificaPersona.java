@@ -185,6 +185,7 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
 
         if(grabarAudio == 1){
             persona.setSonido(mFileName);
+            ((GlobalUserClass) this.getApplication()).setSoundIndex(indexAudio+1);
         } else {
             persona.setSonido(audioActual);
         }
