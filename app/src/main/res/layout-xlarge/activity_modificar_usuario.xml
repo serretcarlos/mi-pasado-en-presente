@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -9,10 +9,9 @@
     android:layout_margin="12dp">
 
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp">
 
         <LinearLayout
@@ -20,19 +19,18 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp">
+            android:layout_marginTop="45dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/foto_layout"
                 android:orientation="vertical"
-                android:layout_gravity="center"
-                android:layout_marginTop="45dp">
+                android:gravity="center">
 
                 <ImageView
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
                     android:src="@drawable/persona"
                     android:id="@+id/image_usuario"
                     android:scaleType="centerCrop"/>
@@ -44,17 +42,18 @@
                     android:textAllCaps="false"
                     android:background="@color/colorPrimary"
                     android:textColor="#fff"
-                    android:text="Tomar Foto"
-                    android:textSize="16sp"
+                    android:text=" Tomar Foto "
+                    android:textSize="32sp"
                     android:layout_gravity="center"
                     android:layout_marginTop="10dp"/>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="10dp">
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -183,7 +182,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:weightSum="1">
+                    android:weightSum="1"
+                    android:layout_marginTop="10dp">
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
                         android:layout_weight=".5"
                         android:textAlignment="center"
                         android:text="@string/cancelar"
-                        android:textSize="16sp"
+                        android:textSize="32sp"
                         />
 
                     <Button
@@ -203,7 +203,7 @@
                         android:text="@string/guardar"
                         android:textAllCaps="false"
                         android:textColor="#fff"
-                        android:textSize="16sp" />
+                        android:textSize="32sp" />
 
                 </LinearLayout>
 
@@ -211,6 +211,6 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>

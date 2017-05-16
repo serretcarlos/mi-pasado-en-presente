@@ -47,7 +47,6 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
                     android:layout_marginTop="75dp"
-
                     card_view:cardCornerRadius="4dp">
 
                     <RelativeLayout
@@ -61,7 +60,7 @@
                             android:layout_height="match_parent"
                             android:gravity="start|center_vertical"
                             android:text="Familia"
-                            android:textSize="23sp"
+                            android:textSize="38sp"
                             android:textColor="#ffffff"
                             android:id="@+id/text_familia"
                             android:layout_alignParentTop="true"
@@ -102,7 +101,7 @@
                             android:layout_height="match_parent"
                             android:gravity="start|center_vertical"
                             android:text="Amigos y conocidos"
-                            android:textSize="23sp"
+                            android:textSize="38sp"
                             android:id="@+id/text_amigos"
                             android:textColor="#ffffff"
                             android:layout_toEndOf="@+id/image_amigos"/>
@@ -127,10 +126,8 @@
                     android:id="@+id/card_view3"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/card_size"
-
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-
                     card_view:cardCornerRadius="4dp">
 
                     <RelativeLayout
@@ -143,7 +140,7 @@
                             android:layout_height="match_parent"
                             android:gravity="start|center_vertical"
                             android:text="Eventos relevantes"
-                            android:textSize="23sp"
+                            android:textSize="38sp"
                             android:id="@+id/text_eventos_relevantes"
                             android:textColor="#ffffff"
                             android:layout_toEndOf="@+id/image_historia"/>
@@ -182,7 +179,7 @@
                             android:layout_height="match_parent"
                             android:gravity="start|center_vertical"
                             android:text="Sucesos históricos"
-                            android:textSize="23sp"
+                            android:textSize="38sp"
                             android:id="@+id/text_sucesos_historicos"
                             android:textColor="#ffffff"
                             android:layout_toEndOf="@+id/image_eventos"/>
@@ -207,10 +204,8 @@
                     android:id="@+id/card_view6"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/card_size"
-
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-
                     card_view:cardCornerRadius="4dp">
 
                     <RelativeLayout
@@ -224,7 +219,7 @@
                             android:layout_height="match_parent"
                             android:gravity="start|center_vertical"
                             android:text="Historia personal"
-                            android:textSize="23sp"
+                            android:textSize="38sp"
                             android:id="@+id/text_mi_historia"
                             android:textColor="#ffffff"
                             android:layout_toEndOf="@+id/image_personal"/>
@@ -249,7 +244,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/card_size"
                     android:layout_margin="15dp"
-
                     card_view:cardCornerRadius="4dp">
 
                     <RelativeLayout
@@ -263,7 +257,7 @@
                             android:layout_height="match_parent"
                             android:gravity="start|center_vertical"
                             android:text="Sección de preguntas"
-                            android:textSize="23sp"
+                            android:textSize="38sp"
                             android:id="@+id/text_preguntas"
                             android:textColor="#ffffff"
                             android:layout_toEndOf="@+id/image_preguntas"/>

@@ -5,19 +5,19 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="15dp">
 
         <TextView
             android:id="@+id/text_selecciona"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="30dp"
             android:text="Seleccionar sonido de acierto"
-            android:textSize="36sp"
+            android:textSize="50sp"
             android:textStyle="bold" />
-
 
 
         <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
@@ -32,27 +32,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:onClick="onRadioButtonClicked"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="80dp"
                 android:text="Sonido 1"
-                android:textSize="33sp" />
+                android:textSize="50sp" />
 
             <RadioButton
                 android:id="@+id/radioButton_s2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="47dp"
+                android:layout_marginTop="60dp"
                 android:text="Sonido 2"
                 android:onClick="onRadioButtonClicked"
-                android:textSize="33sp" />
+                android:textSize="50sp" />
 
             <RadioButton
                 android:id="@+id/radioButton_s3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="46dp"
+                android:layout_marginTop="60dp"
                 android:text="Sonido 3"
                 android:onClick="onRadioButtonClicked"
-                android:textSize="33sp" />
+                android:textSize="50sp" />
         </RadioGroup>
 
     </RelativeLayout>
