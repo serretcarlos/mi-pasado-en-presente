@@ -51,6 +51,7 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
 
     int REQUEST_CODE = 1;
     int validaFoto;
+    int grabarAudio = 0;
     byte[] foto = null;
     long idUsuario;
     Usuario usuarioActual;
@@ -124,7 +125,7 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
                 break;
             /////////////////////////--AUDIO--/////////////////////////
             case R.id.button_grabar_evento:
-
+                grabarAudio = 1;
                 onRecord(mStartRecording);
                 if (mStartRecording) {
                     RecordButton.setText("Parar");
@@ -179,6 +180,10 @@ public class AgregarEvento extends AppCompatActivity implements View.OnClickList
         }
 
         if(validaFoto == 0){
+            flag = false;
+        }
+
+        if(grabarAudio == 0){
             flag = false;
         }
 

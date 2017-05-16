@@ -55,12 +55,12 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
 
     int REQUEST_CODE = 1;
     int validaFoto = 0;
+    int grabarAudio = 0;
     byte[] foto = null;
     long idUsuario;
     Usuario usuarioActual;
     String tipo;
     int indexAudio;
-    int tipoAudio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +130,7 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
                 break;
             /////////////////////////--AUDIO--/////////////////////////
             case R.id.button_grabar:
-                tipoAudio = 1;
+                grabarAudio = 1;
                 onRecord(mStartRecording);
                 if (mStartRecording) {
                     RecordButton.setText("Parar");
@@ -185,6 +185,10 @@ public class AgregarPersona extends AppCompatActivity implements View.OnClickLis
         }
 
         if(validaFoto == 0){
+            flag = false;
+        }
+
+        if(grabarAudio == 0){
             flag = false;
         }
 

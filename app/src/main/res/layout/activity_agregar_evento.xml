@@ -44,29 +44,29 @@
                     android:gravity="center"
                     android:layout_marginTop="8dp">
 
-
-                    <Button
-                        android:id="@+id/button_grabar_evento"
-                        android:layout_width="110dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/colorPrimary"
-                        android:text="Grabar Sonido"
-                        android:textAllCaps="false"
-                        android:textColor="#fff"
-                        android:textSize="16sp"
-                        android:layout_marginRight="5dp"/>
-
                     <Button
                         android:id="@+id/button_foto_evento"
                         android:layout_width="110dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@color/colorPrimary"
-                        android:text="Tomar Foto"
+                        android:text=" Tomar Foto "
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="16sp"
+                        android:layout_marginRight="5dp"/>
+
+                    <Button
+                        android:id="@+id/button_grabar_evento"
+                        android:layout_width="110dp"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text=" Grabar Sonido "
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="16sp"
                         android:layout_marginLeft="5dp"/>
+
 
                 </LinearLayout>
 

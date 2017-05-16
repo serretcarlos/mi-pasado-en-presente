@@ -462,13 +462,13 @@ public class DataBaseOperations {
         boolean result = false;
         try {
             ContentValues values = new ContentValues();
-            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_NOMBRE, persona.getNombre());
-            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_APELLIDO, persona.getApellido());
-            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_IMAGEN, persona.getImagen());
-            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_FRASE, persona.getFrase());
-            values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO, persona.getSonido());
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_TITULO, evento.getTitulo());
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_FECHA, evento.getFecha());
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_IMAGEN, evento.getImagen());
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_DESCRIPCION, evento.getDescripcion());
+            values.put(DataBaseSchema.EventoTable.COLUMN_NAME_SONIDO, evento.getSonido());
             db.update(DataBaseSchema.UsuarioTable.TABLE_NAME, values, DataBaseSchema.PersonaTable._ID +
-                    " = ? ", new String[]{String.valueOf(persona.getIdPersona())});
+                    " = ? ", new String[]{String.valueOf(evento.getIdEvento())});
 
             result = true;
         } catch (SQLiteException e){

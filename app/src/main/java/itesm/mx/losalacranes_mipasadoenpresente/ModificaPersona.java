@@ -1,11 +1,17 @@
 package itesm.mx.losalacranes_mipasadoenpresente;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaRecorder;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class ModificaPersona extends AppCompatActivity implements View.OnClickListener{
 
@@ -29,17 +36,38 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
     Button btnGuardar;
     Button btnFoto;
 
+    //////////////////////////--AUDIO--/////////////////////////
+    boolean mStartRecording = true;
+    private static final String LOG_TAG = "AudioRecordTest";
+    private static final int REQUEST_RECORD_AUDIO_PERMISSION = 200;
+    private static String mFileName = null;
+
+    private Button RecordButton;
+    private MediaRecorder mRecorder = null;
+
+    // Requesting permission to RECORD_AUDIO
+    private boolean permissionToRecordAccepted = false;
+    private String [] permissions = {Manifest.permission.RECORD_AUDIO};
+
+    //////////////////////////--AUDIO--/////////////////////////
+
     DataBaseOperations dao;
 
     int REQUEST_CODE = 1;
     int validaFoto = 0;
+    int indexAudio;
+    int grabarAudio = 0;
+    String audioActual;
     byte[] foto = null;
     Persona persona;
+    GlobalUserClass globalUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modifica_persona);
+        globalUser = (GlobalUserClass) getApplicationContext();
+        indexAudio = globalUser.getSoundIndex();
 
         Intent intent = getIntent();
         persona = (Persona) intent.getSerializableExtra("persona");
@@ -59,6 +87,18 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
         etRelacion = (EditText) findViewById(R.id.edit_tipo_persona);
         ivFoto = (ImageView) findViewById(R.id.image_persona);
 
+        //////////////////////////--AUDIO--/////////////////////////
+        RecordButton = (Button) findViewById(R.id.button_grabar);
+        mFileName = getExternalCacheDir().getAbsolutePath();
+        mFileName += "/" + "audio" + globalUser.getUser().getIdUsuario() + indexAudio + ".3gp";
+        // mFileName = Environment.getExternalStorageDirectory().getAbsolutePath()+ File.separator + "raw"+ File.separator + "myFile.3gp";
+        //mFileName += "/audiorecordtest.3gp";
+
+        ActivityCompat.requestPermissions(this, permissions, REQUEST_RECORD_AUDIO_PERMISSION);
+
+        RecordButton.setOnClickListener(this);
+        //////////////////////////--AUDIO--/////////////////////////
+
         tvCancelar.setOnClickListener(this);
         btnGuardar.setOnClickListener(this);
         btnFoto.setOnClickListener(this);
@@ -68,6 +108,7 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
         etFrase.setText(String.valueOf(persona.getFrase()));
         etRelacion.setText(persona.getRelacion());
 
+        audioActual = persona.getSonido();
         foto = persona.getImagen();
         Bitmap bmImage = BitmapFactory.decodeByteArray(foto, 0, foto.length);
         ivFoto.setImageBitmap(bmImage);
@@ -91,6 +132,20 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
                 Toast.makeText(getApplicationContext(), "Operacion Cancelada", Toast.LENGTH_SHORT).show();
                 finish();
                 break;
+            /////////////////////////--AUDIO--/////////////////////////
+            case R.id.button_grabar:
+                grabarAudio = 1;
+
+                onRecord(mStartRecording);
+                if (mStartRecording) {
+                    RecordButton.setText("Parar");
+                } else {
+                    RecordButton.setText("Grabar Sonido");
+                }
+                mStartRecording = !mStartRecording;
+
+                break;
+            /////////////////////////--AUDIO--/////////////////////////
             case R.id.button_foto_persona:
                 intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -128,6 +183,12 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
         String frase = etFrase.getText().toString();
         String relacion = etRelacion.getText().toString();
 
+        if(grabarAudio == 1){
+            persona.setSonido(mFileName);
+        } else {
+            persona.setSonido(audioActual);
+        }
+
         persona.setNombre(nombre);
         persona.setApellido(apellido);
         persona.setFrase(frase);
@@ -145,4 +206,54 @@ public class ModificaPersona extends AppCompatActivity implements View.OnClickLi
         }
         return super.onOptionsItemSelected(item);
     }
+
+    //////////////////////////--AUDIO--/////////////////////////
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case REQUEST_RECORD_AUDIO_PERMISSION:
+                permissionToRecordAccepted  = grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                break;
+
+        }
+        if (!permissionToRecordAccepted ) finish();
+
+    }
+    private void onRecord(boolean start) {
+        if (start) {
+            startRecording();
+        } else {
+            stopRecording();
+        }
+    }
+
+    private void startRecording() {
+        mRecorder = new MediaRecorder();
+        mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        mRecorder.setOutputFile(mFileName);
+        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+
+        try {
+            mRecorder.prepare();
+        } catch (IOException e) {
+            Log.e(LOG_TAG, "prepare() failed");
+        }
+
+        mRecorder.start();
+        Toast.makeText(getApplicationContext(), "Grabando", Toast.LENGTH_SHORT).show();
+    }
+
+    private void stopRecording() {
+        mRecorder.stop();
+        mRecorder.release();
+        Toast.makeText(getApplicationContext(), "Sonido Guardado", Toast.LENGTH_SHORT).show();
+        mRecorder = null;
+    }
+
+
+
+    //////////////////////////--AUDIO--/////////////////////////
 }

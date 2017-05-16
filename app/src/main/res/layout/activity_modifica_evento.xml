@@ -21,27 +21,15 @@
             android:orientation="vertical"
             android:layout_gravity="center">
 
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/button_eliminar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
-                    android:background="@color/eliminar"
-                    android:text="Eliminar"
-                    android:textColor="#fff"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/foto_layout"
                 android:orientation="vertical"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp">
+                android:layout_marginTop="10dp"
+                android:gravity="center">
 
                 <ImageView
                     android:layout_width="150dp"
@@ -50,17 +38,40 @@
                     android:id="@+id/image_evento"
                     android:scaleType="centerCrop"/>
 
-                <Button
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/button_foto_evento"
-                    android:textAllCaps="false"
-                    android:background="@color/colorPrimary"
-                    android:textColor="#fff"
-                    android:text="Tomar Foto"
-                    android:textSize="16sp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"/>
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button_foto_evento"
+                        android:textAllCaps="false"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#fff"
+                        android:text=" Tomar Foto "
+                        android:textSize="16sp"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="5dp"/>
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/button_grabar_evento"
+                        android:textAllCaps="false"
+                        android:background="@color/colorPrimary"
+                        android:textColor="#fff"
+                        android:text=" Grabar Audio "
+                        android:textSize="16sp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="5dp"/>
+
+                </LinearLayout>
+
+
 
             </LinearLayout>
 
