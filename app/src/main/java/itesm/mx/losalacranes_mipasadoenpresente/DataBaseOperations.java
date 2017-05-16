@@ -101,13 +101,23 @@ public class DataBaseOperations {
                 db.delete(DataBaseSchema.UsuarioTable.TABLE_NAME,
                         DataBaseSchema.UsuarioTable._ID + " = ?",
                         new String[]{String.valueOf(idUser)});
-                db.execSQL("Delete from " + DataBaseSchema.PersonaTable.TABLE_NAME + " WHERE " +
+                String deleteAmigos = "Delete from " + DataBaseSchema.PersonaTable.TABLE_NAME + " WHERE " +
                         DataBaseSchema.PersonaTable._ID + " IN ( SELECT " +
                         DataBaseSchema.RelacionUsuarioPersona.COLUMN_NAME_ID_PERSONA + " FROM " +
                         DataBaseSchema.RelacionUsuarioPersona.TABLE_NAME + " WHERE " +
-                        DataBaseSchema.RelacionUsuarioPersona.COLUMN_NAME_ID_USUARIO + " = " + id);
+                        DataBaseSchema.RelacionUsuarioPersona.COLUMN_NAME_ID_USUARIO + " = " + id + ")";
+                db.execSQL(deleteAmigos);
+                String deleteEventos = "Delete from " + DataBaseSchema.EventoTable.TABLE_NAME + " WHERE "+
+                        DataBaseSchema.EventoTable._ID + " IN ( SELECT " +
+                        DataBaseSchema.RelacionUsuarioEvento.COLUMN_NAME_ID_EVENTO + " FROM " +
+                        DataBaseSchema.RelacionUsuarioEvento.TABLE_NAME + " WHERE " +
+                        DataBaseSchema.RelacionUsuarioEvento.COLUMN_NAME_ID_USUARIO + " = " + id + ")";
+                db.execSQL(deleteEventos);
+                db.execSQL("DELETE FROM " + DataBaseSchema.RelacionUsuarioEvento.TABLE_NAME +
+                        " WHERE " + DataBaseSchema.RelacionUsuarioPersona.COLUMN_NAME_ID_USUARIO +
+                        " = " + id);
                 db.execSQL("DELETE FROM " + DataBaseSchema.RelacionUsuarioPersona.TABLE_NAME +
-                        "WHERE " + DataBaseSchema.RelacionUsuarioPersona.COLUMN_NAME_ID_USUARIO +
+                        " WHERE " + DataBaseSchema.RelacionUsuarioPersona.COLUMN_NAME_ID_USUARIO +
                         " = " + id);
                 result = true;
             }
@@ -190,8 +200,6 @@ public class DataBaseOperations {
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_TIPO, persona.getRelacion());
             values.put(DataBaseSchema.PersonaTable.COLUMN_NAME_SONIDO, persona.getSonido());
             newID = db.insert(DataBaseSchema.PersonaTable.TABLE_NAME, null, values);
-
-
             AgregarRelacionPersona(idUsuario, newID, tipo);
         } catch(SQLiteException e){
             Log.e("SQLADD", e.toString());
