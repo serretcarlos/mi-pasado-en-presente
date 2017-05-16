@@ -60,7 +60,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/colorPrimary"
-                        android:text=" Grabar Sonido "
+                        android:text=" Grabar Audio "
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="32sp"
@@ -112,7 +112,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Relacion con usuario"
+                        android:hint="Relación con usuario"
                         android:ems="10"
                         android:id="@+id/edit_tipo_persona"
                         android:layout_weight="1" />

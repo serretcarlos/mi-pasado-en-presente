@@ -59,7 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/colorPrimary"
-                        android:text=" Grabar Sonido "
+                        android:text=" Grabar Audio "
                         android:textAllCaps="false"
                         android:textColor="#fff"
                         android:textSize="32sp"
@@ -84,7 +84,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
-                        android:hint="Titulo del evento"
+                        android:hint="Título del evento"
                         android:ems="10"
                         android:id="@+id/edit_titulo_evento"
                         android:layout_weight="1" />
@@ -107,16 +107,17 @@
 
 
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/til_desc_evento"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/til_desc_evento">
+                    android:layout_height="wrap_content">
+
                     <EditText
+                        android:id="@+id/edit_desc_evento"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Descripcion del evento"
+                        android:layout_weight="1"
                         android:ems="10"
-                        android:id="@+id/edit_desc_evento"
-                        android:layout_weight="1" />
+                        android:hint="Descripción del evento" />
                 </android.support.design.widget.TextInputLayout>
 
             </LinearLayout>

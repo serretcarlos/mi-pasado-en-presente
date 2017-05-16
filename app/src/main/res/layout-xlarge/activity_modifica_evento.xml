@@ -87,7 +87,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
-                        android:hint="Titulo del evento"
+                        android:hint="Título del evento"
                         android:ems="10"
                         android:id="@+id/edit_titulo_evento"
                         android:layout_weight="1" />
@@ -116,7 +116,7 @@
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Descripcion del evento"
+                        android:hint="Descripción del evento"
                         android:ems="10"
                         android:id="@+id/edit_desc_evento"
                         android:layout_weight="1" />

@@ -50,7 +50,7 @@
                 android:id="@+id/image_opcion_a"/>
 
             <TextView
-                android:text="Opcion A"
+                android:text="Opción A"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="60sp"
@@ -74,7 +74,7 @@
 
             <TextView
                 android:id="@+id/text_opcion_B"
-                android:text="Opcion B"
+                android:text="Opción B"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="60sp"
@@ -95,7 +95,7 @@
                 android:id="@+id/image_opcion_c"/>
 
             <TextView
-                android:text="Opcion C"
+                android:text="Opción C"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="60sp"

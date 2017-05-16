@@ -93,7 +93,7 @@
                         android:id="@+id/text_relacion_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Relacion: "
+                        android:hint="Relación: "
                         android:textSize="45sp"
                         android:textStyle="bold" />
 
@@ -101,7 +101,7 @@
                         android:id="@+id/text_relacion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Relacion "
+                        android:hint="Relación "
                         android:textSize="40sp" />
 
                 </LinearLayout>

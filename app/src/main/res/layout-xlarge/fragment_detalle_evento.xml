@@ -41,7 +41,7 @@
                         android:id="@+id/text_evento_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Titulo: "
+                        android:hint="Título: "
                         android:textSize="45sp"
                         android:textStyle="bold" />
 
@@ -95,7 +95,7 @@
                         android:id="@+id/text_descripcion_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="Descripcion: "
+                        android:hint="Descripción: "
                         android:textSize="45sp"
                         android:textStyle="bold" />
 
@@ -103,7 +103,7 @@
                         android:id="@+id/text_descripcion"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:hint="descripcion"
+                        android:hint="descripción"
                         android:textSize="40sp"
                         android:textStyle="italic" />
 
