@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,90 +8,85 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="12dp">
 
-    <ScrollView
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginTop="45dp">
 
             <LinearLayout
-                android:id="@+id/foto_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="vertical">
+                android:id="@+id/foto_layout"
+                android:orientation="vertical"
+                android:layout_gravity="center">
 
                 <ImageView
-                    android:id="@+id/image_persona"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_marginBottom="8dp"
-                    android:scaleType="centerCrop"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    app:srcCompat="@mipmap/ic_launcher"
+                    android:id="@+id/image_evento"
                     android:layout_gravity="center"
-                    android:src="@drawable/persona" />
+                    android:scaleType="centerCrop" />
 
-
-
-                <RelativeLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:gravity="center_horizontal">
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
 
                     <Button
-                        android:id="@+id/button_foto_persona"
-                        android:layout_width="220dp"
+                        android:id="@+id/button_foto_evento"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:background="@color/colorPrimary"
-                        android:text="Tomar Foto"
+                        android:text=" Tomar Foto "
                         android:textAllCaps="false"
                         android:textColor="#fff"
-                        android:textSize="16sp"
-                        android:layout_marginStart="200dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginRight="10dp"/>
-                    <Button
-                        android:id="@+id/button_grabar"
-                        android:layout_width="220dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@color/colorPrimary"
-                        android:text="Grabar Sonido"
-                        android:textAllCaps="false"
-                        android:textColor="#fff"
-                        android:textSize="16sp"
-                        android:layout_marginEnd="200dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true" />
+                        android:textSize="32sp"
+                        android:layout_marginRight="5dp"/>
 
-                </RelativeLayout>
+                    <Button
+                        android:id="@+id/button_grabar_evento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorPrimary"
+                        android:text=" Grabar Sonido "
+                        android:textAllCaps="false"
+                        android:textColor="#fff"
+                        android:textSize="32sp"
+                        android:layout_marginLeft="5dp"/>
+
+
+                </LinearLayout>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="362dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_gravity="center_horizontal">
+                android:layout_marginTop="10dp">
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/til_nombre_persona">
+                    android:id="@+id/til_titulo_evento">
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
-                        android:hint="Nombre(s)"
+                        android:hint="Titulo del evento"
                         android:ems="10"
-                        android:id="@+id/edit_nombre_persona"
+                        android:id="@+id/edit_titulo_evento"
                         android:layout_weight="1" />
 
                 </android.support.design.widget.TextInputLayout>
@@ -99,40 +94,28 @@
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/til_apellido_persona">
+                    android:id="@+id/til_fecha_evento">
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPersonName"
-                        android:hint="Apellidos"
+                        android:hint="Fecha"
                         android:ems="10"
-                        android:id="@+id/edit_apellido_persona"
+                        android:id="@+id/edit_fecha_evento"
                         android:layout_weight="1" />
                 </android.support.design.widget.TextInputLayout>
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/til_tipo_persona">
+                    android:id="@+id/til_desc_evento">
                     <EditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Relacion con usuario"
+                        android:hint="Descripcion del evento"
                         android:ems="10"
-                        android:id="@+id/edit_tipo_persona"
-                        android:layout_weight="1" />
-                </android.support.design.widget.TextInputLayout>
-
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/til_frase_persona">
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Frase"
-                        android:ems="10"
-                        android:id="@+id/edit_frase_persona"
+                        android:id="@+id/edit_desc_evento"
                         android:layout_weight="1" />
                 </android.support.design.widget.TextInputLayout>
 
@@ -144,31 +127,31 @@
                 android:weightSum="1"
                 android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="10dp">
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/text_cancelar_persona"
+                    android:id="@+id/text_cancelar_evento"
                     android:layout_weight=".5"
                     android:textAlignment="center"
                     android:text="@string/cancelar"
-                    android:textSize="16sp" />
+                    android:textSize="32sp" />
 
                 <Button
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:id="@+id/button_guardar_persona"
+                    android:id="@+id/button_guardar_evento"
                     android:layout_weight=".5"
                     android:textAllCaps="false"
                     android:background="@color/colorPrimary"
                     android:textColor="#fff"
                     android:text="@string/guardar"
-                    android:textSize="16sp"/>
+                    android:textSize="32sp"/>
 
             </LinearLayout>
 
         </LinearLayout>
 
-    </ScrollView>
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>

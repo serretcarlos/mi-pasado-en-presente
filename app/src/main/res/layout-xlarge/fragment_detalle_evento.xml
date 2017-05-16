@@ -16,14 +16,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="45dp">
 
                 <ImageView
                     android:id="@+id/image_detalle_evento"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
                     android:layout_gravity="center_horizontal|top"
                     android:layout_marginTop="10dp"
                     android:scaleType="centerCrop"
@@ -43,7 +42,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Titulo: "
-                        android:textSize="35sp"
+                        android:textSize="45sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -51,7 +50,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Mi evento "
-                        android:textSize="34sp" />
+                        android:textSize="40sp" />
 
                 </LinearLayout>
 
@@ -70,7 +69,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Fecha: "
-                        android:textSize="35sp"
+                        android:textSize="45sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -78,7 +77,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="00/00/00"
-                        android:textSize="34sp" />
+                        android:textSize="40sp" />
 
                 </LinearLayout>
 
@@ -97,7 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Descripcion: "
-                        android:textSize="35sp"
+                        android:textSize="45sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -105,7 +104,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="descripcion"
-                        android:textSize="34sp"
+                        android:textSize="40sp"
                         android:textStyle="italic" />
 
                 </LinearLayout>
@@ -118,22 +117,23 @@
                     android:layout_below="@+id/LinearLayout03"
                     android:layout_marginTop="40dp"
                     android:orientation="horizontal"
-                    android:layout_marginStart="8dp"
                     android:gravity="center">
 
                     <ImageButton
                         android:id="@+id/button_play_evento"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="90dp"
                         android:src="@drawable/play_button"
-                        android:textSize="24sp" />
+                        android:textSize="48sp"
+                        android:layout_marginEnd="10dp"/>
 
                     <ImageButton
                         android:id="@+id/button_pause_evento"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="90dp"
                         android:src="@drawable/pause_button"
-                        android:textSize="24sp" />
+                        android:textSize="48sp"
+                        android:layout_marginStart="10dp"/>
                 </LinearLayout>
 
 

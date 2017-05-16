@@ -23,7 +23,7 @@
     <ImageView
         android:layout_width="220dp"
         android:layout_height="220dp"
-        app:srcCompat="@drawable/usuario"
+        app:srcCompat="@drawable/persona"
         android:id="@+id/image_foto"
         android:layout_below="@+id/text_pregunta"
         android:layout_centerHorizontal="true" />

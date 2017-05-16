@@ -17,18 +17,16 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginTop="45dp">
 
                 <ImageView
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
                     android:src="@mipmap/ic_launcher"
                     android:id="@+id/image_persona"
                     android:scaleType="centerCrop"
-                    android:layout_gravity="center_horizontal|top"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
+                    android:layout_gravity="center_horizontal|top"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -37,20 +35,20 @@
                     android:layout_marginTop="15dp"
                     android:orientation="horizontal"
                     android:id="@+id/LinearLayout01"
-                    android:layout_marginStart="8dp">
+                    android:layout_marginStart="10dp">
 
                     <TextView
                         android:id="@+id/text_nombre_tag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Nombre: "
-                        android:textSize="35sp"
-                        android:textStyle="bold" />
+                        android:textSize="45sp"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="34sp"
+                        android:textSize="40sp"
                         android:id="@+id/text_nombre"
                         android:hint="Nombre "/>
 
@@ -70,12 +68,12 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Apellido: "
-                        android:textSize="35sp"
+                        android:textSize="45sp"
                         android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="34sp"
+                        android:textSize="40sp"
                         android:id="@+id/text_apellido"
                         android:hint="Apellido" />
 
@@ -96,7 +94,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Relacion: "
-                        android:textSize="35sp"
+                        android:textSize="45sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -104,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Relacion "
-                        android:textSize="34sp" />
+                        android:textSize="40sp" />
 
                 </LinearLayout>
 
@@ -123,7 +121,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="Frase: "
-                        android:textSize="35sp"
+                        android:textSize="45sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -131,7 +129,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:hint="mensaje "
-                        android:textSize="34sp"
+                        android:textSize="40sp"
                         android:textStyle="italic" />
 
                 </LinearLayout>
@@ -148,18 +146,19 @@
 
                     <ImageButton
                         android:id="@+id/button_play"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="90dp"
                         android:src="@drawable/play_button"
-                        android:textSize="24sp"
-                        android:layout_marginStart="8dp"/>
+                        android:textSize="48sp"
+                        android:layout_marginEnd="10dp"/>
 
                     <ImageButton
                         android:id="@+id/button_pause"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="200dp"
+                        android:layout_height="90dp"
                         android:src="@drawable/pause_button"
-                        android:textSize="24sp" />
+                        android:textSize="48sp"
+                        android:layout_marginStart="10dp"/>
                 </LinearLayout>
 
 
