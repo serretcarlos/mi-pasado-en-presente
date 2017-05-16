@@ -120,7 +120,7 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
                 new AlertDialog.Builder(this)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setTitle("Eliminar persona")
-                        .setMessage("¿Está seguro que desea eliminar esta persona de sus relaciones? Los cambios serán permanentes.")
+                        .setMessage("¿Está seguro que desea eliminar este usuario del sistema? Los cambios serán permanentes.")
                         .setPositiveButton("Sí", new DialogInterface.OnClickListener()
                         {
                             @Override
