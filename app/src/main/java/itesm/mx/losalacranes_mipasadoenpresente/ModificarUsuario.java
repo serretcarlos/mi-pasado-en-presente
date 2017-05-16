@@ -35,7 +35,6 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
     ImageView ivFoto;
     Button btnGuardar;
     Button btnFoto;
-    Button btnEliminar;
 
     DataBaseOperations dao;
     Usuario usuarioActual;
@@ -63,7 +62,6 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
         tvCancelar = (TextView) findViewById(R.id.text_cancelar_usuario);
         btnGuardar = (Button) findViewById(R.id.button_guardar_usuario);
         btnFoto = (Button) findViewById(R.id.button_foto_usuario);
-        btnEliminar = (Button) findViewById(R.id.button_eliminar);
 
         etNombre = (EditText) findViewById(R.id.edit_nombre_usuario);
         etApellido = (EditText) findViewById(R.id.edit_apellido_usuario);
@@ -78,7 +76,6 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
         tvCancelar.setOnClickListener(this);
         btnGuardar.setOnClickListener(this);
         btnFoto.setOnClickListener(this);
-        btnEliminar.setOnClickListener(this);
 
         etNombre.setText(usuarioActual.getNombre());
         etApellido.setText(usuarioActual.getApellido());
@@ -168,9 +165,6 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
                     startActivityForResult(intent, REQUEST_CODE);
                 }
                 break;
-            case R.id.button_eliminar:
-                eliminaPopup();
-                break;
         }
     }
 
@@ -210,39 +204,6 @@ public class ModificarUsuario extends AppCompatActivity implements View.OnClickL
         usuarioActual.setImagen(foto);
         dao.updateUsuario(usuarioActual);
 
-    }
-
-    public void eliminaPopup(){
-        btnEliminar.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(ModificarUsuario.this);
-                builder.setTitle("Eliminar?");
-                builder.setMessage("¿Está seguro que desea eliminar este usuario?");
-                builder.setCancelable(false);
-
-                builder.setPositiveButton("Sí", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which){
-                        dao.deleteUsuario(usuarioActual.getIdUsuario());
-                        eliminarUsuario = 1;
-                    }
-                });
-
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which){
-                        Toast.makeText(getApplicationContext(), "Operación cancelada", Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-                AlertDialog alert = builder.create();
-                alert.show();
-            }
-        });
     }
 
 }
